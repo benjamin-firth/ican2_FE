@@ -1,12 +1,12 @@
 import React from 'react';
 import UserProfile from '../UserProfile/UserProfile';
-import Navbar from '../Navbar/Navbar';
+import NavBar from '../NavBar/NavBar';
 
 const App = () => {
 
   return (
     <main>
-      <Navbar />
+      <NavBar />
       <UserProfile />
     </main>
   )
