@@ -15,6 +15,9 @@ const App = () => {
 
   return (
     <main>
+      <Route exact path='/'>
+        <NavBar />
+      </Route>
       <Route path='/welcome'>
         <NavBar />
         <Splash />
