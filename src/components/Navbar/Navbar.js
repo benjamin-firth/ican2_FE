@@ -6,11 +6,11 @@ const NavBar = () => {
 
   return (
     <nav>
-      <NavButton />
-      <NavButton />
-      <NavButton />
-      <NavButton />
-      <NavButton />
+      <NavButton nav='/mentors' name='mentors'/>
+      <NavButton nav='/inbox' name='messages'/>
+      <NavButton nav='/meetups' name='meetups'/>
+      <NavButton nav='/myprofile' name='my profile'/>
+      <NavButton nav='/login' name='log out'/>
     </nav>
   );
 }
