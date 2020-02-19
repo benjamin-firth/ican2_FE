@@ -1,19 +1,18 @@
 import React from 'react';
-import './Navbar.scss';
+import './NavBar.scss';
+import NavButton from '../NavButton/NavButton';
 
-const Navbar = () => {
+const NavBar = () => {
 
   return (
     <nav>
-      <div className="three col">
-        <div className="hamburger" id="hamburger-1">
-          <span className="line"></span>
-          <span className="line"></span>
-          <span className="line"></span>
-        </div>
-      </div>
+      <NavButton />
+      <NavButton />
+      <NavButton />
+      <NavButton />
+      <NavButton />
     </nav>
   );
 }
 
-export default Navbar;
+export default NavBar;
