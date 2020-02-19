@@ -1,20 +1,22 @@
+@import '../../variables';
+
 nav {
   align-items: center;
-  background-color: #D5EFE9;
-  border-bottom: 6px solid #FF8882;
+  background-color: $primarycolor;
+  border-bottom: 6px solid $secondarycolor;
   display: flex;
   height: 10vh;
   justify-content: flex-end;
   width: 100vw;
 
   // Hamburger icon
-  
+
   .col {
     display: block;
     float:left;
     margin: 1% 0 1% 1.6%;
   }
-  
+
   .col:first-of-type {
     margin-left: 0;
   }
@@ -22,7 +24,7 @@ nav {
   .hamburger {
     margin-right: 20px;
   }
-  
+
   .hamburger .line{
     width: 50px;
     height: 5px;
@@ -30,7 +32,7 @@ nav {
     display: block;
     margin: 8px auto;
   }
-  
+
   .hamburger:hover{
     cursor: pointer;
   }
