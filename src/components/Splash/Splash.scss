@@ -7,6 +7,11 @@
   background-color: $primarycolor;
   height: 100vh;
   padding-top: 5vw;
+  p {
+    font-family: $secondaryfont;
+    color: $secondarycolor;
+    font-size: 1.3vw;
+  }
   button {
     width: 15vw;
     margin: .5vw;
