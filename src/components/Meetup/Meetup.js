@@ -1,5 +1,5 @@
 import React from 'react';
-import './MeetupContainer.scss';
+import './Meetup.scss';
 
 const Meetup = () => {
   return (
@@ -9,4 +9,4 @@ const Meetup = () => {
   );
 }
 
-export default MeetupContainer;
+export default Meetup;
