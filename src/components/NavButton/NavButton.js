@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './NavButton.scss';
 
-const NavButton = () => {
+const NavButton = ({ nav, name }) => {
 
   return (
-    <button>
-      This is a button.
-    </button>
+    <Link to={nav}>
+      <button>
+        {name}
+      </button>
+    </Link>
   );
 }
 

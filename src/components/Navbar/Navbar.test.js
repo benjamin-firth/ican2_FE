@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Navbar from './Navbar';
+import NavBar from './NavBar';
 
-describe('Navbar', () => {
+describe('NavBar', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow( <Navbar />)
+    wrapper = shallow( <NavBar />)
   });
 
   it('should match the snapshot', () => {
