@@ -22,7 +22,7 @@ const mockMentors = [
     email: 'John@email.com',
     password: 'password',
     location: '80401',
-    currentField: 'Culinary',
+    currentField: 'Spoken Word',
     experienceLevel: 'Expert',
     mentee: false,
     mentor: true,
