@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import NavBar from '../Navbar/Navbar';
+import NavBar from '../NavBar/NavBar';
 import Splash from '../Splash/Splash';
 import About from '../About/About';
 import LoginForm from '../LoginForm/LoginForm';
@@ -12,46 +12,46 @@ import MessageContainer from '../MessageContainer/MessageContainer';
 import MeetupContainer from '../MeetupContainer/MeetupContainer';
 
 const App = () => {
+  const startButtons = [{nav: '/about', name: 'about'}, {nav: '/signup', name: 'sign up'}, {nav: '/login', name: 'log in'}];
+
+  const mainButtons = [{nav: '/mentors', name: 'find mentors'}, {nav: '/inbox', name: 'messages'}, {nav: '/meetups', name: 'meetups'}, {nav: '/myprofile', name: 'my profile'}, {nav: '/login', name: 'log out'}];
 
   return (
     <main>
       <Route exact path='/'>
-        <NavBar />
-      </Route>
-      <Route path='/welcome'>
-        <NavBar />
+        <NavBar buttons={startButtons}/>
         <Splash />
       </Route>
       <Route path='/about'>
-        <NavBar />
+        <NavBar buttons={startButtons}/>
         <About />
       </Route>
       <Route path='/login'>
-        <NavBar />
+        <NavBar buttons={startButtons}/>
         <LoginForm />
       </Route>
       <Route path='/signup'>
-        <NavBar />
+        <NavBar buttons={startButtons}/>
         <SignUpForm />
       </Route>
       <Route path='/myprofile'>
-        <NavBar />
+        <NavBar buttons={mainButtons}/>
         <UserProfile />
       </Route>
       <Route path='/mentors'>
-        <NavBar />
+        <NavBar buttons={mainButtons}/>
         <ProfileContainer />
       </Route>
       <Route path='/inbox'>
-        <NavBar />
+        <NavBar buttons={mainButtons}/>
         <Inbox />
       </Route>
       <Route path='/message'>
-        <NavBar />
+        <NavBar buttons={mainButtons}/>
         <MessageContainer />
       </Route>
       <Route path='/meetups'>
-        <NavBar />
+        <NavBar buttons={mainButtons}/>
         <MeetupContainer />
       </Route>
     </main>

@@ -1,16 +1,22 @@
 import React from 'react';
-import './Navbar.scss';
+import './NavBar.scss';
 import NavButton from '../NavButton/NavButton';
+import simpleLogo from '../../images/simple-logo.png';
 
-const NavBar = () => {
+const NavBar = ({ buttons }) => {
+
+  const renderButtons = () => {
+    return buttons.map(button => (
+      <NavButton nav={button.nav} name={button.name} />
+    ))
+  }
 
   return (
     <nav>
-      <NavButton nav='/mentors' name='mentors'/>
-      <NavButton nav='/inbox' name='messages'/>
-      <NavButton nav='/meetups' name='meetups'/>
-      <NavButton nav='/myprofile' name='my profile'/>
-      <NavButton nav='/login' name='log out'/>
+      <img src={simpleLogo} />
+      <div className='nav-button-container'>
+        {renderButtons()}
+      </div>
     </nav>
   );
 }
