@@ -28,11 +28,15 @@ const SignUpForm = () => {
         <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
         <input onChange={(e) => setField(e.target.value)}/>
         <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
-        <select onChange={(e) => setExpertise(e.target.value)}>
-          <option>Beginner</option>
-          <option>Intermediate</option>
-          <option>Adanced</option>
-        </select>
+        <div className='trishapoops'>
+          <select 
+            className='select-box' 
+            onChange={(e) => setExpertise(e.target.value)}>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Adanced</option>
+          </select>
+        </div>
         <button onClick={clickHandler}>submit</button>
       </form>
     </section>

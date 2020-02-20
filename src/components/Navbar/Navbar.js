@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavBar.scss';
+import './Navbar.scss';
 import NavButton from '../NavButton/NavButton';
 
 const NavBar = () => {
