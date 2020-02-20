@@ -16,9 +16,9 @@ const SignUpForm = () => {
   }
 
   return (
-    <section>
+    <section className='sign-up-container'>
       <h3>build your profile</h3>
-      <form>
+      <form className='sign-up-form'>
         <label>WHAT IS YOUR FIRST NAME?</label>
         <input onChange={(e) => setName(e.target.value)}/>
         <label>WHAT IS YOUR EMAIL ADDRESS?</label>
@@ -33,7 +33,7 @@ const SignUpForm = () => {
           <option>Intermediate</option>
           <option>Adanced</option>
         </select>
-        <button onClick={clickHandler}>SUBMIT</button>
+        <button onClick={clickHandler}>submit</button>
       </form>
     </section>
   );
