@@ -1,0 +1,54 @@
+@import '../../variables.scss';
+
+.login-page {
+  background-color: $primarycolor;
+  height: 100vw;
+  padding: 4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 3vw;
+  background-color: white;
+  width: 40vw;
+
+  p {
+    font-family: $primaryfont;
+    margin: 0;
+    margin-top: 1vw;
+    color: $secondarycolor;
+    font-size: 1.2vw;
+  }
+
+  button {
+    width: 50%;
+    margin: .5vw;
+    margin-top: 2vw;
+    padding: 1vw;
+    border: 5px solid $secondarycolor;
+    color: $secondarycolor;
+    font-size: 1.5vw;
+    font-family: $secondaryfont;
+    &:hover {
+      background-color: $secondarycolor;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  input {
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 30px;
+    height: 35px;
+    width: 36vw;
+  }
+
+}

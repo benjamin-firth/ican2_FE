@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-section {
+.sign-up-container {
   background-color: $primarycolor;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@ section {
   }
 }
 
-form {
+.sign-up-form {
   align-items: center;
   background-color: #FFF;
   display: flex;
