@@ -6,9 +6,14 @@ const Splash = () => {
 
   return (
     <section className='splash-container'>
-      <button className='login-button'>log in</button>
-      <button className='sign-up-button'>sign up</button>
-      <Link to='/about'>learn more</Link>
+      <p>welcome! <br /> we are so glad you're here.</p>
+      <Link to='/login'>
+        <button className='login-button'>log in</button>
+      </Link>
+      <Link to='/signup'>
+        <button className='sign-up-button'>sign up</button>
+      </Link>
+      <Link to='/about'>learn more about ican2</Link>
     </section>
   );
 }
