@@ -42,6 +42,15 @@ form {
     width: 75vw;
   }
 
+  select {
+    -webkit-appearance: menulist-button;
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 30px;
+    height: 35px;
+    width: 76vw;
+  }
+
   button {
     width: 25vw;
     margin: 2vw;
