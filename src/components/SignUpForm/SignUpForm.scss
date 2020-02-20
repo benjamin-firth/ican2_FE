@@ -1,0 +1,68 @@
+@import '../../variables.scss';
+
+section {
+  background-color: $primarycolor;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  align-items: center;
+
+  h3 {
+    align-self: flex-start;
+    color: $secondarycolor;
+    font-family: $secondaryfont;
+    font-size: 35px;
+    margin: 8vh 0 0 10vw;
+  }
+}
+
+form {
+  align-items: center;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  margin-top: 2vh;
+  overflow-y: scroll;
+  padding-top: 1vw;
+  width: 80vw;
+
+  label {
+    align-self: flex-start;
+    font-family: $primaryfont;
+    font-size: 20px;
+    margin: 1.5vw 0 .5vw 2.2vw;
+  }
+
+  input {
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 30px;
+    height: 35px;
+    width: 75vw;
+  }
+
+  select {
+    -webkit-appearance: menulist-button;
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 30px;
+    height: 35px;
+    width: 76vw;
+  }
+
+  button {
+    width: 25vw;
+    margin: 2vw;
+    padding: 1vw;
+    border: 5px solid $secondarycolor;
+    color: $secondarycolor;
+    font-size: 2vw;
+    font-family: $secondaryfont;
+    &:hover {
+      background-color: $secondarycolor;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
