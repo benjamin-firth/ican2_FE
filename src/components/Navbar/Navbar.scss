@@ -3,11 +3,10 @@
 nav {
   align-items: center;
   background-color: $primarycolor;
-  border-bottom: 6px solid $secondarycolor;
+  border-bottom: 10px solid $secondarycolor;
   display: flex;
-  height: 10vh;
   justify-content: flex-end;
-  width: 100vw;
+  width: 100%;
 
   // Hamburger icon
 

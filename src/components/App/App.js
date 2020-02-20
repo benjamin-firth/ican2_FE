@@ -17,9 +17,6 @@ const App = () => {
     <main>
       <Route exact path='/'>
         <NavBar />
-      </Route>
-      <Route path='/welcome'>
-        <NavBar />
         <Splash />
       </Route>
       <Route path='/about'>
