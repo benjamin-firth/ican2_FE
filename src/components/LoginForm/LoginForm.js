@@ -21,6 +21,8 @@ const LoginForm = () => {
     e.preventDefault();
     if (!email.length || !password.length) {
       setError('Please be sure you have filled out all sections.')
+    } else if (!email.includes('@') || !email.includes('.')) {
+      setError('Please enter a valid email address.')
     } else {
       console.log({ email: email, password: password });
     }
