@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import './SignUpForm.scss';
 
 const SignUpForm = () => {
@@ -8,7 +9,11 @@ const SignUpForm = () => {
   const [location, setLocation] = useState('');
   const [field, setField] = useState('');
   const [expertise, setExpertise] = useState('');
+  const history = useHistory();
 
+  const clickHandler = () => {
+    history.push('/myprofile');
+  }
 
   return (
     <section>
@@ -28,7 +33,7 @@ const SignUpForm = () => {
           <option>Intermediate</option>
           <option>Adanced</option>
         </select>
-        <button>SUBMIT</button>
+        <button onClick={clickHandler}>SUBMIT</button>
       </form>
     </section>
   );
