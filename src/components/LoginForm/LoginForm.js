@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './LoginForm.scss';
+import { addCurrentUser } from '../../actions';
 
 const LoginForm = () => {
-
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -25,7 +27,7 @@ const LoginForm = () => {
       setError('Please enter a valid email address.')
     } else {
       getUser()
-      .then(data => console.log(data.data.users))
+      .then(data => dispatch(addCurrentUser(data.data.users)))
       .catch(error => setError('That user does not exist. Please sign up!'))
     }
   }
