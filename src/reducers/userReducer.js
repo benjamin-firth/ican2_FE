@@ -4,6 +4,8 @@ export const userReducer = (state = {}, action) => {
       return action.user;
     case 'LOG_OUT' :
       return {};
+    case 'SET_NEW_USER' :
+      return 
     default:
       return state;
   }
