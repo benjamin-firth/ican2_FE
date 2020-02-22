@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
-import { addCurrentUser } from '../../actions';
+import { loginCurrentUser } from '../../actions';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const LoginForm = () => {
       setError('Please enter a valid email address.')
     } else {
       getUser()
-      .then(data => dispatch(addCurrentUser(data.data.users)))
+      .then(data => dispatch(loginCurrentUser(data.data.users)))
       .catch(error => setError('That user does not exist. Please sign up!'))
     }
   }
@@ -51,7 +51,7 @@ const LoginForm = () => {
   };
 
   return (
-    currentUser ? <Redirect to='myprofile' /> :
+    currentUser.name ? <Redirect to='myprofile' /> :
     <section className='login-page'>
       <form className='login-form'>
         <div>
