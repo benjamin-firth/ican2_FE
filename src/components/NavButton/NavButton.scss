@@ -16,3 +16,8 @@ button {
     cursor: pointer;
   }
 }
+
+.selected {
+  background-color: $secondarycolor;
+  color: white;
+}
