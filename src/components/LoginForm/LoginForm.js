@@ -24,7 +24,7 @@ const LoginForm = () => {
     } else if (!email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address.')
     } else {
-      getUser();
+      console.log(getUser());
     }
   }
 
@@ -45,7 +45,7 @@ const LoginForm = () => {
       if (!response.ok) {
         throw Error('error retrieving user data')
       }
-      console.log(response.json())
+      return response.json()
     })
 };
 
