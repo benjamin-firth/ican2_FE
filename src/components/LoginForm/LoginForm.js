@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
 import { addCurrentUser } from '../../actions';
 
@@ -8,6 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const currentUser = useSelector(state => state.currentUser);
 
   const enterEmail = (e) => {
     setError('');
@@ -45,15 +47,11 @@ const LoginForm = () => {
   };
 
   return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-    .then(response => {
-      // if (!response.ok) {
-      //   throw Error('error retrieving user data');
-      // }
-      return response.json();
-    })
+    .then(response => response.json())
   };
 
   return (
+    currentUser ? <Redirect to='myprofile' /> :
     <section className='login-page'>
       <form className='login-form'>
         <div>
