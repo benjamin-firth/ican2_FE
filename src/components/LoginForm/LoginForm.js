@@ -60,7 +60,7 @@ const LoginForm = () => {
         </div>
         <div>
           <p>PASSWORD</p>
-          <input type='text' onChange={(e) => enterPassword(e)}/>
+          <input type='text' type='password' onChange={(e) => enterPassword(e)}/>
         </div>
         {error && <p className="error-msg">{error}</p>}
         <button className='login-submit-button' onClick={(e) => login(e)}>enter</button>
