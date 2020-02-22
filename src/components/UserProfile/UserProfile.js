@@ -1,5 +1,4 @@
 import React from 'react';
-import beerDrinkinTrish from '../../images/opfft9a.png';
 import './UserProfile.scss';
 
 const UserProfile = () => {
@@ -8,9 +7,9 @@ const UserProfile = () => {
     <div className='background'>
       <section>
         <div className='image-box'>
-          <img 
-            src={beerDrinkinTrish} 
-            alt='beer drinkin trish' 
+          <img
+            src=''
+            alt='beer drinkin trish'
             className='profile-photo'/>
           <button>edit profile</button>
         </div>
