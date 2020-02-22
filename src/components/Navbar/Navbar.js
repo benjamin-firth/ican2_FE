@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './node_modules/react';
 import './NavBar.scss';
 import NavButton from '../NavButton/NavButton';
 import simpleLogo from '../../images/simple-logo.png';
