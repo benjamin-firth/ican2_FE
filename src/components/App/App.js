@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import Splash from '../Splash/Splash';
 import About from '../About/About';
@@ -36,7 +37,7 @@ const App = () => {
       </Route>
       <Route path='/myprofile'>
         <Navbar buttons={mainButtons}/>
-        <UserProfile />
+        <UserProfile user={useSelector(state => state.currentUser)}/>
       </Route>
       <Route path='/mentors'>
         <Navbar buttons={mainButtons}/>
