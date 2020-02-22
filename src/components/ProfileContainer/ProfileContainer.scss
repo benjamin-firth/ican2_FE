@@ -1,0 +1,9 @@
+@import '../../variables.scss';
+
+.mentors-container {
+  display: flex;
+  justify-content: center;
+  background-color: $primarycolor;
+  padding: 3vw;
+  height: 100vw;
+}

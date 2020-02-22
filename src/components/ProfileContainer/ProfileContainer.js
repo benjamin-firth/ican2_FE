@@ -28,7 +28,7 @@ const ProfileContainer = () => {
   useEffect(() => getMentors(), [])
 
   return (
-    <section>
+    <section className='mentors-container'>
       {displayMentors()}
     </section>
   );
