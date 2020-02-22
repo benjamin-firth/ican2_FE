@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
+import NavBar from '../NavBar/NavBar';
 import Splash from '../Splash/Splash';
 import About from '../About/About';
 import LoginForm from '../LoginForm/LoginForm';
@@ -19,39 +19,39 @@ const App = () => {
   return (
     <main>
       <Route exact path='/'>
-        <Navbar buttons={startButtons}/>
+        <NavBar buttons={startButtons}/>
         <Splash />
       </Route>
       <Route path='/about'>
-        <Navbar buttons={startButtons}/>
+        <NavBar buttons={startButtons}/>
         <About />
       </Route>
       <Route path='/login'>
-        <Navbar buttons={startButtons}/>
+        <NavBar buttons={startButtons}/>
         <LoginForm />
       </Route>
       <Route path='/signup'>
-        <Navbar buttons={startButtons}/>
+        <NavBar buttons={startButtons}/>
         <SignUpForm />
       </Route>
       <Route path='/myprofile'>
-        <Navbar buttons={mainButtons}/>
+        <NavBar buttons={mainButtons}/>
         <UserProfile />
       </Route>
       <Route path='/mentors'>
-        <Navbar buttons={mainButtons}/>
+        <NavBar buttons={mainButtons}/>
         <ProfileContainer />
       </Route>
       <Route path='/inbox'>
-        <Navbar buttons={mainButtons}/>
+        <NavBar buttons={mainButtons}/>
         <Inbox />
       </Route>
       <Route path='/message'>
-        <Navbar buttons={mainButtons}/>
+        <NavBar buttons={mainButtons}/>
         <MessageContainer />
       </Route>
       <Route path='/meetups'>
-        <Navbar buttons={mainButtons}/>
+        <NavBar buttons={mainButtons}/>
         <MeetupContainer />
       </Route>
     </main>
