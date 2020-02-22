@@ -13,7 +13,7 @@ const MentorCard = ({ mentor }) => {
         <h3>{mentor.mentorProfile.fieldOfKnowledge}</h3>
         <p>{mentor.location.city}, {mentor.location.state}</p>
         <p>{mentor.profile.aboutMe}</p>
-        <button>connect</button>
+        <button>view profile</button>
       </section>
   );
 }
