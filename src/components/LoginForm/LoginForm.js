@@ -45,7 +45,7 @@ const LoginForm = () => {
       if (!response.ok) {
         throw Error('error retrieving user data')
       }
-      return response.json()
+      console.log(response.json())
     })
 };
 
