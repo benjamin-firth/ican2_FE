@@ -8,9 +8,9 @@ const NavButton = ({ nav, name }) => {
     if (window.location.pathname === nav) {
       return 'selected';
     } else {
-      return ''
-    }
-  }
+      return '';
+    };
+  };
 
   return (
     <Link to={nav}>
@@ -19,6 +19,6 @@ const NavButton = ({ nav, name }) => {
       </button>
     </Link>
   );
-}
+};
 
 export default NavButton;
