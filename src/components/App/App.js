@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Route } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Splash from '../Splash/Splash';
