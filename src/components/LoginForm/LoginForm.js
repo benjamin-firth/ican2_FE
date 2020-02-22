@@ -24,7 +24,9 @@ const LoginForm = () => {
     } else if (!email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address.')
     } else {
-      console.log(getUser())
+      getUser()
+      .then(data => console.log(data.data.users))
+      .catch(error => setError('That user does not exist. Please sign up!'))
     }
   }
 
@@ -47,8 +49,6 @@ const LoginForm = () => {
       // }
       return response.json();
     })
-    .then(data => data.data.users)
-    .catch(error => setError('That user does not exist. Please sign up!')) 
   };
 
   return (
