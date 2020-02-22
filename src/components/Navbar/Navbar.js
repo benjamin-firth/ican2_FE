@@ -1,9 +1,9 @@
 import React from 'react';
-import './NavBar.scss';
+import './Navbar.scss';
 import NavButton from '../NavButton/NavButton';
 import simpleLogo from '../../images/simple-logo.png';
 
-const NavBar = ({ buttons }) => {
+const Navbar = ({ buttons }) => {
 
   const renderButtons = () => {
     return buttons.map(button => (
@@ -21,4 +21,4 @@ const NavBar = ({ buttons }) => {
   );
 }
 
-export default NavBar;
+export default Navbar;
