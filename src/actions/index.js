@@ -1,5 +1,10 @@
-export const addCurrentUser = user => ({
-  type: 'ADD_CURRENT_USER',
+export const loginCurrentUser = user => ({
+  type: 'LOG_IN',
+  user
+});
+
+export const logoutCurrentUser = user => ({
+  type: 'LOG_OUT',
   user
 });
 

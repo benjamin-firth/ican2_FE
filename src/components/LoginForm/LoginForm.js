@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
-import { addCurrentUser } from '../../actions';
+import { loginCurrentUser } from '../../actions';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const currentUser = useSelector(state => state.currentUser);
 
   const enterEmail = (e) => {
     setError('');
@@ -27,7 +29,7 @@ const LoginForm = () => {
       setError('Please enter a valid email address.')
     } else {
       getUser()
-      .then(data => dispatch(addCurrentUser(data.data.users)))
+      .then(data => dispatch(loginCurrentUser(data.data.users)))
       .catch(error => setError('That user does not exist. Please sign up!'))
     }
   }
@@ -45,15 +47,11 @@ const LoginForm = () => {
   };
 
   return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-    .then(response => {
-      // if (!response.ok) {
-      //   throw Error('error retrieving user data');
-      // }
-      return response.json();
-    })
+    .then(response => response.json())
   };
 
   return (
+    currentUser.name ? <Redirect to='myprofile' /> :
     <section className='login-page'>
       <form className='login-form'>
         <div>
@@ -62,7 +60,7 @@ const LoginForm = () => {
         </div>
         <div>
           <p>PASSWORD</p>
-          <input type='text' onChange={(e) => enterPassword(e)}/>
+          <input type='text' type='password' onChange={(e) => enterPassword(e)}/>
         </div>
         {error && <p className="error-msg">{error}</p>}
         <button className='login-submit-button' onClick={(e) => login(e)}>enter</button>
