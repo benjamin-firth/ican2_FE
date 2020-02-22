@@ -14,7 +14,7 @@ import MeetupContainer from '../MeetupContainer/MeetupContainer';
 const App = () => {
   const startButtons = [{nav: '/about', name: 'about'}, {nav: '/signup', name: 'sign up'}, {nav: '/login', name: 'log in'}];
 
-  const mainButtons = [{nav: '/mentors', name: 'find mentors'}, {nav: '/inbox', name: 'messages'}, {nav: '/meetups', name: 'meetups'}, {nav: '/myprofile', name: 'my profile'}, {nav: '/login', name: 'log out'}];
+  const mainButtons = [{nav: '/mentors', name: 'find mentors'}, {nav: '/inbox', name: 'messages'}, {nav: '/meetups', name: 'meetups'}, {nav: '/myprofile', name: 'my profile'}, {nav: '/', name: 'log out'}];
 
   return (
     <main>
