@@ -24,9 +24,30 @@ const LoginForm = () => {
     } else if (!email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address.')
     } else {
-      console.log({ email: email, password: password });
+      console.log(getUser());
     }
   }
+
+  const getUser = () => {
+
+  const body = {"query": "{users(email: \"kw@email.com\") {name email mentor profile {gender aboutMe image fieldOfInterest} mentorProfile {fieldOfKnowledge experienceLevel workDayQuestion enjoymentQuestion teachingPointsQuestion adviceQuestion} location {city state}}}"};
+
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  };
+
+  return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('error retrieving user data')
+      }
+      return response.json()
+    })
+};
 
   return (
     <section className='login-page'>
