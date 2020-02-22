@@ -24,8 +24,7 @@ const LoginForm = () => {
     } else if (!email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address.')
     } else {
-      getUser()
-      .then(data => console.log(data.data.users))
+      console.log(getUser())
     }
   }
 
@@ -43,11 +42,13 @@ const LoginForm = () => {
 
   return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
     .then(response => {
-      if (!response.ok) {
-        throw Error('error retrieving user data');
-      }
+      // if (!response.ok) {
+      //   throw Error('error retrieving user data');
+      // }
       return response.json();
     })
+    .then(data => data.data.users)
+    .catch(error => setError('That user does not exist. Please sign up!')) 
   };
 
   return (
