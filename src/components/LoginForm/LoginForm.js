@@ -24,13 +24,13 @@ const LoginForm = () => {
     } else if (!email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address.')
     } else {
-      console.log(getUser());
+      console.log(getUser())
     }
   }
 
   const getUser = () => {
 
-  const body = {"query": "{users(email: \"kw@email.com\") {name email mentor profile {gender aboutMe image fieldOfInterest} mentorProfile {fieldOfKnowledge experienceLevel workDayQuestion enjoymentQuestion teachingPointsQuestion adviceQuestion} location {city state}}}"};
+  const body = {"query": "{users(email: \""+ email + "\") {name email mentor profile {gender aboutMe image fieldOfInterest} mentorProfile {fieldOfKnowledge experienceLevel workDayQuestion enjoymentQuestion teachingPointsQuestion adviceQuestion} location {city state}}}"};
 
   const options = {
     method: 'POST',
@@ -42,12 +42,14 @@ const LoginForm = () => {
 
   return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
     .then(response => {
-      if (!response.ok) {
-        throw Error('error retrieving user data')
-      }
-      return response.json()
+      // if (!response.ok) {
+      //   throw Error('error retrieving user data');
+      // }
+      return response.json();
     })
-};
+    .then(data => data.data.users)
+    .catch(error => setError('That user does not exist. Please sign up!')) 
+  };
 
   return (
     <section className='login-page'>
