@@ -1,0 +1,54 @@
+@import '../../variables';
+
+.background {
+  align-items: flex-start;
+  background-color: $primarycolor;
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+  padding-top: 20vh;
+
+  section {
+    display: flex;
+    width: 65vw;
+  }
+
+  h2 {
+    color: $secondarycolor
+  }
+}
+
+.image-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+
+  button {
+    background-color: $secondarycolor;
+    border: 5px solid $secondarycolor;
+    color: #FFF;
+    font-family: $secondaryfont;
+    font-size: 1.6vw;
+    margin: 2vw .5vw 0 .5vw;
+    margin-bottom: 0;
+    padding: .5vw;
+    width: 13vw;
+    &:hover {
+      background-color: #FFF;
+      color: $secondarycolor;
+      cursor: pointer;
+    }
+  }
+  
+  .selected {
+    background-color: $secondarycolor;
+    color: white;
+  }
+}
+
+.desc-box {
+  background-color: #FFF;
+  margin: 0vw 1vw;
+  padding: 1vw 2vw;
+}
