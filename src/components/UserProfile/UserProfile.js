@@ -3,7 +3,7 @@ import './UserProfile.scss';
 import { useSelector } from 'react-redux';
 
 const UserProfile = ({ user }) => {
-  console.log(user);
+  const currentUser = useSelector(state => state.currentUser);
 
   return (
     <div className='background'>
@@ -13,7 +13,7 @@ const UserProfile = ({ user }) => {
             src={user.profile.image}
             alt='your profile picture'
             className='profile-photo'/>
-          <button>edit profile</button>
+          {user.id === currentUser.id ? <button>edit profile</button> : <button>message</button>}
         </div>
         <div className='desc-box'>
           <h2>{user.name.toLowerCase()}</h2>
