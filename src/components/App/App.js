@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import Splash from '../Splash/Splash';
 import About from '../About/About';
@@ -12,6 +13,8 @@ import MessageContainer from '../MessageContainer/MessageContainer';
 import MeetupContainer from '../MeetupContainer/MeetupContainer';
 
 const App = () => {
+  const mentors = useSelector(state => state.mentors);
+
   const startButtons = [{nav: '/about', name: 'about'}, {nav: '/signup', name: 'sign up'}, {nav: '/login', name: 'log in'}];
 
   const mainButtons = [{nav: '/mentors', name: 'find mentors'}, {nav: '/inbox', name: 'messages'}, {nav: '/meetups', name: 'meetups'}, {nav: '/myprofile', name: 'my profile'}, {nav: '/', name: 'log out'}];
@@ -19,39 +22,50 @@ const App = () => {
   return (
     <main>
       <Route exact path='/'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <Splash />
       </Route>
       <Route path='/about'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <About />
       </Route>
       <Route path='/login'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <LoginForm />
       </Route>
       <Route path='/signup'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <SignUpForm />
       </Route>
       <Route path='/myprofile'>
-        <Navbar buttons={mainButtons}/>
-        <UserProfile />
+        <Navbar buttons={mainButtons} />
+        <UserProfile user={useSelector(state => state.currentUser)} />
       </Route>
-      <Route path='/mentors'>
-        <Navbar buttons={mainButtons}/>
+      <Route exact path='/mentors'>
+        <Navbar buttons={mainButtons} />
         <ProfileContainer />
       </Route>
+      <Route
+        exact path='/mentors/:id'
+        render={({ match }) => {
+          let mentor = mentors.find(mentor => mentor.id === parseInt(match.params.id))
+          return mentor &&
+            <>
+              <Navbar buttons={mainButtons}/>
+              <UserProfile user={mentor} />
+            </>
+        }}
+      />
       <Route path='/inbox'>
-        <Navbar buttons={mainButtons}/>
+        <Navbar buttons={mainButtons} />
         <Inbox />
       </Route>
       <Route path='/message'>
-        <Navbar buttons={mainButtons}/>
+        <Navbar buttons={mainButtons} />
         <MessageContainer />
       </Route>
       <Route path='/meetups'>
-        <Navbar buttons={mainButtons}/>
+        <Navbar buttons={mainButtons} />
         <MeetupContainer />
       </Route>
     </main>
