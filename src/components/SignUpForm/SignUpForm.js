@@ -86,7 +86,8 @@ const SignUpForm = () => {
           <div className='select'>
             <select
               name="state"
-              class="select-box state-select"
+              class="states order-alpha select-box state-select"
+              id="stateId"
               onChange={(e) => setState(e.target.value)}
             >
               <option value="">Select State</option>
@@ -95,7 +96,8 @@ const SignUpForm = () => {
           <div className='select'>
             <select
               name="city"
-              class="select-box"
+              class="cities order-alpha select-box"
+              id="cityId"
               onChange={(e) => setCity(e.target.value)}
             >
               <option value="">Select City</option>
