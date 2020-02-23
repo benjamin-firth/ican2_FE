@@ -4,6 +4,7 @@ import MentorCard from '../MentorCard/MentorCard';
 
 const ProfileContainer = () => {
   const [mentors, setMentors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getMentors = () => {
     const body = {"query": "{mentors{name email mentor profile {gender aboutMe image fieldOfInterest} mentorProfile {fieldOfKnowledge experienceLevel workDayQuestion enjoymentQuestion teachingPointsQuestion adviceQuestion} location {city state}}}"};
@@ -18,7 +19,10 @@ const ProfileContainer = () => {
 
     fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
       .then(response => response.json())
-      .then(data => setMentors(data.data.mentors))
+      .then(data => {
+        setMentors(data.data.mentors);
+        setIsLoading(false);
+      })
     };
 
   const displayMentors = () => {
@@ -29,7 +33,7 @@ const ProfileContainer = () => {
 
   return (
     <section className='mentors-container'>
-      {displayMentors()}
+      {isLoading ? <p>Loading...</p> : displayMentors()}
     </section>
   );
 }
