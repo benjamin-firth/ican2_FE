@@ -4,12 +4,14 @@
   margin: 2vw;
   padding: 2vw;
   height: 30vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 25vw;
   align-items: center;
   background-color: white;
+  border: 6px solid white;
+  
   button {
     border: 5px solid $secondarycolor;
     margin-top: 0;
@@ -30,5 +32,9 @@
   h2 {
     font-size: 2vw;
     color: $secondarycolor;
+  }
+
+  &:hover {
+    border-color: $secondarycolor;
   }
 }

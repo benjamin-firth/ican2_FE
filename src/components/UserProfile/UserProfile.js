@@ -12,7 +12,7 @@ const UserProfile = ({ user }) => {
           <div className='user-image-container'>
             <img
               src={user.profile.image}
-              alt='your profile picture'
+              alt='profile picture'
               className='profile-photo'/>
             {user.id === currentUser.id ? <button>edit profile</button> : <button>message</button>}
           </div>
