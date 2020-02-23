@@ -119,42 +119,6 @@ const SignUpForm = () => {
         </div>
         <label>TELL US A LITTLE ABOUT YOURSELF (This will appear in your profile)</label>
         <input onChange={(e) => setAboutMe(e.target.value)}/>
-        <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
-        <div className='select'>
-          <select
-            className='select-box'
-            onChange={(e) => setknowledgeField(e.target.value)}
-          >
-            <option value=''>Select Career Field</option>
-            <option value='agriculture'>Agriculture</option>
-            <option value='biology'>Biology</option>
-            <option value='botany'>Botany</option>
-            <option value='business/finance'>Business/Finance</option>
-            <option value='business/marketing'>Business/Marketing</option>
-            <option value='chemistry'>Chemistry</option>
-            <option value='construction'>Construction</option>
-            <option value='education'>Education</option>
-            <option value='fine arts'>Fine Arts</option>
-            <option value='law'>Law</option>
-            <option value='law enforcement'>Law Enforcement</option>
-            <option value='medicine'>Medicine</option>
-            <option value='restaurateur/chef'>Restaurateur/Chef</option>
-            <option value='software development'>Software Development</option>
-            <option value='other'>Other</option>
-          </select>
-        </div>
-        <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
-        <div className='select'>
-          <select
-            className='select-box'
-            onChange={(e) => setExpertise(e.target.value)}
-          >
-            <option value=''>Select Experience Level</option>
-            <option value='beginner'>Beginner</option>
-            <option value='intermediate'>Intermediate</option>
-            <option value='advanced'>Adanced</option>
-          </select>
-        </div>
         <label>DO YOU WANT TO BE A MENTOR?</label>
         <div className='select'>
           <select
@@ -167,6 +131,42 @@ const SignUpForm = () => {
         </div>
         {mentorBool &&
           <>
+          <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
+          <div className='select'>
+          <select
+          className='select-box'
+          onChange={(e) => setknowledgeField(e.target.value)}
+          >
+          <option value=''>Select Career Field</option>
+          <option value='agriculture'>Agriculture</option>
+          <option value='biology'>Biology</option>
+          <option value='botany'>Botany</option>
+          <option value='business/finance'>Business/Finance</option>
+          <option value='business/marketing'>Business/Marketing</option>
+          <option value='chemistry'>Chemistry</option>
+          <option value='construction'>Construction</option>
+          <option value='education'>Education</option>
+          <option value='fine arts'>Fine Arts</option>
+          <option value='law/legal'>Law/Legal</option>
+          <option value='law enforcement'>Law Enforcement</option>
+          <option value='medicine'>Medicine</option>
+          <option value='restaurateur/chef'>Restaurateur/Chef</option>
+          <option value='software development'>Software Development</option>
+          <option value='other'>Other</option>
+          </select>
+          </div>
+          <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
+          <div className='select'>
+          <select
+          className='select-box'
+          onChange={(e) => setExpertise(e.target.value)}
+          >
+          <option value=''>Select Experience Level</option>
+          <option value='beginner'>Beginner</option>
+          <option value='intermediate'>Intermediate</option>
+          <option value='advanced'>Adanced</option>
+          </select>
+          </div>
             <label>DESCRIBE A TYPICAL DAY AT WORK.</label>
             <input onChange={(e) => setworkDay(e.target.value)}/>
             <label>WHAT DO YOU ENJOY MOST ABOUT YOUR WORK?</label>
