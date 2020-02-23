@@ -12,7 +12,7 @@ const MentorCard = ({ mentor }) => {
           className='profile-photo'/>
         <h2>{mentor.name.toLowerCase()}</h2>
         <h3>{mentor.mentorProfile.fieldOfKnowledge}</h3>
-        <p>{mentor.location.city}, {mentor.location.state}</p>
+        <p>{mentor.location.city}, {mentor.location.state} | {mentor.profile.gender}</p>
         <p>{mentor.profile.aboutMe}</p>
         <Link to={`/mentors/${mentor.id}`}>
           <button>view profile</button>
