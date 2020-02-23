@@ -20,39 +20,39 @@ const App = () => {
   return (
     <main>
       <Route exact path='/'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <Splash />
       </Route>
       <Route path='/about'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <About />
       </Route>
       <Route path='/login'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <LoginForm />
       </Route>
       <Route path='/signup'>
-        <Navbar buttons={startButtons}/>
+        <Navbar buttons={startButtons} />
         <SignUpForm />
       </Route>
       <Route path='/myprofile'>
-        <Navbar buttons={mainButtons}/>
-        <UserProfile user={useSelector(state => state.currentUser)}/>
+        <Navbar buttons={mainButtons} />
+        <UserProfile user={useSelector(state => state.currentUser)} />
       </Route>
-      <Route path='/mentors'>
-        <Navbar buttons={mainButtons}/>
+      <Route exact path='/mentors'>
+        <Navbar buttons={mainButtons} />
         <ProfileContainer />
       </Route>
       <Route path='/inbox'>
-        <Navbar buttons={mainButtons}/>
+        <Navbar buttons={mainButtons} />
         <Inbox />
       </Route>
       <Route path='/message'>
-        <Navbar buttons={mainButtons}/>
+        <Navbar buttons={mainButtons} />
         <MessageContainer />
       </Route>
       <Route path='/meetups'>
-        <Navbar buttons={mainButtons}/>
+        <Navbar buttons={mainButtons} />
         <MeetupContainer />
       </Route>
     </main>

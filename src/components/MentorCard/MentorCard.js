@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './MentorCard.scss';
 
 const MentorCard = ({ mentor }) => {
@@ -13,7 +14,9 @@ const MentorCard = ({ mentor }) => {
         <h3>{mentor.mentorProfile.fieldOfKnowledge}</h3>
         <p>{mentor.location.city}, {mentor.location.state}</p>
         <p>{mentor.profile.aboutMe}</p>
-        <button>view profile</button>
+        <Link to={`/mentors/${mentor.id}`}>
+          <button>view profile</button>
+        </Link>
       </section>
   );
 }
