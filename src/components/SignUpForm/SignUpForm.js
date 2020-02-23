@@ -11,7 +11,7 @@ const SignUpForm = () => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [field, setField] = useState('');
-  const [expertise, setExpertise] = useState('Beginner');
+  const [expertise, setExpertise] = useState('');
   const [mentorBool, setMentorBool] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
   const [gender, setGender] = useState('');
@@ -144,6 +144,7 @@ const SignUpForm = () => {
           <select
             className='select-box'
             onChange={(e) => setExpertise(e.target.value)}>
+            <option value=''>Select Experience Level</option>
             <option value='beginner'>Beginner</option>
             <option value='intermediate'>Intermediate</option>
             <option value='advanced'>Adanced</option>
