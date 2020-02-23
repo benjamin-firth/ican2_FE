@@ -3,10 +3,11 @@ import './MessageContainer.scss';
 import Message from '../Message/Message';
 import MessageForm from '../MessageForm/MessageForm';
 
-const MessageContainer = () => {
+const MessageContainer = ({ other }) => {
 
   return (
     <section>
+      <p>This is a message container between you and {other.name}</p>
       <Message />
       <Message />
       <MessageForm />

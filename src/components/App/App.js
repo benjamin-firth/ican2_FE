@@ -60,10 +60,21 @@ const App = () => {
         <Navbar buttons={mainButtons} />
         <Inbox />
       </Route>
-      <Route path='/messages'>
+      <Route exact path='/messages'>
         <Navbar buttons={mainButtons} />
-        <MessageContainer />
+        <Inbox />
       </Route>
+      <Route
+        exact path='/messages/:id'
+        render={({ match }) => {
+          let mentor = mentors.find(mentor => mentor.id === parseInt(match.params.id))
+          return mentor &&
+            <>
+              <Navbar buttons={mainButtons}/>
+              <MessageContainer other={mentor} />
+            </>
+        }}
+      />
       <Route path='/meetups'>
         <Navbar buttons={mainButtons} />
         <MeetupContainer />
