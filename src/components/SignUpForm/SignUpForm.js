@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setNewUser } from '../../actions';
 import './SignUpForm.scss';
 
 const SignUpForm = () => {
@@ -8,11 +10,65 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [location, setLocation] = useState('');
   const [field, setField] = useState('');
-  const [expertise, setExpertise] = useState('');
+  const [expertise, setExpertise] = useState('Beginner');
+  const [mentorBool, setMentorBool] = useState(false);
+  const [aboutMe, setAboutMe] = useState('');
+  const [gender, setGender] = useState('');
+  const [image, setImage] = useState('');
+  const [adviceQ, setAdviceQ] = useState('');
+  const [enjoyQ, setEnjoyQ] = useState('');
+  const [knowledgeField, setknowledgeField] = useState('');
+  const [teachingPoints, setTeachingPoints] = useState('');
+  const [workDay, setworkDay] = useState('');
+  const [error, setError] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const clickHandler = () => {
-    history.push('/myprofile');
+  
+  const setUser = () => {
+
+    console.log('name given', name);
+
+    const mutation = {
+      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${field}"\n        aboutMe: "${aboutMe}"\n  image: "${image}"\n age: 9\n  zipCode: \"98501\"\n  state: \"CO\"\n city: "${location}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n  }\n }\n `,
+      variables: {}
+    };
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(mutation),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow'
+    };
+    
+    return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
+    .then(response => {
+      // if (!response.ok) {
+        //   throw Error('error retrieving user data');
+        // }
+      return response.json();
+    });
+  };
+
+  const login = (e) => {
+    if (!name.length || !email.length || !field.length || !expertise.length || !aboutMe.length || !gender.length) {
+      setError('Please be sure you have filled out all sections.');
+      console.log(error);
+    } else {
+      setUser()
+      .then(data => {
+        console.log("data from creating user", data);
+        return dispatch(setNewUser(data.data.users));
+      })
+      .catch(error => setError('That user does not exist. Please sign up!'))
+    }
+  };
+
+  const clickHandler = (e) => {
+    login();
+    // history.push('/myprofile');
   }
 
   return (
@@ -25,6 +81,29 @@ const SignUpForm = () => {
         <input onChange={(e) => setEmail(e.target.value)}/>
         <label>WHAT IS YOUR CURRENT CITY AND STATE?</label>
         <input onChange={(e) => setLocation(e.target.value)}/>
+        <label>ARE YOU SIGNING UP TO BE A MENTOR?</label>
+        <div className='trishapoops'>
+          <select 
+            className='select-box' 
+            onChange={(e) => setMentorBool(e.target.value)}>
+            <option value={false}>False</option>
+            <option value={true}>True</option>
+          </select>
+        </div>
+        {mentorBool && 
+          <>
+            <label>DO YOU HAVE ANY ADVICE FOR A MENTEE?</label>
+            <input onChange={(e) => setAdviceQ(e.target.value)}/>
+            <label>WHAT DO YOU ENJOY ABOUT YOUR FIELD?</label>
+            <input onChange={(e) => setEnjoyQ(e.target.value)}/>
+            <label>WHAT ARE YOUR FIELDS OF KNOWLEDGE?</label>
+            <input onChange={(e) => setknowledgeField(e.target.value)}/>
+            <label>WHAT DO YOU FEEL COMFORTABLE MENTORING?</label>
+            <input onChange={(e) => setTeachingPoints(e.target.value)}/>
+            <label>WHAT IS YOUR TYPICAL WORK DAY LIKE?</label>
+            <input onChange={(e) => setworkDay(e.target.value)}/>
+          </>
+        }
         <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
         <input onChange={(e) => setField(e.target.value)}/>
         <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
@@ -37,7 +116,13 @@ const SignUpForm = () => {
             <option>Adanced</option>
           </select>
         </div>
-        <button onClick={clickHandler}>submit</button>
+        <label>TELL US A LITTLE ABOUT YOURSELF</label>
+        <input onChange={(e) => setAboutMe(e.target.value)}/>
+        <label>WHAT ARE YOUR GENDER PRONOUNS?</label>
+        <input onChange={(e) => setGender(e.target.value)}/>
+        <label>UPLOAD A PROFILE IMAGE</label>
+        <input onChange={(e) => setImage(e.target.value)}/>
+        <button type='button' onClick={clickHandler}>submit</button>
       </form>
     </section>
   );

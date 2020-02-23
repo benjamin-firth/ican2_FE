@@ -8,7 +8,13 @@ export const logoutCurrentUser = user => ({
   user
 });
 
+export const setNewUser = user => ({
+  type: 'SET_NEW_USER',
+  user
+});
+
 export const loadMentors = mentors => ({
   type: 'LOAD_MENTORS',
   mentors
 })
+
