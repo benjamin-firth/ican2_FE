@@ -13,6 +13,8 @@ import MessageContainer from '../MessageContainer/MessageContainer';
 import MeetupContainer from '../MeetupContainer/MeetupContainer';
 
 const App = () => {
+  const mentors = useSelector(state => state.mentors);
+
   const startButtons = [{nav: '/about', name: 'about'}, {nav: '/signup', name: 'sign up'}, {nav: '/login', name: 'log in'}];
 
   const mainButtons = [{nav: '/mentors', name: 'find mentors'}, {nav: '/inbox', name: 'messages'}, {nav: '/meetups', name: 'meetups'}, {nav: '/myprofile', name: 'my profile'}, {nav: '/', name: 'log out'}];
@@ -43,6 +45,17 @@ const App = () => {
         <Navbar buttons={mainButtons} />
         <ProfileContainer />
       </Route>
+      <Route
+        exact path='/mentors/:id'
+        render={({ match }) => {
+          let mentor = mentors.find(mentor => mentor.id === parseInt(match.params.id))
+          return mentor &&
+            <>
+              <Navbar buttons={mainButtons}/>
+              <UserProfile user={mentor} />
+            </>
+        }}
+      />
       <Route path='/inbox'>
         <Navbar buttons={mainButtons} />
         <Inbox />

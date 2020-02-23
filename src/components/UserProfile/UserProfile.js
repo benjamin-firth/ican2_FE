@@ -3,6 +3,7 @@ import './UserProfile.scss';
 import { useSelector } from 'react-redux';
 
 const UserProfile = ({ user }) => {
+  console.log(user);
 
   return (
     <div className='background'>
