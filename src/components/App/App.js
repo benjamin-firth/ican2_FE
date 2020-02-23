@@ -17,7 +17,7 @@ const App = () => {
 
   const startButtons = [{nav: '/about', name: 'about'}, {nav: '/signup', name: 'sign up'}, {nav: '/login', name: 'log in'}];
 
-  const mainButtons = [{nav: '/mentors', name: 'find mentors'}, {nav: '/inbox', name: 'messages'}, {nav: '/meetups', name: 'meetups'}, {nav: '/myprofile', name: 'my profile'}, {nav: '/', name: 'log out'}];
+  const mainButtons = [{nav: '/mentors', name: 'find mentors'}, {nav: '/messages', name: 'messages'}, {nav: '/meetups', name: 'meetups'}, {nav: '/myprofile', name: 'my profile'}, {nav: '/', name: 'log out'}];
 
   return (
     <main>
@@ -60,10 +60,21 @@ const App = () => {
         <Navbar buttons={mainButtons} />
         <Inbox />
       </Route>
-      <Route path='/message'>
+      <Route exact path='/messages'>
         <Navbar buttons={mainButtons} />
-        <MessageContainer />
+        <Inbox />
       </Route>
+      <Route
+        exact path='/messages/:id'
+        render={({ match }) => {
+          let mentor = mentors.find(mentor => mentor.id === parseInt(match.params.id))
+          return mentor &&
+            <>
+              <Navbar buttons={mainButtons}/>
+              <MessageContainer other={mentor} />
+            </>
+        }}
+      />
       <Route path='/meetups'>
         <Navbar buttons={mainButtons} />
         <MeetupContainer />

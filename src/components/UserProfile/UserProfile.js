@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './UserProfile.scss';
 import { useSelector } from 'react-redux';
 
@@ -14,7 +15,7 @@ const UserProfile = ({ user }) => {
               src={user.profile.image}
               alt='profile picture'
               className='profile-photo'/>
-            {user.id === currentUser.id ? <button>edit profile</button> : <button>message</button>}
+            {user.id === currentUser.id ? <button>edit profile</button> : <Link to={`/messages/${user.id}`}><button>message</button></Link>}
           </div>
           <section className='user-description-container'>
             <h2>{user.name.toLowerCase()}</h2>
