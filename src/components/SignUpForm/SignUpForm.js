@@ -102,6 +102,18 @@ const SignUpForm = () => {
             </select>
           </div>
         </div>
+        <label>WHAT ARE YOUR PRONOUNS?</label>
+        <div className='select'>
+          <select
+            className='select-box'
+            onChange={(e) => setGender(e.target.value)}>
+            <option value=''>Select Pronouns</option>
+            <option value='she/her'>She/Her</option>
+            <option value='he/him'>He/Him</option>
+            <option value='they/them'>They/Them</option>
+            <option value='none-specified'>I prefer not to say</option>
+          </select>
+        </div>
         <label>DO YOU WANT TO BE A MENTOR?</label>
         <div className='select'>
           <select
@@ -132,15 +144,13 @@ const SignUpForm = () => {
           <select
             className='select-box'
             onChange={(e) => setExpertise(e.target.value)}>
-            <option>Beginner</option>
-            <option>Intermediate</option>
-            <option>Adanced</option>
+            <option value='beginner'>Beginner</option>
+            <option value='intermediate'>Intermediate</option>
+            <option value='advanced'>Adanced</option>
           </select>
         </div>
         <label>TELL US A LITTLE ABOUT YOURSELF</label>
         <input onChange={(e) => setAboutMe(e.target.value)}/>
-        <label>WHAT ARE YOUR GENDER PRONOUNS?</label>
-        <input onChange={(e) => setGender(e.target.value)}/>
         <label>UPLOAD A PROFILE IMAGE</label>
         <input onChange={(e) => setImage(e.target.value)}/>
         <button type='button' onClick={clickHandler}>submit</button>
