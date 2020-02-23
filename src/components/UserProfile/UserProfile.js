@@ -18,7 +18,7 @@ const UserProfile = ({ user }) => {
           </div>
           <section className='user-description-container'>
             <h2>{user.name.toLowerCase()}</h2>
-            <h3>{user.fieldOfKnowledge}</h3>
+            {user.mentor && <h3>{user.mentorProfile.fieldOfKnowledge}</h3>}
             <p>{user.location.city}, {user.location.state} | {user.profile.gender}</p>
             <p>{user.profile.aboutMe}</p>
           </section>
