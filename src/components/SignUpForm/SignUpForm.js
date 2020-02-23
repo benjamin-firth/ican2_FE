@@ -8,7 +8,8 @@ const SignUpForm = () => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [location, setLocation] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
   const [field, setField] = useState('');
   const [expertise, setExpertise] = useState('Beginner');
   const [mentorBool, setMentorBool] = useState(false);
@@ -24,13 +25,13 @@ const SignUpForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  
+
   const setUser = () => {
 
     console.log('name given', name);
 
     const mutation = {
-      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${field}"\n        aboutMe: "${aboutMe}"\n  image: "${image}"\n age: 9\n  zipCode: \"98501\"\n  state: \"CO\"\n city: "${location}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n  }\n }\n `,
+      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${field}"\n        aboutMe: "${aboutMe}"\n  image: "${image}"\n age: 9\n  zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n  }\n }\n `,
       variables: {}
     };
 
@@ -42,7 +43,7 @@ const SignUpForm = () => {
       },
       redirect: 'follow'
     };
-    
+
     return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
     .then(response => {
       // if (!response.ok) {
@@ -80,17 +81,37 @@ const SignUpForm = () => {
         <label>WHAT IS YOUR EMAIL ADDRESS?</label>
         <input onChange={(e) => setEmail(e.target.value)}/>
         <label>WHAT IS YOUR CURRENT CITY AND STATE?</label>
-        <input onChange={(e) => setLocation(e.target.value)}/>
-        <label>ARE YOU SIGNING UP TO BE A MENTOR?</label>
-        <div className='trishapoops'>
-          <select 
-            className='select-box' 
+        <input type="hidden" name="country" id="countryId" value="US"/>
+        <div className='city-state-select'>
+          <div className='select'>
+            <select
+              name="state"
+              class="select-box state-select"
+              onChange={(e) => setState(e.target.value)}
+            >
+              <option value="">Select State</option>
+            </select>
+          </div>
+          <div className='select'>
+            <select
+              name="city"
+              class="select-box"
+              onChange={(e) => setCity(e.target.value)}
+            >
+              <option value="">Select City</option>
+            </select>
+          </div>
+        </div>
+        <label>DO YOU WANT TO BE A MENTOR?</label>
+        <div className='select'>
+          <select
+            className='select-box'
             onChange={(e) => setMentorBool(e.target.value)}>
-            <option value={false}>False</option>
-            <option value={true}>True</option>
+            <option value={false}>No</option>
+            <option value={true}>Yes</option>
           </select>
         </div>
-        {mentorBool && 
+        {mentorBool &&
           <>
             <label>DO YOU HAVE ANY ADVICE FOR A MENTEE?</label>
             <input onChange={(e) => setAdviceQ(e.target.value)}/>
@@ -107,9 +128,9 @@ const SignUpForm = () => {
         <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
         <input onChange={(e) => setField(e.target.value)}/>
         <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
-        <div className='trishapoops'>
-          <select 
-            className='select-box' 
+        <div className='select'>
+          <select
+            className='select-box'
             onChange={(e) => setExpertise(e.target.value)}>
             <option>Beginner</option>
             <option>Intermediate</option>

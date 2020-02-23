@@ -49,7 +49,7 @@
     font-family: $primaryfont;
     width: 76vw;
   }
-  
+
   .select-box {
     font-size: 19px;
     height: 45px;
@@ -68,5 +68,17 @@
       color: white;
       cursor: pointer;
     }
+  }
+}
+
+.city-state-select {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  select {
+    width: 25vw;
+  }
+  .state-select {
+    margin: 0 2vw;
   }
 }
