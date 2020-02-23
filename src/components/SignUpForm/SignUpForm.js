@@ -108,7 +108,8 @@ const SignUpForm = () => {
         <div className='select'>
           <select
             className='select-box'
-            onChange={(e) => setGender(e.target.value)}>
+            onChange={(e) => setGender(e.target.value)}
+          >
             <option value=''>Select Pronouns</option>
             <option value='she/her'>She/Her</option>
             <option value='he/him'>He/Him</option>
@@ -116,44 +117,66 @@ const SignUpForm = () => {
             <option value='none-specified'>I prefer not to say</option>
           </select>
         </div>
-        <label>DO YOU WANT TO BE A MENTOR?</label>
+        <label>TELL US A LITTLE ABOUT YOURSELF (This will appear in your profile)</label>
+        <input onChange={(e) => setAboutMe(e.target.value)}/>
+        <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
         <div className='select'>
           <select
             className='select-box'
-            onChange={(e) => setMentorBool(e.target.value)}>
-            <option value={false}>No</option>
-            <option value={true}>Yes</option>
+            onChange={(e) => setknowledgeField(e.target.value)}
+          >
+            <option value=''>Select Career Field</option>
+            <option value='agriculture'>Agriculture</option>
+            <option value='biology'>Biology</option>
+            <option value='botany'>Botany</option>
+            <option value='business/finance'>Business/Finance</option>
+            <option value='business/marketing'>Business/Marketing</option>
+            <option value='chemistry'>Chemistry</option>
+            <option value='construction'>Construction</option>
+            <option value='education'>Education</option>
+            <option value='fine arts'>Fine Arts</option>
+            <option value='law'>Law</option>
+            <option value='law enforcement'>Law Enforcement</option>
+            <option value='medicine'>Medicine</option>
+            <option value='restaurateur/chef'>Restaurateur/Chef</option>
+            <option value='software development'>Software Development</option>
+            <option value='other'>Other</option>
           </select>
         </div>
-        {mentorBool &&
-          <>
-            <label>DO YOU HAVE ANY ADVICE FOR A MENTEE?</label>
-            <input onChange={(e) => setAdviceQ(e.target.value)}/>
-            <label>WHAT DO YOU ENJOY ABOUT YOUR FIELD?</label>
-            <input onChange={(e) => setEnjoyQ(e.target.value)}/>
-            <label>WHAT ARE YOUR FIELDS OF KNOWLEDGE?</label>
-            <input onChange={(e) => setknowledgeField(e.target.value)}/>
-            <label>WHAT DO YOU FEEL COMFORTABLE MENTORING?</label>
-            <input onChange={(e) => setTeachingPoints(e.target.value)}/>
-            <label>WHAT IS YOUR TYPICAL WORK DAY LIKE?</label>
-            <input onChange={(e) => setworkDay(e.target.value)}/>
-          </>
-        }
-        <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
-        <input onChange={(e) => setField(e.target.value)}/>
         <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
         <div className='select'>
           <select
             className='select-box'
-            onChange={(e) => setExpertise(e.target.value)}>
+            onChange={(e) => setExpertise(e.target.value)}
+          >
             <option value=''>Select Experience Level</option>
             <option value='beginner'>Beginner</option>
             <option value='intermediate'>Intermediate</option>
             <option value='advanced'>Adanced</option>
           </select>
         </div>
-        <label>TELL US A LITTLE ABOUT YOURSELF</label>
-        <input onChange={(e) => setAboutMe(e.target.value)}/>
+        <label>DO YOU WANT TO BE A MENTOR?</label>
+        <div className='select'>
+          <select
+            className='select-box'
+            onChange={(e) => setMentorBool(e.target.value)}
+          >
+            <option value={false}>No</option>
+            <option value={true}>Yes</option>
+          </select>
+        </div>
+        {mentorBool &&
+          <>
+            <label>DESCRIBE A TYPICAL DAY AT WORK.</label>
+            <input onChange={(e) => setworkDay(e.target.value)}/>
+            <label>WHAT DO YOU ENJOY MOST ABOUT YOUR WORK?</label>
+            <input onChange={(e) => setEnjoyQ(e.target.value)}/>
+            <label>WHAT DO YOU FEEL THE MOST EXCITED ABOUT TEACHING OTHERS?</label>
+            <input onChange={(e) => setTeachingPoints(e.target.value)}/>
+            <label>WHAT IS ONE PIECE OF ADVICE YOU HAVE FOR OTHERS LOOKING TO JOIN THIS FIELD?</label>
+            <input onChange={(e) => setAdviceQ(e.target.value)}/>
+          </>
+        }
         <label>UPLOAD A PROFILE IMAGE</label>
         <input onChange={(e) => setImage(e.target.value)}/>
         <button type='button' onClick={clickHandler}>submit</button>
