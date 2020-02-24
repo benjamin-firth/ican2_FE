@@ -1,11 +1,11 @@
 import React from 'react';
 import './Loader.scss';
 
-const Loader = () => {
+const Loader = ({ message }) => {
 
   return (
     <section className='loader-container'>
-      <h5>Loading...</h5>
+      <h5>{message}</h5>
     </section>
   );
 }

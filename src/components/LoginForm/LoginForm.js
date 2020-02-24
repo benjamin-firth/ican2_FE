@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.scss';
 import { loginCurrentUser } from '../../actions';
+import Loader from '../Loader/Loader';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const currentUser = useSelector(state => state.currentUser);
 
   const enterEmail = (e) => {
@@ -28,8 +30,12 @@ const LoginForm = () => {
     } else if (!email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address.')
     } else {
+      setIsLoading(true);
       getUser()
-      .then(data => dispatch(loginCurrentUser(data.data.users)))
+      .then(data => {
+        dispatch(loginCurrentUser(data.data.users));
+        setIsLoading(false);
+      })
       .catch(error => setError('That user does not exist. Please sign up!'))
     }
   }
@@ -52,6 +58,7 @@ const LoginForm = () => {
 
   return (
     currentUser.name ? <Redirect to='myprofile' /> :
+    isLoading ? <Loader message='Loading your profile...'/> :
     <section className='login-page'>
       <form className='login-form'>
         <div>
