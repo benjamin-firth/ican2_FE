@@ -11,7 +11,6 @@ import ProfileContainer from '../ProfileContainer/ProfileContainer';
 import Inbox from '../Inbox/Inbox';
 import MessageContainer from '../MessageContainer/MessageContainer';
 import MeetupContainer from '../MeetupContainer/MeetupContainer';
-import { loadMessages } from '../../actions';
 
 const App = () => {
   const dispatch = useDispatch();

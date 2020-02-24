@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { loadMessages } from '../../actions';
 import './MessagePreview.scss';
 
 const MessagePreview = ({ otherMessengerId }) => {
@@ -40,7 +41,7 @@ const MessagePreview = ({ otherMessengerId }) => {
 
     return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => dispatch(loadMessages((data.data.messages))))
       .catch(error => console.log(error))
   }
 
