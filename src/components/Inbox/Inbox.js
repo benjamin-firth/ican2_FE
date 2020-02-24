@@ -30,13 +30,13 @@ const Inbox = () => {
 
   const renderPreviews = () => {
     return conversations.map(conversation => {
-      let otherMessenger;
+      let otherMessengerId;
       if (conversation.senderId === currentUser.id) {
-        otherMessenger = conversation.recipientId;
+        otherMessengerId = conversation.recipientId;
       } else {
-        otherMessenger = conversation.senderId;
+        otherMessengerId = conversation.senderId;
       }
-      return <MessagePreview otherMessenger={otherMessenger}/>
+      return <MessagePreview otherMessengerId={otherMessengerId}/>
     })
   }
 
