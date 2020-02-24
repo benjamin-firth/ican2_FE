@@ -1,5 +1,9 @@
 @import '../../variables.scss';
 
+#blockColorblindContent {
+  display: none;
+}
+
 .sign-up-container {
   background-color: $primarycolor;
   display: flex;

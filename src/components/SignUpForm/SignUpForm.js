@@ -13,7 +13,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  const [field, setField] = useState('');
+  // const [field, setField] = useState('');
   const [expertise, setExpertise] = useState('');
   const [mentorBool, setMentorBool] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
@@ -51,9 +51,10 @@ const SignUpForm = () => {
   };
   
   const setUser = () => {
+    console.log('setUser func');
 
     const mutation = {
-      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n age: 9\n  zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
+      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n age: 9\n  zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
       variables: {}
     };
 
@@ -76,12 +77,15 @@ const SignUpForm = () => {
   };
 
   const login = (e) => {
-    if (!name.length || !email.length || !field.length || !expertise.length || !aboutMe.length || !gender.length) {
+    console.log('fire login')
+    if (!name.length || !email.length || !aboutMe.length || !gender.length) {
       setError('Please be sure you have filled out all sections.');
       console.log(error);
     } else {
       setUser()
       .then(data => {
+        console.log('fire dispatch');
+        console.log(data);
         return dispatch(loginCurrentUser(data.data.createUser.user));
         // return dispatch(setNewUser(data.createUser.user));
       })
@@ -95,7 +99,7 @@ const SignUpForm = () => {
   }
 
   return (
-    currentUser.name ? <Redirect to='myprofile' /> :
+    currentUser.location ? <Redirect to='myprofile' /> :
     <section className='sign-up-container'>
       <h3>build your profile</h3>
       <form className='sign-up-form'>
@@ -109,7 +113,7 @@ const SignUpForm = () => {
           <div className='select'>
             <select
               name="state"
-              class="states order-alpha select-box state-select"
+              className="states order-alpha select-box state-select"
               id="stateId"
               onChange={(e) => setState(e.target.value)}
             >
@@ -119,7 +123,7 @@ const SignUpForm = () => {
           <div className='select'>
             <select
               name="city"
-              class="cities order-alpha select-box"
+              className="cities order-alpha select-box"
               id="cityId"
               onChange={(e) => setCity(e.target.value)}
             >
@@ -134,9 +138,9 @@ const SignUpForm = () => {
             onChange={(e) => setGender(e.target.value)}
           >
             <option value=''>Select Pronouns</option>
-            <option value='she/her'>She/Her</option>
-            <option value='he/him'>He/Him</option>
-            <option value='they/them'>They/Them</option>
+            <option value='She/Her'>She/Her</option>
+            <option value='He/Him'>He/Him</option>
+            <option value='They/Them'>They/Them</option>
             <option value='none-specified'>I prefer not to say</option>
           </select>
         </div>
@@ -160,22 +164,22 @@ const SignUpForm = () => {
           className='select-box'
           onChange={(e) => setknowledgeField(e.target.value)}
           >
-          <option value=''>Select Career Field</option>
-          <option value='agriculture'>Agriculture</option>
-          <option value='biology'>Biology</option>
-          <option value='botany'>Botany</option>
-          <option value='business/finance'>Business/Finance</option>
-          <option value='business/marketing'>Business/Marketing</option>
-          <option value='chemistry'>Chemistry</option>
-          <option value='construction'>Construction</option>
-          <option value='education'>Education</option>
-          <option value='fine arts'>Fine Arts</option>
-          <option value='law/legal'>Law/Legal</option>
-          <option value='law enforcement'>Law Enforcement</option>
-          <option value='medicine'>Medicine</option>
-          <option value='restaurateur/chef'>Restaurateur/Chef</option>
-          <option value='software development'>Software Development</option>
-          <option value='other'>Other</option>
+            <option value=''>Select Career Field</option>
+            <option value='Agriculture'>Agriculture</option>
+            <option value='Biology'>Biology</option>
+            <option value='Botany'>Botany</option>
+            <option value='Business/finance'>Business/Finance</option>
+            <option value='Business/marketing'>Business/Marketing</option>
+            <option value='Chemistry'>Chemistry</option>
+            <option value='Construction'>Construction</option>
+            <option value='Education'>Education</option>
+            <option value='Fine arts'>Fine Arts</option>
+            <option value='Law/legal'>Law/Legal</option>
+            <option value='Law enforcement'>Law Enforcement</option>
+            <option value='Medicine'>Medicine</option>
+            <option value='Restaurateur/Chef'>Restaurateur/Chef</option>
+            <option value='Software Development'>Software Development</option>
+            <option value='Other'>Other</option>
           </select>
           </div>
           <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
@@ -185,9 +189,9 @@ const SignUpForm = () => {
           onChange={(e) => setExpertise(e.target.value)}
           >
           <option value=''>Select Experience Level</option>
-          <option value='beginner'>Beginner</option>
-          <option value='intermediate'>Intermediate</option>
-          <option value='advanced'>Adanced</option>
+          <option value='Beginner'>Beginner</option>
+          <option value='Intermediate'>Intermediate</option>
+          <option value='Advanced'>Adanced</option>
           </select>
           </div>
             <label>DESCRIBE A TYPICAL DAY AT WORK.</label>
