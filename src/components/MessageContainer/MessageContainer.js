@@ -6,7 +6,7 @@ import MessageForm from '../MessageForm/MessageForm';
 const MessageContainer = ({ other }) => {
 
   return (
-    <section>
+    <section className='message-container'>
       <p>This is a message container between you and {other.name}</p>
       <Message />
       <Message />

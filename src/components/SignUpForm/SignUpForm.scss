@@ -6,16 +6,16 @@
   flex-direction: column;
   height: 90vh;
   align-items: center;
-  padding-top: 5vw;
+  padding-top: 20vw;
+  h3 {
+    align-self: flex-start;
+    color: $secondarycolor;
+    font-family: $secondaryfont;
+    font-size: 35px;
+    margin: 8vh 0 0 10vw;
+  }
 }
 
-h3 {
-  align-self: flex-start;
-  color: $secondarycolor;
-  font-family: $secondaryfont;
-  font-size: 35px;
-  margin: 8vh 0 0 10vw;
-}
 
 .sign-up-form {
   align-items: center;

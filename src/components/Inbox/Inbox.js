@@ -4,10 +4,10 @@ import MessagePreview from '../MessagePreview/MessagePreview';
 
 const Inbox = () => {
   return (
-    <form>
+    <section className='inbox'>
       <MessagePreview />
       <MessagePreview />
-    </form>
+    </section>
   );
 }
 
