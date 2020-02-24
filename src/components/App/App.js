@@ -59,17 +59,10 @@ const App = () => {
         <Navbar />
         <Inbox />
       </Route>
-      <Route
-        exact path='/messages/:id'
-        render={({ match }) => {
-          let mentor = mentors.find(mentor => mentor.id === parseInt(match.params.id))
-          return mentor &&
-            <>
-              <Navbar />
-              <MessageContainer recipient={mentor} />
-            </>
-        }}
-      />
+      <Route exact path='/messages/:id'>
+        <Navbar />
+        <MessageContainer />
+      </Route>
       <Route path='/meetups'>
         <Navbar />
         <MeetupContainer />

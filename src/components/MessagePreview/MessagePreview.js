@@ -28,7 +28,9 @@ const MessagePreview = ({ otherMessengerId }) => {
 
   useEffect(() => findName(), [])
 
-  const findMessages = () => {
+  const findMessages = e => {
+    e.preventDefault();
+
     const body = {"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ otherMessengerId + "\") {body read userId}}"};
 
     const options = {
@@ -50,8 +52,8 @@ const MessagePreview = ({ otherMessengerId }) => {
       {otherMessengerName &&
         <>
           <p>This a message between you and {otherMessengerName}.</p>
-          <Link to={`messages/${otherMessengerId}`}>
-            <button onClick={() => findMessages()}>message</button>
+          <Link to={`/messages/${otherMessengerId}`}>
+            <button onClick={e => findMessages(e)}>message</button>
           </Link>
         </>
       }
