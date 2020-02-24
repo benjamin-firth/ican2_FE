@@ -4,7 +4,7 @@ import Meetup from '../Meetup/Meetup';
 
 const MeetupContainer = () => {
   return (
-    <section>
+    <section className='meetups-container'>
       <Meetup />
       <Meetup />
     </section>
