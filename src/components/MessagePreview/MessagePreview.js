@@ -1,11 +1,11 @@
 import React from 'react';
 import './MessagePreview.scss';
 
-const MessagePreview = ({ participants }) => {
+const MessagePreview = ({ otherMessenger }) => {
 
   return (
     <form>
-      <p>This a message between {participants.senderId} and {participants.recipientId}.</p>
+      <p>This a message between you and {otherMessenger}.</p>
     </form>
   );
 }

@@ -29,7 +29,15 @@ const Inbox = () => {
   useEffect(() => checkForMessages(), [])
 
   const renderPreviews = () => {
-    return conversations.map(conversation => (<MessagePreview participants={conversation}/>))
+    return conversations.map(conversation => {
+      let otherMessenger;
+      if (conversation.senderId === currentUser.id) {
+        otherMessenger = conversation.recipientId;
+      } else {
+        otherMessenger = conversation.senderId;
+      }
+      return <MessagePreview otherMessenger={otherMessenger}/>
+    })
   }
 
   return (
