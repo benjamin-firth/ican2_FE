@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.begin-nav {
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  button {
+    margin-bottom: 2vw;
+  }
+}
+
+.large-logo {
+  width: 30vw;
+  margin-right: 4vw;
+}

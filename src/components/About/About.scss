@@ -1,0 +1,14 @@
+@import '../../variables.scss';
+
+.about-container {
+  height: 100vw;
+  background-color: $primarycolor;
+  padding: 5vw;
+  text-align: center;
+
+  h5 {
+    font-family: $secondaryfont;
+    color: $secondarycolor;
+    font-size: 2vw;
+  }
+}
