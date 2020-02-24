@@ -1,9 +1,14 @@
 @import '../../variables.scss';
 
-.loader {
+.loader-container {
   height: 100vw;
   background-color: $primarycolor;
   padding-top: 7vw;
   text-align: center;
-
+  h5 {
+    color: $secondarycolor;
+    font-family: $secondaryfont;
+    font-size: 35px;
+    margin: 8vh 0 0 10vw;
+  }
 }
