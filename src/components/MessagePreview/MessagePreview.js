@@ -30,6 +30,7 @@ const MessagePreview = ({ otherMessengerId }) => {
 
   const findMessages = e => {
     e.preventDefault();
+    dispatch(loadMessages([]));
 
     const body = {"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ otherMessengerId + "\") {body read userId}}"};
 
