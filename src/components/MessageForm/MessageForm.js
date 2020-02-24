@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './MessageForm.scss';
 
 const MessageForm = ({ recipient }) => {
   const currentUser = useSelector(state => state.currentUser);
+  const [messageToSend, setMessageToSend] = useState('');
 
-  const sendMessage = () => {
+  const sendMessage = (e) => {
+    e.preventDefault();
+
     const mutation = {
-      query: `mutation {\n  createMessage(input:  {\n  senderId: "${currentUser.id}"\n recipientId: "${recipient.id}"\n body: "${'Hello. Let\'s start a conversation! Talk to me!'}" }) {\n message{\n body\n recipientId\n senderId\n }\n }\n `,
+      query: "mutation {\n createMessage(input: {\n senderId: \"" + currentUser.id + "\"\n recipientId: \"" + recipient.id + "\"\n body: \"" + messageToSend + "\"\n}) {\n message {\n body \n userId\n conversation {\n recipientId\n }\n }\n }\n }",
       variables: {}
     };
-
 
     const options = {
       method: 'POST',
@@ -27,13 +29,15 @@ const MessageForm = ({ recipient }) => {
         //   throw Error('error retrieving user data');
         // }
       return response.json();
-    });
-  }
+    })
+    .then (data => console.log(data.data.createMessage.message))
+    .catch(error => console.log(error))
+  };
 
   return (
     <form>
-      <input type='text' />
-      <button onClick={sendMessage}>send message</button>
+      <input type='text' onChange={e => setMessageToSend(e.target.value)}/>
+      <button onClick={e => sendMessage(e)}>send message</button>
     </form>
   );
 }
