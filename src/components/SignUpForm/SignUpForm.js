@@ -28,10 +28,8 @@ const SignUpForm = () => {
 
   const setUser = () => {
 
-    console.log('name given', name);
-
     const mutation = {
-      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${field}"\n        aboutMe: "${aboutMe}"\n  image: "${image}"\n age: 9\n  zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n  }\n }\n `,
+      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n aboutMe: "${aboutMe}"\n  image: "${image}"\n age: 9\n  zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
       variables: {}
     };
 

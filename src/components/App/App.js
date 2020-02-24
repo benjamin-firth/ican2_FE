@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import BeginNavbar from '../BeginNavbar/BeginNavbar';
 import Navbar from '../Navbar/Navbar';
-import Splash from '../Splash/Splash';
 import About from '../About/About';
 import LoginForm from '../LoginForm/LoginForm';
 import SignUpForm from '../SignUpForm/SignUpForm';
