@@ -1,9 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageForm should match the snapshot 1`] = `
-<form>
-  <p>
-    This is the message form.
-  </p>
-</form>
-`;
+exports[`MessageForm should match the snapshot 1`] = `undefined`;

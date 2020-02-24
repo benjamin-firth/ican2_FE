@@ -10,6 +10,12 @@ exports[`MessageContainer should match the snapshot 1`] = `
   </p>
   <Message />
   <Message />
-  <MessageForm />
+  <MessageForm
+    recipient={
+      Object {
+        "name": "mock name",
+      }
+    }
+  />
 </section>
 `;
