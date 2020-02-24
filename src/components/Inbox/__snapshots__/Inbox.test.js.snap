@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Inbox should match the snapshot 1`] = `
-<form>
+<section
+  className="inbox"
+>
   <MessagePreview />
   <MessagePreview />
-</form>
+</section>
 `;

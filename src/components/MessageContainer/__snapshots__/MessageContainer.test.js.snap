@@ -1,9 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageContainer should match the snapshot 1`] = `
-<section>
-  <Message />
-  <Message />
-  <MessageForm />
-</section>
-`;
+exports[`MessageContainer should match the snapshot 1`] = `undefined`;
