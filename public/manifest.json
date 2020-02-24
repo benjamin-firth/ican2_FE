@@ -4,16 +4,21 @@
   "icons": [
     {
       "src/images": "large-logo.png",
-      "sizes": "30vw x 30vw",
+      "sizes": "230x177 669x515",
       "type": "image/png"
     },
     {
       "src": "simple-logo.png",
       "type": "image/png",
-      "sizes": "15vw x 15vw"
+      "sizes": "115x94"
+    },
+    {
+      "src/images": "splash-logo.png",
+      "sizes": "669x515",
+      "type": "image/png"
     }
   ],
-  "start_url": "https://ican2app.herokuapp.com/",
+  "start_url": "/",
   "display": "fullscreen",
   "theme_color": "#D5EFE9",
   "background_color": "#FA8883"
