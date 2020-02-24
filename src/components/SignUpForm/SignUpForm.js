@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { setNewUser } from '../../actions';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
+import { useHistory, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { setNewUser, loginCurrentUser } from '../../actions';
 import './SignUpForm.scss';
 
 const SignUpForm = () => {
+  const CLOUDINARY_UPLOAD_PRESET = 'ebu217wb';
+  const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dd7lamzs3/upload';
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,23 +18,43 @@ const SignUpForm = () => {
   const [mentorBool, setMentorBool] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
   const [gender, setGender] = useState('');
-  const [image, setImage] = useState('');
   const [adviceQ, setAdviceQ] = useState('');
   const [enjoyQ, setEnjoyQ] = useState('');
   const [knowledgeField, setknowledgeField] = useState('');
   const [teachingPoints, setTeachingPoints] = useState('');
   const [workDay, setworkDay] = useState('');
   const [error, setError] = useState('');
-  const history = useHistory();
+  const [uploadedFileCloudinaryUrl, setUrl] = useState('');
+  const [uploadedFile, setUploadedFile] = useState([]);
+  const currentUser = useSelector(state => state.currentUser);
   const dispatch = useDispatch();
+  
+  const handleImageUpload = (file) => {
+    let upload = request
+      .post(CLOUDINARY_UPLOAD_URL)
+      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', file);
 
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      };
+      if (response.body.secure_url !== '') {
+        setUrl(response.body.secure_url);
+      };
+    });
+  };
+  
+  const onImageDrop = (files) => {
+    setUploadedFile(files[0]);
+    handleImageUpload(files[0]);
+  };
   
   const setUser = () => {
-
-    console.log('name given', name);
+    console.log('test1');
 
     const mutation = {
-      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${field}"\n        aboutMe: "${aboutMe}"\n  image: "${image}"\n age: 9\n  zipCode: \"98501\"\n  state: \"CO\"\n city: "${location}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n  }\n }\n `,
+      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${field}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n age: 9\n  zipCode: \"98501\"\n state: \"CO\"\n city: "${location}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n  }\n }\n `,
       variables: {}
     };
 
@@ -59,19 +83,20 @@ const SignUpForm = () => {
     } else {
       setUser()
       .then(data => {
-        console.log("data from creating user", data);
-        return dispatch(setNewUser(data.data.users));
+        return dispatch(loginCurrentUser(data.data.createUser.user));
+        // return dispatch(setNewUser(data.createUser.user));
       })
       .catch(error => setError('That user does not exist. Please sign up!'))
     }
   };
 
   const clickHandler = (e) => {
+    console.log('imageUrl: ', uploadedFileCloudinaryUrl);
     login();
-    // history.push('/myprofile');
   }
 
   return (
+    currentUser.name ? <Redirect to='myprofile' /> :
     <section className='sign-up-container'>
       <h3>build your profile</h3>
       <form className='sign-up-form'>
@@ -113,7 +138,7 @@ const SignUpForm = () => {
             onChange={(e) => setExpertise(e.target.value)}>
             <option>Beginner</option>
             <option>Intermediate</option>
-            <option>Adanced</option>
+            <option>Advanced</option>
           </select>
         </div>
         <label>TELL US A LITTLE ABOUT YOURSELF</label>
@@ -121,7 +146,33 @@ const SignUpForm = () => {
         <label>WHAT ARE YOUR GENDER PRONOUNS?</label>
         <input onChange={(e) => setGender(e.target.value)}/>
         <label>UPLOAD A PROFILE IMAGE</label>
-        <input onChange={(e) => setImage(e.target.value)}/>
+        {/* <input onChange={(e) => setImage(e.target.value)}/> */}
+        <Dropzone
+          onDrop={onImageDrop}
+          accept="image/*"
+          multiple={false}>
+            {({getRootProps, getInputProps}) => {
+              return (
+                <div
+                  {...getRootProps()}
+                >
+                  <input {...getInputProps()} />
+                  {
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  }
+                </div>
+              )
+          }}
+        </Dropzone>
+        <div>
+          <div>
+            {uploadedFileCloudinaryUrl === '' ? null :
+            <div>
+              <p>{uploadedFile.name}</p>
+              <img src={uploadedFileCloudinaryUrl} />
+            </div>}
+          </div>
+        </div>
         <button type='button' onClick={clickHandler}>submit</button>
       </form>
     </section>
