@@ -63,7 +63,7 @@ const App = () => {
           return mentor &&
             <>
               <Navbar />
-              <MessageContainer other={mentor} />
+              <MessageContainer recipient={mentor} />
             </>
         }}
       />
