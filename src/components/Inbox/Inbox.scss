@@ -1,3 +1,7 @@
-#blockColorblindContent {
-  display: none;
+@import '../../variables.scss';
+
+.inbox {
+  padding-top: 12vw;
+  height: 100vw;
+  background-color: $primarycolor;
 }
