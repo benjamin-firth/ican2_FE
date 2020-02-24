@@ -27,7 +27,7 @@ const ProfileContainer = () => {
         dispatch(loadMentors(data.data.mentors.filter(mentor => mentor.id != currentUser.id)));
         setIsLoading(false);
       })
-    };
+  };
 
   const displayMentors = () => {
     return mentors.map(mentor => <MentorCard mentor={mentor} />)

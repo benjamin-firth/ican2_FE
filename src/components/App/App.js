@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import BeginNavbar from '../BeginNavbar/BeginNavbar';
 import Navbar from '../Navbar/Navbar';
 import About from '../About/About';
@@ -11,9 +11,13 @@ import ProfileContainer from '../ProfileContainer/ProfileContainer';
 import Inbox from '../Inbox/Inbox';
 import MessageContainer from '../MessageContainer/MessageContainer';
 import MeetupContainer from '../MeetupContainer/MeetupContainer';
+import { loadMessages } from '../../actions';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const messages = useSelector(state => state.messages);
   const mentors = useSelector(state => state.mentors);
+  const currentUser = useSelector(state => state.currentUser);
 
   return (
     <main>

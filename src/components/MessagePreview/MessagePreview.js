@@ -1,11 +1,11 @@
 import React from 'react';
 import './MessagePreview.scss';
 
-const MessagePreview = () => {
+const MessagePreview = ({ participants }) => {
 
   return (
     <form>
-      <p>This a message preview.</p>
+      <p>This a message between {participants.senderId} and {participants.recipientId}.</p>
     </form>
   );
 }
