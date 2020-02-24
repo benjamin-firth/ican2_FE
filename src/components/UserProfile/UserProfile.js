@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 const UserProfile = ({ user }) => {
   const currentUser = useSelector(state => state.currentUser);
 
+  console.log('USER', user, 'CURRENTUSER', currentUser);
+
   return (
     <section className='user-profile-container'>
       <section className='user-profile'>
@@ -20,7 +22,8 @@ const UserProfile = ({ user }) => {
           <section className='user-description-container'>
             <h2>{user.name.toLowerCase()}</h2>
             {user.mentor && <h3>{user.mentorProfile.fieldOfKnowledge}</h3>}
-            <p>{user.location.city}, {user.location.state} | {user.profile.gender}</p>
+            {/* <p>{user.location.city}, {user.location.state} | {user.profile.gender}</p> */}
+            <p>{user.profile.gender}</p>
             <p>{user.profile.aboutMe}</p>
           </section>
         </div>
