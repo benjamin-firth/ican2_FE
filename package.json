@@ -16,7 +16,9 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "superagent": "^5.2.2"
+    "superagent": "^5.2.2",
+    "travis": "^0.1.1",
+    "travis-ci": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
