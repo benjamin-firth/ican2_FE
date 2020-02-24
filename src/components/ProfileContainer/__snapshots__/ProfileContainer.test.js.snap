@@ -1,12 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProfileContainer should match the snapshot 1`] = `
-<section>
-  <UserProfile />
-  <UserProfile />
-  <UserProfile />
-  <UserProfile />
-  <UserProfile />
-  <UserProfile />
-</section>
-`;
+exports[`ProfileContainer should match the snapshot 1`] = `undefined`;

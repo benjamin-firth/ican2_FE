@@ -1,5 +1,5 @@
-import React from './node_modules/react';
-import { shallow } from './node_modules/enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 import BeginNavbar from './BeginNavbar';
 
 describe('BeginNavbar', () => {

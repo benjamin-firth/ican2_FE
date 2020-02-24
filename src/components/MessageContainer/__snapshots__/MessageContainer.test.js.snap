@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MessageContainer should match the snapshot 1`] = `
-<section>
+<section
+  className="message-container"
+>
+  <p>
+    This is a message container between you and 
+    mock name
+  </p>
   <Message />
   <Message />
   <MessageForm />
