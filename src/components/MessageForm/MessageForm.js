@@ -7,9 +7,10 @@ const MessageForm = ({ recipient }) => {
 
   const sendMessage = () => {
     const mutation = {
-      query: `mutation {\n  createMessage(input:  {\n  senderId: "${currentUser.id}"\n recipientId: "${recipient.id}"\n body: "${'Hello. Let\'s start a conversation! Talk to me!'}" }) {\n message }\n `,
+      query: `mutation {\n  createMessage(input:  {\n  senderId: "${currentUser.id}"\n recipientId: "${recipient.id}"\n body: "${'Hello. Let\'s start a conversation! Talk to me!'}" }) {\n message{\n body\n recipientId\n senderId\n }\n }\n `,
       variables: {}
     };
+
 
     const options = {
       method: 'POST',

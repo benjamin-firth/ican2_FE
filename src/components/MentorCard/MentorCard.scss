@@ -11,7 +11,7 @@
   align-items: center;
   background-color: white;
   border: 6px solid white;
-  
+
   button {
     border: 5px solid $secondarycolor;
     margin-top: 0;
@@ -19,6 +19,7 @@
   img {
     border-radius: 50%;
     width: 12vw;
+    height: 12vw;
     margin-bottom: 3vw;
   }
   h2, h3, p {
