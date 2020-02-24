@@ -7,7 +7,6 @@ nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  position: fixed;
 
   img {
     width: 15vw;
@@ -47,4 +46,8 @@ nav {
   .hamburger:hover{
     cursor: pointer;
   }
+}
+
+.main-nav {
+  position: fixed;
 }

@@ -13,7 +13,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav>
+    <nav className='main-nav'>
       <img src={simpleLogo} />
       <div className='nav-button-container'>
         {renderButtons()}
