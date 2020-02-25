@@ -4,6 +4,13 @@
   padding-top: 12vw;
   height: 100vw;
   background-color: $primarycolor;
+  h3 {
+    align-self: flex-start;
+    color: $secondarycolor;
+    font-family: $secondaryfont;
+    font-size: 35px;
+    margin: 4vw 0 0 2vw;
+  }
 }
 
 .preview-container {
