@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm should match the snapshot 1`] = `
+<section
+  className="login-page"
+>
+  <form
+    className="login-form"
+  >
+    <div
+      key="1"
+    >
+      <p>
+        EMAIL
+      </p>
+      <input
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+    <div
+      key="2"
+    >
+      <p>
+        PASSWORD
+      </p>
+      <input
+        onChange={[Function]}
+        type="password"
+      />
+    </div>
+    <button
+      className="login-submit-button"
+      onClick={[Function]}
+    >
+      enter
+    </button>
+  </form>
+</section>
+`;

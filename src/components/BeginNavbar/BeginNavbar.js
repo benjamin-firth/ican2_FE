@@ -8,7 +8,7 @@ const BeginNavbar = () => {
 
   const renderButtons = () => {
     return buttons.map(button => (
-      <NavButton nav={button.nav} name={button.name} />
+      <NavButton nav={button.nav} name={button.name} key={button.name}/>
     ))
   }
 

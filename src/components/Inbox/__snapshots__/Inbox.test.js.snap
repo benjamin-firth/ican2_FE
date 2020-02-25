@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inbox should match the snapshot 1`] = `
+<section
+  className="inbox"
+>
+  <h3>
+    you have chats open with:
+  </h3>
+  <div
+    className="preview-container"
+  />
+</section>
+`;

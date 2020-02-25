@@ -2,10 +2,19 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Navbar from './Navbar';
 
-describe('Navbar', () => {
+jest.mock("react-redux", () => ({
+  useSelector: () => 'mockState',
+  useDispatch: () => jest.fn()
+}));
 
-  it('should match the snapshot', () => {
-    expect(true).toBe(true);
+describe('Navbar', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow( <Navbar />)
   });
 
+  it('should match the snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });

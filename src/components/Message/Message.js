@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import './Message.scss';
 
 const Message = ({ message }) => {
-  const currentUser = useSelector(state => state.currentUser);
-  const otherMessenger = useSelector(state => state.messages.otherMessenger);
+  const state = useSelector(state => state);
+  const currentUser = state.currentUser;
+  const otherMessenger = state.messages.otherMessenger;
 
   const showMessage = () => {
     if (message.userId === otherMessenger.id) {

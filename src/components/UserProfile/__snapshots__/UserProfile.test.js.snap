@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserProfile should match the snapshot 1`] = `
+<section
+  className="user-profile-container"
+>
+  <section
+    className="user-profile"
+  >
+    <div
+      className="user-general-info"
+    >
+      <div
+        className="user-image-container"
+      >
+        <img
+          alt="profile picture"
+          className="profile-photo"
+          src="url"
+        />
+        <Link
+          to="/messages/8"
+        >
+          <button
+            onClick={[Function]}
+          >
+            message
+          </button>
+        </Link>
+      </div>
+      <section
+        className="user-description-container"
+      >
+        <h2>
+          pants
+        </h2>
+        <p>
+          Springfield
+          , 
+          Ohio
+           | 
+        </p>
+        <p />
+      </section>
+    </div>
+    <p>
+      You are not currently listed as a mentor.
+      <br />
+      Want to change that? Click 
+      <strong>
+         edit profile 
+      </strong>
+       above.
+    </p>
+  </section>
+</section>
+`;

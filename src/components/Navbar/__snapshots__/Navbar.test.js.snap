@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should match the snapshot 1`] = `
+<nav
+  className="main-nav"
+>
+  <img
+    src="simple-logo.png"
+  />
+  <div
+    className="nav-button-container"
+  >
+    <NavButton
+      key="find mentors"
+      name="find mentors"
+      nav="/mentors"
+    />
+    <NavButton
+      key="messages"
+      name="messages"
+      nav="/messages"
+    />
+    <NavButton
+      key="my profile"
+      name="my profile"
+      nav="/myprofile"
+    />
+    <NavButton
+      key="log out"
+      name="log out"
+      nav="/"
+    />
+  </div>
+</nav>
+`;
