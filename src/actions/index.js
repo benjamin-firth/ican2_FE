@@ -3,9 +3,8 @@ export const loginCurrentUser = user => ({
   user
 });
 
-export const logoutCurrentUser = user => ({
-  type: 'LOG_OUT',
-  user
+export const logoutCurrentUser = () => ({
+  type: 'LOG_OUT'
 });
 
 export const setNewUser = user => ({
