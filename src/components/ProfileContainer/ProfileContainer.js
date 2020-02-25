@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadMentors } from '../../actions';
 import './ProfileContainer.scss';
 import MentorCard from '../MentorCard/MentorCard';
+import Loader from '../Loader/Loader';
 
 const ProfileContainer = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const ProfileContainer = () => {
 
   return (
     <section className='mentors-container'>
-      {isLoading ? <p>Loading...</p> : displayMentors()}
+      {isLoading ? <Loader message='finding mentors...'/> : displayMentors()}
     </section>
   );
 }
