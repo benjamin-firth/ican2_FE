@@ -77,15 +77,12 @@ const SignUpForm = () => {
   };
 
   const login = (e) => {
-    console.log('fire login')
     if (!name.length || !email.length || !aboutMe.length || !gender.length) {
       setError('Please be sure you have filled out all sections.');
       console.log(error);
     } else {
       setUser()
       .then(data => {
-        console.log('fire dispatch');
-        console.log(data);
         return dispatch(loginCurrentUser(data.data.createUser.user));
         // return dispatch(setNewUser(data.createUser.user));
       })
