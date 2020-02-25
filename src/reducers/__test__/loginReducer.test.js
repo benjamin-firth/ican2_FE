@@ -23,7 +23,7 @@ describe('loginReducer', () => {
 
     expect(result).toEqual(expected);
   });
-//
+
   it('should return the correct state if the action is LOG_OUT', () => {
     const initialState = {};
     const user = 'user';
