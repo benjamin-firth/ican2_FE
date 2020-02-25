@@ -209,6 +209,7 @@ const SignUpForm = () => {
             {({getRootProps, getInputProps}) => {
               return (
                 <div
+                  className='dropzone'
                   {...getRootProps()}
                 >
                   <input {...getInputProps()} />
