@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUpForm should match the snapshot 1`] = `
+<section
+  className="sign-up-container"
+>
+  <h3>
+    build your profile
+  </h3>
+  <form
+    className="sign-up-form"
+  >
+    <label>
+      WHAT IS YOUR FIRST NAME?
+    </label>
+    <input
+      onChange={[Function]}
+    />
+    <label>
+      WHAT IS YOUR EMAIL ADDRESS?
+    </label>
+    <input
+      onChange={[Function]}
+    />
+    <label>
+      WHAT IS YOUR CURRENT CITY AND STATE?
+    </label>
+    <input
+      id="countryId"
+      name="country"
+      type="hidden"
+      value="US"
+    />
+    <div
+      className="city-state-select"
+    >
+      <div
+        className="select"
+      >
+        <select
+          className="states order-alpha select-box state-select"
+          id="stateId"
+          name="state"
+          onChange={[Function]}
+        >
+          <option
+            value=""
+          >
+            Select State
+          </option>
+        </select>
+      </div>
+      <div
+        className="select"
+      >
+        <select
+          className="cities order-alpha select-box"
+          id="cityId"
+          name="city"
+          onChange={[Function]}
+        >
+          <option
+            value=""
+          >
+            Select City
+          </option>
+        </select>
+      </div>
+    </div>
+    <label>
+      WHAT ARE YOUR PRONOUNS?
+    </label>
+    <div
+      className="select"
+    >
+      <select
+        className="select-box"
+        onChange={[Function]}
+      >
+        <option
+          value=""
+        >
+          Select Pronouns
+        </option>
+        <option
+          value="She/Her"
+        >
+          She/Her
+        </option>
+        <option
+          value="He/Him"
+        >
+          He/Him
+        </option>
+        <option
+          value="They/Them"
+        >
+          They/Them
+        </option>
+        <option
+          value="none-specified"
+        >
+          I prefer not to say
+        </option>
+      </select>
+    </div>
+    <label>
+      TELL US A LITTLE ABOUT YOURSELF (This will appear in your profile)
+    </label>
+    <input
+      onChange={[Function]}
+    />
+    <label>
+      DO YOU WANT TO BE A MENTOR?
+    </label>
+    <div
+      className="select"
+    >
+      <select
+        className="select-box"
+        onChange={[Function]}
+      >
+        <option
+          value={false}
+        >
+          No
+        </option>
+        <option
+          value={true}
+        >
+          Yes
+        </option>
+      </select>
+    </div>
+    <label>
+      UPLOAD A PROFILE IMAGE
+    </label>
+    <Dropzone
+      accept="image/*"
+      multiple={false}
+      onDrop={[Function]}
+    >
+      <Component />
+    </Dropzone>
+    <div>
+      <div />
+    </div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      submit
+    </button>
+  </form>
+</section>
+`;

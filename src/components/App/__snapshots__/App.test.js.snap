@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+<main>
+  <Route
+    exact={true}
+    path="/"
+  >
+    <BeginNavbar />
+    <About />
+  </Route>
+  <Route
+    path="/login"
+  >
+    <BeginNavbar />
+    <LoginForm />
+  </Route>
+  <Route
+    path="/signup"
+  >
+    <BeginNavbar />
+    <SignUpForm />
+  </Route>
+  <Route
+    path="/myprofile"
+  >
+    <Navbar />
+    <UserProfile
+      user={
+        Object {
+          "mentors": Array [
+            Object {
+              "id": 1,
+              "name": "pants",
+            },
+            Object {
+              "id": 2,
+              "name": "shirts",
+            },
+          ],
+          "message": Array [
+            Object {
+              "body": "hello",
+              "recipient": 1,
+              "sender": 2,
+            },
+            Object {
+              "body": "hello there",
+              "recipient": 2,
+              "sender": 1,
+            },
+          ],
+        }
+      }
+    />
+  </Route>
+  <Route
+    exact={true}
+    path="/mentors"
+  >
+    <Navbar />
+    <ProfileContainer />
+  </Route>
+  <Route
+    exact={true}
+    path="/mentors/:id"
+    render={[Function]}
+  />
+  <Route
+    path="/inbox"
+  >
+    <Navbar />
+    <Inbox />
+  </Route>
+  <Route
+    exact={true}
+    path="/messages"
+  >
+    <Navbar />
+    <Inbox />
+  </Route>
+  <Route
+    exact={true}
+    path="/messages/:id"
+  >
+    <Navbar />
+    <MessageContainer />
+  </Route>
+  <Route
+    path="/meetups"
+  >
+    <Navbar />
+    <MeetupContainer />
+  </Route>
+</main>
+`;

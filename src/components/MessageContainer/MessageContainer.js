@@ -5,21 +5,20 @@ import Message from '../Message/Message';
 import MessageForm from '../MessageForm/MessageForm';
 
 const MessageContainer = () => {
-  const messages = useSelector(state => state.messages.messages);
-  const otherMessenger = useSelector(state => state.messages.otherMessenger);
+  const messageInfo = useSelector(state => state.messages);
 
   const renderMessages = () => {
-    return messages.map(message => <Message message={message} />)
+    return messageInfo.messages.map(message => <Message key={message.body} message={message} />)
   }
 
   return (
-    otherMessenger ?
+    messageInfo.otherMessenger ?
     <section className='message-container'>
-      <h3>messages between you and {otherMessenger.name.toLowerCase()}:</h3>
+      <h3>messages between you and {messageInfo.otherMessenger.name.toLowerCase()}:</h3>
       <div className='messages-box'>
         {renderMessages()}
       </div>
-      <MessageForm otherMessenger={otherMessenger}/>
+      <MessageForm otherMessenger={messageInfo.otherMessenger}/>
     </section> :
     <p>loading</p>
   );

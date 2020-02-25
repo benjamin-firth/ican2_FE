@@ -54,11 +54,11 @@ const LoginForm = () => {
     isLoading ? <Loader message='loading your profile...'/> :
     <section className='login-page'>
       <form className='login-form'>
-        <div>
+        <div key={1}>
           <p>EMAIL</p>
           <input type='text' onChange={(e) => enterEmail(e)}/>
         </div>
-        <div>
+        <div key={2}>
           <p>PASSWORD</p>
           <input type='text' type='password' onChange={(e) => enterPassword(e)}/>
         </div>

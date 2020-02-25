@@ -12,10 +12,12 @@ exports[`BeginNavbar should match the snapshot 1`] = `
     className="nav-button-container"
   >
     <NavButton
+      key="sign up"
       name="sign up"
       nav="/signup"
     />
     <NavButton
+      key="log in"
       name="log in"
       nav="/login"
     />

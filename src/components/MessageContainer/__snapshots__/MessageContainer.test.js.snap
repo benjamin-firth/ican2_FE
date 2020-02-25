@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageContainer should match the snapshot 1`] = `
+<section
+  className="message-container"
+>
+  <h3>
+    messages between you and 
+    pants
+    :
+  </h3>
+  <div
+    className="messages-box"
+  >
+    <Message
+      key="hello"
+      message={
+        Object {
+          "body": "hello",
+          "recipient": 1,
+          "sender": 2,
+        }
+      }
+    />
+    <Message
+      key="hello there"
+      message={
+        Object {
+          "body": "hello there",
+          "recipient": 2,
+          "sender": 1,
+        }
+      }
+    />
+  </div>
+  <MessageForm
+    otherMessenger={
+      Object {
+        "name": "PANTS",
+      }
+    }
+  />
+</section>
+`;

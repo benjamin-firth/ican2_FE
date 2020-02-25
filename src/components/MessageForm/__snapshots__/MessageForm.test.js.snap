@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageForm should match the snapshot 1`] = `
+<div>
+  <p
+    className="new-message-tag"
+  >
+    new message:
+  </p>
+  <form
+    className="message-form"
+  >
+    <textarea
+      onChange={[Function]}
+    />
+    <button
+      onClick={[Function]}
+    >
+      send message
+    </button>
+  </form>
+</div>
+`;
