@@ -20,6 +20,8 @@ const MessageForm = ({ otherMessenger }) => {
     fetchData(body)
     .then (data => dispatch(addMessage(data.data.createMessage.message)))
     .catch(error => console.log(error))
+
+    setMessageToSend('');
   };
 
   const loadMessages = () => {
@@ -40,8 +42,8 @@ const MessageForm = ({ otherMessenger }) => {
   return (
     <div>
       <p className='new-message-tag'>new message:</p>
-      <form className='message-form'>
-        <textarea onChange={e => setMessageToSend(e.target.value)}></textarea>
+      <form type="reset" className='message-form'>
+        <textarea value={messageToSend} onChange={e => setMessageToSend(e.target.value)} />
         <button onClick={e => sendMessage(e)}>send message</button>
       </form>
     </div>
