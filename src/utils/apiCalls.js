@@ -1,17 +1,16 @@
-export const createUser = (mutation) => {
+export const fetchData = (body) => {
   const options = {
     method: 'POST',
-    body: JSON.stringify(mutation),
+    body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json',
-    },
-    redirect: 'follow'
+    }
   };
 
   return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
   .then(response => {
     if (!response.ok) {
-        throw Error('error retrieving user data');
+        return ({ error: 'error fetching data' });
       }
     return response.json();
   });

@@ -4,7 +4,7 @@ import request from 'superagent';
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { setNewUser, loginCurrentUser } from '../../actions';
-import { createUser } from '../../utils/usersAPICalls';
+import { fetchData } from '../../utils/apiCalls';
 import Loader from '../Loader/Loader';
 import './SignUpForm.scss';
 
@@ -53,21 +53,20 @@ const SignUpForm = () => {
   };
 
   const setUser = () => {
-    let mutation;
+    let body;
 
     if (mentorBool) {
-      mutation = {
+      body = {
         query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
         variables: {}
       };
     } else {
-      mutation = {
+      body = {
         query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "learning"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n }) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
         variables: {}
       };
     }
-
-    return createUser(mutation);
+    return fetchData(body);
   };
 
   const login = (e) => {
