@@ -49,16 +49,16 @@ const MessagePreview = ({ otherMessengerId }) => {
   }
 
   return (
-    <form>
+    <section className='message-preview'>
       {otherMessengerName &&
         <>
-          <p>This a message between you and {otherMessengerName}.</p>
+          <img src={otherMessengerPic} />
           <Link to={`/messages/${otherMessengerId}`}>
-            <button onClick={() => findMessages()}>message</button>
+            <button onClick={() => findMessages()}>message {otherMessengerName.toLowerCase()}</button>
           </Link>
         </>
       }
-    </form>
+    </section>
   );
 }
 

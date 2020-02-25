@@ -42,7 +42,10 @@ const Inbox = () => {
 
   return (
     <section className='inbox'>
-      {renderPreviews()}
+      <h3>you have chats open with:</h3>
+      <div className='preview-container'>
+        {renderPreviews()}
+      </div>
     </section>
   );
 }

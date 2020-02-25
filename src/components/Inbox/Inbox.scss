@@ -5,3 +5,8 @@
   height: 100vw;
   background-color: $primarycolor;
 }
+
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+}
