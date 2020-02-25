@@ -208,17 +208,12 @@ const SignUpForm = () => {
           multiple={false}>
             {({getRootProps, getInputProps}) => {
               return (
-                <div
-                  className='dropzone'
-                  {...getRootProps()}
-                >
+                <div className='dropzone' {...getRootProps()} >
                   <input {...getInputProps()} />
-                  {
                   <p>drag & drop a file here or click to select file</p>
-                  }
                 </div>
               )
-          }}
+            }}
         </Dropzone>
         <div>
           <div>
