@@ -1,7 +1,6 @@
 .message {
   display: flex;
   margin-top: 1vw;
-  
   img {
     width: 6vw;
     height: 6vw;
@@ -12,16 +11,14 @@
     background-color: white;
     width: 30vw;
     margin: 1vw;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: .7vw;
   }
 }
 
 .sender {
   justify-content: flex-end;
-}
-
-.user {
-  justify-content: start;
 }

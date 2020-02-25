@@ -1,0 +1,28 @@
+@import '../../variables.scss';
+
+.message-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  textarea {
+    height: 8vw;
+    width: 50vw;
+    border: none;
+    font-size: 1.4vw;
+    padding: 1vw;
+  }
+
+  button {
+    border: 5px solid $secondarycolor;
+    margin: 0;
+    margin-left: 1vw;
+  }
+}
+
+.new-message-tag {
+  font-size: 1.8vw;
+  font-family: $secondaryfont;
+  color: $secondarycolor;
+  margin: 1vw 0 .3vw .2vw;
+}

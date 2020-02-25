@@ -49,10 +49,13 @@ const MessageForm = ({ otherMessenger }) => {
     .catch(error => console.log(error))
 
   return (
-    <form>
-      <input type='text' onChange={e => setMessageToSend(e.target.value)}/>
-      <button onClick={e => sendMessage(e)}>send message</button>
-    </form>
+    <div>
+      <p className='new-message-tag'>new message:</p>
+      <form className='message-form'>
+        <textarea onChange={e => setMessageToSend(e.target.value)}></textarea>
+        <button onClick={e => sendMessage(e)}>send message</button>
+      </form>
+    </div>
   );
 }
 
