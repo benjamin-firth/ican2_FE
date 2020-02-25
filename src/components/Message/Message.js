@@ -1,11 +1,12 @@
 import React from 'react';
 import './Message.scss';
 
-const Message = () => {
+const Message = ({ message }) => {
+console.log(message);
 
   return (
     <section>
-      <p>This is a message.</p>
+      <p>{message.body}</p>
     </section>
   );
 }
