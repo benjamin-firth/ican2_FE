@@ -11,6 +11,8 @@ const UserProfile = ({ user }) => {
   const dispatch = useDispatch();
 
   const getMessages = () => {
+    dispatch(loadMessages({}));
+
     const body = {"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ user.id + "\") {body read userId}}"}
 
     fetchData(body)
@@ -22,7 +24,14 @@ const UserProfile = ({ user }) => {
       },
       messages: data.data.messages
     })))
-    .catch(error => console.log(error))
+    .catch(error => dispatch(loadMessages({
+      otherMessenger: {
+        id: user.id,
+        name: user.name,
+        pic: user.profile.image
+      },
+      messages: []
+    })))
   }
 
   return (

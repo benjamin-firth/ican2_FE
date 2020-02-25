@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from '../../utils/apiCalls';
-import { loadMessages } from '../../actions';
+import { loadMessages, addMessage } from '../../actions';
 import './MessageForm.scss';
 
 const MessageForm = ({ otherMessenger }) => {
@@ -18,21 +18,24 @@ const MessageForm = ({ otherMessenger }) => {
     };
 
     fetchData(body)
-    .then (data => data.data.createMessage.message)
+    .then (data => dispatch(addMessage(data.data.createMessage.message)))
     .catch(error => console.log(error))
   };
 
+  const loadMessages = () => {
+    fetchData({"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ otherMessenger.id + "\") {body read userId}}"})
+    .then(data => dispatch(loadMessages({
+      otherMessenger: {
+        id: otherMessenger.id,
+        name: otherMessenger.name,
+        pic: otherMessenger.pic
+      },
+      messages: data.data.messages
+    })))
+    .catch(error => console.log(error))
+  }
 
-  fetchData({"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ otherMessenger.id + "\") {body read userId}}"})
-  .then(data => dispatch(loadMessages({
-    otherMessenger: {
-      id: otherMessenger.id,
-      name: otherMessenger.name,
-      pic: otherMessenger.pic
-    },
-    messages: data.data.messages
-  })))
-  .catch(error => console.log(error))
+  useEffect(() => loadMessages(), []);
 
   return (
     <div>
