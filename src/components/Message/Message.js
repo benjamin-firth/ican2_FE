@@ -5,7 +5,6 @@ import './Message.scss';
 const Message = ({ message }) => {
   const currentUser = useSelector(state => state.currentUser);
   const otherMessenger = useSelector(state => state.messages.otherMessenger);
-  console.log(otherMessenger);
 
   const showMessage = () => {
     if (message.userId === otherMessenger.id) {
