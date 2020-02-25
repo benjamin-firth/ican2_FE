@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadMessages } from '../../actions';
-import { findMatchingMessages, findMessengerNamePic } from '../../utils/messagingAPICalls';
+import { fetchData } from '../../utils/apiCalls';
 import './MessagePreview.scss';
 
 const MessagePreview = ({ otherMessengerId }) => {
@@ -12,7 +12,9 @@ const MessagePreview = ({ otherMessengerId }) => {
   const currentUser = useSelector(state => state.currentUser);
 
   const findMessenger = () => {
-    findMessengerNamePic(otherMessengerId)
+    const body = {"query": "{users(id: \""+ otherMessengerId + "\") {name profile{image}}}"};
+    
+    fetchData(body)
       .then(data => {
         setOtherMessengerName(data.data.users.name);
         setOtherMessengerPic(data.data.users.profile.image);
@@ -25,7 +27,9 @@ const MessagePreview = ({ otherMessengerId }) => {
   const findMessages = () => {
     dispatch(loadMessages([]));
 
-    findMatchingMessages(currentUser.id, otherMessengerId)
+    const body = {"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ otherMessengerId + "\") {body read userId}}"}
+
+    fetchData(body)
       .then(data => dispatch(loadMessages({
         otherMessenger: {
           id: otherMessengerId,

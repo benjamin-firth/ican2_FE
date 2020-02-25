@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getAllUserConversations } from '../../utils/messagingAPICalls';
+import { fetchData } from '../../utils/apiCalls';
 import './Inbox.scss';
 import MessagePreview from '../MessagePreview/MessagePreview';
 
@@ -9,11 +9,13 @@ const Inbox = () => {
   const currentUser = useSelector(state => state.currentUser);
 
   const checkForMessages = () => {
-    getAllUserConversations(currentUser.id)
-      .then(data => {
-        setConversations(data.data.conversations)
-      })
-      .catch(error => console.log(error))
+    const body = {"query": "{conversations(userId: \""+ currentUser.id + "\") {senderId recipientId}}"};
+
+    fetchData(body)
+    .then(data => {
+      setConversations(data.data.conversations)
+    })
+    .catch(error => console.log(error))
   }
 
   useEffect(() => checkForMessages(), [])

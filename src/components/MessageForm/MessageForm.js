@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { findMatchingMessages, createMessage } from '../../utils/messagingAPICalls';
+import { fetchData } from '../../utils/apiCalls';
 import { loadMessages } from '../../actions';
 import './MessageForm.scss';
 
@@ -12,21 +12,27 @@ const MessageForm = ({ otherMessenger }) => {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    createMessage(otherMessenger.id, currentUser.id, messageToSend)
+    const body = {
+      query: "mutation {\n createMessage(input: {\n senderId: \"" + currentUser.id + "\"\n recipientId: \"" + otherMessenger.id + "\"\n body: \"" + messageToSend + "\"\n}) {\n message {\n body \n userId\n conversation {\n recipientId\n }\n }\n }\n }",
+      variables: {}
+    };
+
+    fetchData(body)
     .then (data => data.data.createMessage.message)
     .catch(error => console.log(error))
   };
 
-  findMatchingMessages(currentUser.id, otherMessenger.id)
-    .then(data => dispatch(loadMessages({
-      otherMessenger: {
-        id: otherMessenger.id,
-        name: otherMessenger.name,
-        pic: otherMessenger.pic
-      },
-      messages: data.data.messages
-    })))
-    .catch(error => console.log(error))
+
+  fetchData({"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ otherMessenger.id + "\") {body read userId}}"})
+  .then(data => dispatch(loadMessages({
+    otherMessenger: {
+      id: otherMessenger.id,
+      name: otherMessenger.name,
+      pic: otherMessenger.pic
+    },
+    messages: data.data.messages
+  })))
+  .catch(error => console.log(error))
 
   return (
     <div>

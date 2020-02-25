@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { findMatchingMessages } from '../../utils/messagingAPICalls';
+import { fetchData } from '../../utils/apiCalls';
 import { loadMessages } from '../../actions';
 
 import './UserProfile.scss';
@@ -11,7 +11,9 @@ const UserProfile = ({ user }) => {
   const dispatch = useDispatch();
 
   const getMessages = () => {
-    findMatchingMessages(currentUser.id, user.id)
+    const body = {"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ user.id + "\") {body read userId}}"}
+
+    fetchData(body)
     .then(data => dispatch(loadMessages({
       otherMessenger: {
         id: user.id,
