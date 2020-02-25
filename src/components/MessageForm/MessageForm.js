@@ -30,7 +30,7 @@ const MessageForm = ({ recipient }) => {
         // }
       return response.json();
     })
-    .then (data => console.log(data.data.createMessage.message))
+    .then (data => data.data.createMessage.message)
     .catch(error => console.log(error))
   };
 

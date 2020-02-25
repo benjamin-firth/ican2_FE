@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import BeginNavbar from '../BeginNavbar/BeginNavbar';
 import Navbar from '../Navbar/Navbar';
 import About from '../About/About';
@@ -13,7 +13,10 @@ import MessageContainer from '../MessageContainer/MessageContainer';
 import MeetupContainer from '../MeetupContainer/MeetupContainer';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const messages = useSelector(state => state.messages);
   const mentors = useSelector(state => state.mentors);
+  const currentUser = useSelector(state => state.currentUser);
 
   return (
     <main>
@@ -56,17 +59,10 @@ const App = () => {
         <Navbar />
         <Inbox />
       </Route>
-      <Route
-        exact path='/messages/:id'
-        render={({ match }) => {
-          let mentor = mentors.find(mentor => mentor.id === parseInt(match.params.id))
-          return mentor &&
-            <>
-              <Navbar />
-              <MessageContainer recipient={mentor} />
-            </>
-        }}
-      />
+      <Route exact path='/messages/:id'>
+        <Navbar />
+        <MessageContainer />
+      </Route>
       <Route path='/meetups'>
         <Navbar />
         <MeetupContainer />

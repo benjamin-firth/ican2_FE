@@ -18,3 +18,7 @@ export const loadMentors = mentors => ({
   mentors
 })
 
+export const loadMessages = messages => ({
+  type: 'LOAD_MESSAGES',
+  messages
+})
