@@ -1,0 +1,15 @@
+.message {
+  display: flex;
+
+  .sender {
+    text-align: left;
+  }
+
+  .user {
+    text-align: right;
+  }
+
+  img {
+    width: 5vw;
+  }
+}

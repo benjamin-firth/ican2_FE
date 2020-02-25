@@ -7,7 +7,6 @@ import MessageForm from '../MessageForm/MessageForm';
 const MessageContainer = () => {
   const messages = useSelector(state => state.messages.messages);
   const otherMessenger = useSelector(state => state.messages.otherMessenger);
-  const currentUser = useSelector(state => state.currentUser);
 
   const renderMessages = () => {
     return messages.map(message => <Message message={message} />)
