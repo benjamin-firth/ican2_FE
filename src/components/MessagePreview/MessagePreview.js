@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadMessages } from '../../actions';
+import { findMatchingMessages } from '../../utils/messagingAPICalls';
 import './MessagePreview.scss';
 
 const MessagePreview = ({ otherMessengerId }) => {
@@ -35,18 +36,7 @@ const MessagePreview = ({ otherMessengerId }) => {
   const findMessages = () => {
     dispatch(loadMessages([]));
 
-    const body = {"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ otherMessengerId + "\") {body read userId}}"};
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    };
-
-    return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-      .then(response => response.json())
+    findMatchingMessages(currentUser.id, otherMessengerId)
       .then(data => dispatch(loadMessages({
         otherMessenger: {
           id: otherMessengerId,

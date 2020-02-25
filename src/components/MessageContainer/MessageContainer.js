@@ -17,6 +17,7 @@ const MessageContainer = () => {
     <section className='message-container'>
       <h3>Messages between you and {otherMessenger.name}:</h3>
       {renderMessages()}
+      <MessageForm otherMessenger={otherMessenger}/>
     </section> :
     <p>loading</p>
   );
