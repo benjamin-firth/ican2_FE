@@ -39,7 +39,7 @@ const SignUpForm = () => {
 
     upload.end((err, response) => {
       if (err) {
-        console.error(err);
+        setError(err);
       };
       if (response.body.secure_url !== '') {
         setUrl(response.body.secure_url);
@@ -75,7 +75,10 @@ const SignUpForm = () => {
       dispatch(loginCurrentUser(data.data.createUser.user));
       setIsLoading(false);
     })
-    .catch(error => setError('That user does not exist. Please sign up!'))
+    .catch(error => {
+      setIsLoading(false);
+      setError('Please make sure all fields are filled out.')
+    })
   };
 
   const clickHandler = (e) => {
@@ -89,10 +92,17 @@ const SignUpForm = () => {
     <section className='sign-up-container'>
       <h3>build your profile</h3>
       <form className='sign-up-form'>
+        {error && <p className='error-msg'>{error}</p>}
         <label>WHAT IS YOUR FIRST NAME?</label>
-        <input onChange={(e) => setName(e.target.value)}/>
+        <input onChange={(e) => {
+          setName(e.target.value)
+          setError('')
+        }}/>
         <label>WHAT IS YOUR EMAIL ADDRESS?</label>
-        <input onChange={(e) => setEmail(e.target.value)}/>
+        <input onChange={(e) => {
+          setEmail(e.target.value);
+          setError('');
+        }}/>
         <label>WHAT IS YOUR CURRENT CITY AND STATE?</label>
         <input type="hidden" name="country" id="countryId" value="US"/>
         <div className='city-state-select'>
@@ -101,7 +111,10 @@ const SignUpForm = () => {
               name="state"
               className="states order-alpha select-box state-select"
               id="stateId"
-              onChange={(e) => setState(e.target.value)}
+              onChange={(e) => {
+                setState(e.target.value);
+                setError('');
+              }}
             >
               <option value="">Select State</option>
             </select>
@@ -111,7 +124,10 @@ const SignUpForm = () => {
               name="city"
               className="cities order-alpha select-box"
               id="cityId"
-              onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => {
+                setCity(e.target.value);
+                setError('');
+              }}
             >
               <option value="">Select City</option>
             </select>
@@ -121,7 +137,10 @@ const SignUpForm = () => {
         <div className='select'>
           <select
             className='select-box'
-            onChange={(e) => setGender(e.target.value)}
+            onChange={(e) => {
+              setGender(e.target.value);
+              setError('');
+            }}
           >
             <option value=''>Select Pronouns</option>
             <option value='She/Her'>She/Her</option>
@@ -131,12 +150,18 @@ const SignUpForm = () => {
           </select>
         </div>
         <label>TELL US A LITTLE ABOUT YOURSELF (This will appear in your profile)</label>
-        <input onChange={(e) => setAboutMe(e.target.value)}/>
+        <input onChange={(e) => {
+          setAboutMe(e.target.value);
+          setError('');
+        }}/>
         <label>DO YOU WANT TO BE A MENTOR?</label>
         <div className='select'>
           <select
             className='select-box'
-            onChange={(e) => setMentorBool(e.target.value)}
+            onChange={(e) => {
+              setMentorBool(e.target.value);
+              setError('');
+            }}
           >
             <option value={false}>No</option>
             <option value={true}>Yes</option>
@@ -148,7 +173,10 @@ const SignUpForm = () => {
           <div className='select'>
           <select
           className='select-box'
-          onChange={(e) => setknowledgeField(e.target.value)}
+          onChange={(e) => {
+            setknowledgeField(e.target.value);
+            setError('');
+          }}
           >
             <option value=''>Select Career Field</option>
             <option value='Agriculture'>Agriculture</option>
@@ -172,7 +200,10 @@ const SignUpForm = () => {
           <div className='select'>
           <select
           className='select-box'
-          onChange={(e) => setExpertise(e.target.value)}
+          onChange={(e) => {
+            setExpertise(e.target.value);
+            setError('');
+          }}
           >
           <option value=''>Select Experience Level</option>
           <option value='Beginner'>Beginner</option>
@@ -181,13 +212,25 @@ const SignUpForm = () => {
           </select>
           </div>
             <label>DESCRIBE A TYPICAL DAY AT WORK.</label>
-            <input onChange={(e) => setworkDay(e.target.value)}/>
+            <input onChange={(e) => {
+              setworkDay(e.target.value);
+              setError('');
+            }}/>
             <label>WHAT DO YOU ENJOY MOST ABOUT YOUR WORK?</label>
-            <input onChange={(e) => setEnjoyQ(e.target.value)}/>
+            <input onChange={(e) => {
+              setEnjoyQ(e.target.value);
+              setError('');
+            }}/>
             <label>WHAT DO YOU FEEL THE MOST EXCITED ABOUT TEACHING OTHERS?</label>
-            <input onChange={(e) => setTeachingPoints(e.target.value)}/>
+            <input onChange={(e) => {
+              setTeachingPoints(e.target.value);
+              setError('');
+            }}/>
             <label>WHAT IS ONE PIECE OF ADVICE YOU HAVE FOR OTHERS LOOKING TO JOIN THIS FIELD?</label>
-            <input onChange={(e) => setAdviceQ(e.target.value)}/>
+            <input onChange={(e) => {
+              setAdviceQ(e.target.value);
+              setError('');
+            }}/>
           </>
         }
         <label>UPLOAD A PROFILE IMAGE</label>
