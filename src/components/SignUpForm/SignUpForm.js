@@ -77,9 +77,9 @@ const SignUpForm = () => {
 
     return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
     .then(response => {
-      // if (!response.ok) {
-        //   throw Error('error retrieving user data');
-        // }
+      if (!response.ok) {
+          throw Error('error retrieving user data');
+        }
       return response.json();
     });
   };
