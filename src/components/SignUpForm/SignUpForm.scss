@@ -20,7 +20,6 @@
   }
 }
 
-
 .sign-up-form {
   align-items: center;
   background-color: #FFF;
@@ -88,4 +87,9 @@
   .state-select {
     margin: 0 2vw;
   }
+}
+
+.dropzone {
+  border: 4px dashed #C7D0D7;
+  padding: 2vw;
 }

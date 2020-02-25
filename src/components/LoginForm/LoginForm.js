@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './LoginForm.scss';
+import { fetchData } from '../../utils/apiCalls';
 import { loginCurrentUser } from '../../actions';
 import Loader from '../Loader/Loader';
+import './LoginForm.scss';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -41,19 +42,9 @@ const LoginForm = () => {
   }
 
   const getUser = () => {
-
     const body = {"query": "{users(email: \""+ email + "\") {id name email mentor profile {gender aboutMe image fieldOfInterest} mentorProfile {fieldOfKnowledge experienceLevel workDayQuestion enjoymentQuestion teachingPointsQuestion adviceQuestion} location {city state}}}"};
 
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    };
-
-    return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-      .then(response => response.json())
+    return fetchData(body);
   };
 
   return (

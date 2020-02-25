@@ -4,6 +4,7 @@ import request from 'superagent';
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { setNewUser, loginCurrentUser } from '../../actions';
+import { fetchData } from '../../utils/apiCalls';
 import Loader from '../Loader/Loader';
 import './SignUpForm.scss';
 
@@ -52,41 +53,29 @@ const SignUpForm = () => {
   };
 
   const setUser = () => {
+    let body;
 
-    const mutation = {
-      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
-      variables: {}
-    };
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(mutation),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      redirect: 'follow'
-    };
-
-    return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-    .then(response => {
-      // if (!response.ok) {
-        //   throw Error('error retrieving user data');
-        // }
-      return response.json();
-    });
+    if (mentorBool) {
+      body = {
+        query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
+        variables: {}
+      };
+    } else {
+      body = {
+        query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "learning"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n }) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
+        variables: {}
+      };
+    }
+    return fetchData(body);
   };
 
   const login = (e) => {
-    if (!name.length || !email.length || !aboutMe.length || !gender.length) {
-      setError('Please be sure you have filled out all sections.');
-    } else {
-      setUser()
-      .then(data => {
-        dispatch(loginCurrentUser(data.data.createUser.user));
-        setIsLoading(false);
-      })
-      .catch(error => setError('That user does not exist. Please sign up!'))
-    }
+    setUser()
+    .then(data => {
+      dispatch(loginCurrentUser(data.data.createUser.user));
+      setIsLoading(false);
+    })
+    .catch(error => setError('That user does not exist. Please sign up!'))
   };
 
   const clickHandler = (e) => {
@@ -208,16 +197,12 @@ const SignUpForm = () => {
           multiple={false}>
             {({getRootProps, getInputProps}) => {
               return (
-                <div
-                  {...getRootProps()}
-                >
+                <div className='dropzone' {...getRootProps()} >
                   <input {...getInputProps()} />
-                  {
-                  <p>Try dropping some files here, or click to select files to upload.</p>
-                  }
+                  <p>drag & drop a file here or click to select file</p>
                 </div>
               )
-          }}
+            }}
         </Dropzone>
         <div>
           <div>
