@@ -32,7 +32,7 @@ const MessageForm = ({ otherMessenger }) => {
       },
       messages: data.data.messages
     })))
-    .catch(error => console.log(error))
+    .catch(error => error)
   }
 
   useEffect(() => loadMessages(), []);

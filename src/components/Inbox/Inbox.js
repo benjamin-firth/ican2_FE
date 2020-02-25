@@ -15,7 +15,7 @@ const Inbox = () => {
     .then(data => {
       setConversations(data.data.conversations)
     })
-    .catch(error => console.log(error))
+    .catch(error => error)
   }
 
   useEffect(() => checkForMessages(), [])
