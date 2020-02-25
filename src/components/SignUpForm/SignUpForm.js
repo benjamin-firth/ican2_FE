@@ -4,16 +4,17 @@ import request from 'superagent';
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { setNewUser, loginCurrentUser } from '../../actions';
+import Loader from '../Loader/Loader';
 import './SignUpForm.scss';
 
 const SignUpForm = () => {
   const CLOUDINARY_UPLOAD_PRESET = 'ebu217wb';
   const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dd7lamzs3/upload';
+  const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  // const [field, setField] = useState('');
   const [expertise, setExpertise] = useState('');
   const [mentorBool, setMentorBool] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
@@ -28,7 +29,7 @@ const SignUpForm = () => {
   const [uploadedFile, setUploadedFile] = useState([]);
   const currentUser = useSelector(state => state.currentUser);
   const dispatch = useDispatch();
-  
+
   const handleImageUpload = (file) => {
     let upload = request
       .post(CLOUDINARY_UPLOAD_URL)
@@ -44,14 +45,13 @@ const SignUpForm = () => {
       };
     });
   };
-  
+
   const onImageDrop = (files) => {
     setUploadedFile(files[0]);
     handleImageUpload(files[0]);
   };
-  
+
   const setUser = () => {
-    console.log('setUser func');
 
     const mutation = {
       query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
@@ -79,24 +79,24 @@ const SignUpForm = () => {
   const login = (e) => {
     if (!name.length || !email.length || !aboutMe.length || !gender.length) {
       setError('Please be sure you have filled out all sections.');
-      console.log(error);
     } else {
       setUser()
       .then(data => {
-        return dispatch(loginCurrentUser(data.data.createUser.user));
-        // return dispatch(setNewUser(data.createUser.user));
+        dispatch(loginCurrentUser(data.data.createUser.user));
+        setIsLoading(false);
       })
       .catch(error => setError('That user does not exist. Please sign up!'))
     }
   };
 
   const clickHandler = (e) => {
-    console.log('imageUrl: ', uploadedFileCloudinaryUrl);
+    setIsLoading(true);
     login();
   }
 
   return (
     currentUser.location ? <Redirect to='myprofile' /> :
+    isLoading ? <Loader message='creating your profile...' /> :
     <section className='sign-up-container'>
       <h3>build your profile</h3>
       <form className='sign-up-form'>
@@ -202,7 +202,6 @@ const SignUpForm = () => {
           </>
         }
         <label>UPLOAD A PROFILE IMAGE</label>
-        {/* <input onChange={(e) => setImage(e.target.value)}/> */}
         <Dropzone
           onDrop={onImageDrop}
           accept="image/*"
