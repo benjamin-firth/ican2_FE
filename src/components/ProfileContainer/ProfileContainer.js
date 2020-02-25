@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadMentors } from '../../actions';
+import { fetchData } from '../../utils/apiCalls';
 import './ProfileContainer.scss';
 import MentorCard from '../MentorCard/MentorCard';
+import Loader from '../Loader/Loader';
 
 const ProfileContainer = () => {
   const dispatch = useDispatch();
@@ -13,16 +15,7 @@ const ProfileContainer = () => {
   const getMentors = () => {
     const body = {"query": "{mentors{id name email mentor profile {gender aboutMe image fieldOfInterest} mentorProfile {fieldOfKnowledge experienceLevel workDayQuestion enjoymentQuestion teachingPointsQuestion adviceQuestion} location {city state}}}"};
 
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    };
-
-    fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-      .then(response => response.json())
+    fetchData(body)
       .then(data => {
         dispatch(loadMentors(data.data.mentors.filter(mentor => mentor.id != currentUser.id)));
         setIsLoading(false);
@@ -37,7 +30,7 @@ const ProfileContainer = () => {
 
   return (
     <section className='mentors-container'>
-      {isLoading ? <p>Loading...</p> : displayMentors()}
+      {isLoading ? <Loader message='finding mentors...'/> : displayMentors()}
     </section>
   );
 }

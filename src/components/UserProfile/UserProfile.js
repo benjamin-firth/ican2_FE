@@ -1,10 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData } from '../../utils/apiCalls';
+import { loadMessages } from '../../actions';
+
 import './UserProfile.scss';
-import { useSelector } from 'react-redux';
 
 const UserProfile = ({ user }) => {
   const currentUser = useSelector(state => state.currentUser);
+  const dispatch = useDispatch();
+
+  const getMessages = () => {
+    const body = {"query": "{messages(sender: \""+ currentUser.id + "\", recipient: \""+ user.id + "\") {body read userId}}"}
+
+    fetchData(body)
+    .then(data => dispatch(loadMessages({
+      otherMessenger: {
+        id: user.id,
+        name: user.name,
+        pic: user.profile.image
+      },
+      messages: data.data.messages
+    })))
+    .catch(error => console.log(error))
+  }
 
   return (
     <section className='user-profile-container'>
@@ -15,7 +34,7 @@ const UserProfile = ({ user }) => {
               src={user.profile.image}
               alt='profile picture'
               className='profile-photo'/>
-            {user.id === currentUser.id ? <button>edit profile</button> : <Link to={`/messages/${user.id}`}><button>message</button></Link>}
+            {user.id === currentUser.id ? null : <Link to={`/messages/${user.id}`}><button onClick={() => getMessages()}>message</button></Link>}
           </div>
           <section className='user-description-container'>
             <h2>{user.name.toLowerCase()}</h2>

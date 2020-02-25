@@ -4,16 +4,18 @@ import request from 'superagent';
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { setNewUser, loginCurrentUser } from '../../actions';
+import { fetchData } from '../../utils/apiCalls';
+import Loader from '../Loader/Loader';
 import './SignUpForm.scss';
 
 const SignUpForm = () => {
   const CLOUDINARY_UPLOAD_PRESET = 'ebu217wb';
   const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dd7lamzs3/upload';
+  const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  // const [field, setField] = useState('');
   const [expertise, setExpertise] = useState('');
   const [mentorBool, setMentorBool] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
@@ -28,7 +30,7 @@ const SignUpForm = () => {
   const [uploadedFile, setUploadedFile] = useState([]);
   const currentUser = useSelector(state => state.currentUser);
   const dispatch = useDispatch();
-  
+
   const handleImageUpload = (file) => {
     let upload = request
       .post(CLOUDINARY_UPLOAD_URL)
@@ -37,73 +39,70 @@ const SignUpForm = () => {
 
     upload.end((err, response) => {
       if (err) {
-        console.error(err);
+        setError(err);
       };
       if (response.body.secure_url !== '') {
         setUrl(response.body.secure_url);
       };
     });
   };
-  
+
   const onImageDrop = (files) => {
     setUploadedFile(files[0]);
     handleImageUpload(files[0]);
   };
-  
+
   const setUser = () => {
-    console.log('setUser func');
+    let body;
 
-    const mutation = {
-      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
-      variables: {}
-    };
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(mutation),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      redirect: 'follow'
-    };
-
-    return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-    .then(response => {
-      // if (!response.ok) {
-        //   throw Error('error retrieving user data');
-        // }
-      return response.json();
-    });
+    if (mentorBool) {
+      body = {
+        query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
+        variables: {}
+      };
+    } else {
+      body = {
+        query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "learning"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n }) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
+        variables: {}
+      };
+    }
+    return fetchData(body);
   };
 
   const login = (e) => {
-    if (!name.length || !email.length || !aboutMe.length || !gender.length) {
-      setError('Please be sure you have filled out all sections.');
-      console.log(error);
-    } else {
-      setUser()
-      .then(data => {
-        return dispatch(loginCurrentUser(data.data.createUser.user));
-        // return dispatch(setNewUser(data.createUser.user));
-      })
-      .catch(error => setError('That user does not exist. Please sign up!'))
-    }
+    setUser()
+    .then(data => {
+      dispatch(loginCurrentUser(data.data.createUser.user));
+      setIsLoading(false);
+    })
+    .catch(error => {
+      setIsLoading(false);
+      setError('Please make sure all fields are filled out.')
+    })
   };
 
   const clickHandler = (e) => {
-    console.log('imageUrl: ', uploadedFileCloudinaryUrl);
+    setIsLoading(true);
     login();
   }
 
   return (
     currentUser.location ? <Redirect to='myprofile' /> :
+    isLoading ? <Loader message='creating your profile...' /> :
     <section className='sign-up-container'>
       <h3>build your profile</h3>
       <form className='sign-up-form'>
+        {error && <p className='error-msg'>{error}</p>}
         <label>WHAT IS YOUR FIRST NAME?</label>
-        <input onChange={(e) => setName(e.target.value)}/>
+        <input onChange={(e) => {
+          setName(e.target.value)
+          setError('')
+        }}/>
         <label>WHAT IS YOUR EMAIL ADDRESS?</label>
-        <input onChange={(e) => setEmail(e.target.value)}/>
+        <input onChange={(e) => {
+          setEmail(e.target.value);
+          setError('');
+        }}/>
         <label>WHAT IS YOUR CURRENT CITY AND STATE?</label>
         <input type="hidden" name="country" id="countryId" value="US"/>
         <div className='city-state-select'>
@@ -112,7 +111,10 @@ const SignUpForm = () => {
               name="state"
               className="states order-alpha select-box state-select"
               id="stateId"
-              onChange={(e) => setState(e.target.value)}
+              onChange={(e) => {
+                setState(e.target.value);
+                setError('');
+              }}
             >
               <option value="">Select State</option>
             </select>
@@ -122,7 +124,10 @@ const SignUpForm = () => {
               name="city"
               className="cities order-alpha select-box"
               id="cityId"
-              onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => {
+                setCity(e.target.value);
+                setError('');
+              }}
             >
               <option value="">Select City</option>
             </select>
@@ -132,7 +137,10 @@ const SignUpForm = () => {
         <div className='select'>
           <select
             className='select-box'
-            onChange={(e) => setGender(e.target.value)}
+            onChange={(e) => {
+              setGender(e.target.value);
+              setError('');
+            }}
           >
             <option value=''>Select Pronouns</option>
             <option value='She/Her'>She/Her</option>
@@ -142,12 +150,18 @@ const SignUpForm = () => {
           </select>
         </div>
         <label>TELL US A LITTLE ABOUT YOURSELF (This will appear in your profile)</label>
-        <input onChange={(e) => setAboutMe(e.target.value)}/>
+        <input onChange={(e) => {
+          setAboutMe(e.target.value);
+          setError('');
+        }}/>
         <label>DO YOU WANT TO BE A MENTOR?</label>
         <div className='select'>
           <select
             className='select-box'
-            onChange={(e) => setMentorBool(e.target.value)}
+            onChange={(e) => {
+              setMentorBool(e.target.value);
+              setError('');
+            }}
           >
             <option value={false}>No</option>
             <option value={true}>Yes</option>
@@ -159,7 +173,10 @@ const SignUpForm = () => {
           <div className='select'>
           <select
           className='select-box'
-          onChange={(e) => setknowledgeField(e.target.value)}
+          onChange={(e) => {
+            setknowledgeField(e.target.value);
+            setError('');
+          }}
           >
             <option value=''>Select Career Field</option>
             <option value='Agriculture'>Agriculture</option>
@@ -183,7 +200,10 @@ const SignUpForm = () => {
           <div className='select'>
           <select
           className='select-box'
-          onChange={(e) => setExpertise(e.target.value)}
+          onChange={(e) => {
+            setExpertise(e.target.value);
+            setError('');
+          }}
           >
           <option value=''>Select Experience Level</option>
           <option value='Beginner'>Beginner</option>
@@ -192,33 +212,40 @@ const SignUpForm = () => {
           </select>
           </div>
             <label>DESCRIBE A TYPICAL DAY AT WORK.</label>
-            <input onChange={(e) => setworkDay(e.target.value)}/>
+            <input onChange={(e) => {
+              setworkDay(e.target.value);
+              setError('');
+            }}/>
             <label>WHAT DO YOU ENJOY MOST ABOUT YOUR WORK?</label>
-            <input onChange={(e) => setEnjoyQ(e.target.value)}/>
+            <input onChange={(e) => {
+              setEnjoyQ(e.target.value);
+              setError('');
+            }}/>
             <label>WHAT DO YOU FEEL THE MOST EXCITED ABOUT TEACHING OTHERS?</label>
-            <input onChange={(e) => setTeachingPoints(e.target.value)}/>
+            <input onChange={(e) => {
+              setTeachingPoints(e.target.value);
+              setError('');
+            }}/>
             <label>WHAT IS ONE PIECE OF ADVICE YOU HAVE FOR OTHERS LOOKING TO JOIN THIS FIELD?</label>
-            <input onChange={(e) => setAdviceQ(e.target.value)}/>
+            <input onChange={(e) => {
+              setAdviceQ(e.target.value);
+              setError('');
+            }}/>
           </>
         }
         <label>UPLOAD A PROFILE IMAGE</label>
-        {/* <input onChange={(e) => setImage(e.target.value)}/> */}
         <Dropzone
           onDrop={onImageDrop}
           accept="image/*"
           multiple={false}>
             {({getRootProps, getInputProps}) => {
               return (
-                <div
-                  {...getRootProps()}
-                >
+                <div className='dropzone' {...getRootProps()} >
                   <input {...getInputProps()} />
-                  {
-                  <p>Try dropping some files here, or click to select files to upload.</p>
-                  }
+                  <p>drag & drop a file here or click to select file</p>
                 </div>
               )
-          }}
+            }}
         </Dropzone>
         <div>
           <div>
