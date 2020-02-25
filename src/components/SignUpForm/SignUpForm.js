@@ -52,11 +52,19 @@ const SignUpForm = () => {
   };
 
   const setUser = () => {
+    let mutation;
 
-    const mutation = {
-      query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
-      variables: {}
-    };
+    if (mentorBool) {
+      mutation = {
+        query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "${knowledgeField}"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n  fieldOfKnowledge: "${knowledgeField}"\n  experienceLevel: "${expertise}"\n  workDayQuestion: "${workDay}"\n enjoymentQuestion: "${enjoyQ}"\n  teachingPointsQuestion: "${teachingPoints}"\n  adviceQuestion: "${adviceQ}"\n}) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
+        variables: {}
+      };
+    } else {
+      mutation = {
+        query: `mutation {\n  createUser(input:  {\n  name: "${name}", email: "${email}" passwordDigest: \"lalala\"\n mentor: ${mentorBool}\n gender: "${gender}"\n fieldOfInterest: "learning"\n aboutMe: "${aboutMe}"\n  image: "${uploadedFileCloudinaryUrl}"\n zipCode: \"98501\"\n  state: "${state}"\n city: "${city}"\n }) {\n  user {\n id\n name\n email\n mentor\n location { city\n  state\n} profile { fieldOfInterest\n  aboutMe\n  image\n  gender\n}  mentorProfile { fieldOfKnowledge\n experienceLevel\n workDayQuestion\n enjoymentQuestion\n teachingPointsQuestion\n adviceQuestion\n}}\n errors\n }\n }\n `,
+        variables: {}
+      };
+    }
 
     const options = {
       method: 'POST',
@@ -77,16 +85,12 @@ const SignUpForm = () => {
   };
 
   const login = (e) => {
-    if (!name.length || !email.length || !aboutMe.length || !gender.length) {
-      setError('Please be sure you have filled out all sections.');
-    } else {
-      setUser()
-      .then(data => {
-        dispatch(loginCurrentUser(data.data.createUser.user));
-        setIsLoading(false);
-      })
-      .catch(error => setError('That user does not exist. Please sign up!'))
-    }
+    setUser()
+    .then(data => {
+      dispatch(loginCurrentUser(data.data.createUser.user));
+      setIsLoading(false);
+    })
+    .catch(error => setError('That user does not exist. Please sign up!'))
   };
 
   const clickHandler = (e) => {
