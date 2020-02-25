@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadMessages } from '../../actions';
-import { findMatchingMessages } from '../../utils/messagingAPICalls';
+import { findMatchingMessages, findMessengerNamePic } from '../../utils/messagingAPICalls';
 import './MessagePreview.scss';
 
 const MessagePreview = ({ otherMessengerId }) => {
@@ -11,19 +11,8 @@ const MessagePreview = ({ otherMessengerId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.currentUser);
 
-  const findName = () => {
-    const body = {"query": "{users(id: \""+ otherMessengerId + "\") {name profile{image}}}"};
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    };
-
-    return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-      .then(response => response.json())
+  const findMessenger = () => {
+    findMessengerNamePic(otherMessengerId)
       .then(data => {
         setOtherMessengerName(data.data.users.name);
         setOtherMessengerPic(data.data.users.profile.image);
@@ -31,7 +20,7 @@ const MessagePreview = ({ otherMessengerId }) => {
       .catch(error => console.log(error))
   }
 
-  useEffect(() => {findName()}, [])
+  useEffect(() => {findMessenger()}, [])
 
   const findMessages = () => {
     dispatch(loadMessages([]));

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { findMatchingMessages } from '../../utils/messagingAPICalls';
+import { findMatchingMessages, createMessage } from '../../utils/messagingAPICalls';
 import { loadMessages } from '../../actions';
 import './MessageForm.scss';
 
@@ -12,27 +12,7 @@ const MessageForm = ({ otherMessenger }) => {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    const mutation = {
-      query: "mutation {\n createMessage(input: {\n senderId: \"" + currentUser.id + "\"\n recipientId: \"" + otherMessenger.id + "\"\n body: \"" + messageToSend + "\"\n}) {\n message {\n body \n userId\n conversation {\n recipientId\n }\n }\n }\n }",
-      variables: {}
-    };
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(mutation),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      redirect: 'follow'
-    };
-
-    return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
-    .then(response => {
-      // if (!response.ok) {
-        //   throw Error('error retrieving user data');
-        // }
-      return response.json();
-    })
+    createMessage(otherMessenger.id, currentUser.id, messageToSend)
     .then (data => data.data.createMessage.message)
     .catch(error => console.log(error))
   };
