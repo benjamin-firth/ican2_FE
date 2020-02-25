@@ -214,7 +214,7 @@ const SignUpForm = () => {
                 >
                   <input {...getInputProps()} />
                   {
-                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>drag & drop a file here or click to select file</p>
                   }
                 </div>
               )
