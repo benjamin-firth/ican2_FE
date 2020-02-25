@@ -28,9 +28,11 @@ const LoginForm = () => {
     e.preventDefault();
     setIsLoading(true);
     if (!email.length || !password.length) {
-      setError('Please be sure you have filled out all sections.')
+      setError('Please be sure you have filled out all sections.');
+      setIsLoading(false);
     } else if (!email.includes('@') || !email.includes('.')) {
-      setError('Please enter a valid email address.')
+      setError('Please enter a valid email address.');
+      setIsLoading(false);
     } else {
       getUser()
       .then(data => {
@@ -60,7 +62,7 @@ const LoginForm = () => {
           <p>PASSWORD</p>
           <input type='text' type='password' onChange={(e) => enterPassword(e)}/>
         </div>
-        {error && <p className="error-msg">{error}</p>}
+        {error && <p className='error-msg'>{error}</p>}
         <button className='login-submit-button' onClick={(e) => login(e)}>enter</button>
       </form>
     </section>
