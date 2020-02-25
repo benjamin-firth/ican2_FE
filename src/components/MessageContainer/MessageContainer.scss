@@ -6,5 +6,22 @@
   background-color: $primarycolor;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+
+  h3 {
+    align-self: flex-start;
+    color: $secondarycolor;
+    font-family: $secondaryfont;
+    font-size: 35px;
+    margin: 0 2vw;
+  }
+}
+
+.messages-box {
+  margin-top: 3vw;
+  padding: 2vw;
+  border: 5px solid $secondarycolor;
+  width: 60%;
+  overflow-y: scroll;
+  height: 50vh;
 }

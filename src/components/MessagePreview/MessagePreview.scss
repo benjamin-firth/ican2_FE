@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+.message-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2vw;
+  border: 5px solid $secondarycolor;
+  padding: 1vw;
+  width: 18vw;
+
+  img {
+    border-radius: 50%;
+    width: 15vw;
+    height: 15vw;
+  }
+
+  button {
+    border: 5px solid $secondarycolor;
+  }
+}

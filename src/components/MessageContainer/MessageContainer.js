@@ -15,8 +15,11 @@ const MessageContainer = () => {
   return (
     otherMessenger ?
     <section className='message-container'>
-      <h3>Messages between you and {otherMessenger.name}:</h3>
-      {renderMessages()}
+      <h3>messages between you and {otherMessenger.name.toLowerCase()}:</h3>
+      <div className='messages-box'>
+        {renderMessages()}
+      </div>
+      <MessageForm otherMessenger={otherMessenger}/>
     </section> :
     <p>loading</p>
   );
