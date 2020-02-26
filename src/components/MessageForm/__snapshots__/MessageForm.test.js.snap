@@ -19,6 +19,7 @@ exports[`MessageForm should match the snapshot 1`] = `
     <button
       id="messageButton"
       onClick={[Function]}
+      type="button"
     >
       send message
     </button>

@@ -50,7 +50,6 @@ describe('UserProfile', () => {
         )
       })
   
-
       await wrapper.find('#getMessageButton').simulate('click');
       expect(fetchData).toHaveBeenCalled();
     });
