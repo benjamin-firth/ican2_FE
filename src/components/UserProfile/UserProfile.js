@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../utils/apiCalls';
 import { loadMessages } from '../../actions';
-
 import './UserProfile.scss';
+import PropTypes from 'prop-types';
 
 const UserProfile = ({ user }) => {
   const currentUser = useSelector(state => state.currentUser);
@@ -72,6 +72,10 @@ const UserProfile = ({ user }) => {
       </section>
     </section>
   )
+}
+
+UserProfile.propTypes = {
+  user: PropTypes.object
 }
 
 export default UserProfile;
