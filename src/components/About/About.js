@@ -2,6 +2,7 @@ import React from 'react';
 import './About.scss';
 
 const About = () => {
+  window.scrollTo(0, 0);
 
   return (
     <section className='about-container'>
