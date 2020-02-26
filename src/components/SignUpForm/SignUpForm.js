@@ -138,8 +138,8 @@ const SignUpForm = () => {
         <label>WHAT ARE YOUR PRONOUNS?</label>
         <div className='select'>
           <select
-            id='stateGender' 
-            value={gender} 
+            id='stateGender'
+            value={gender}
             className='select-box'
             onChange={(e) => {
               setGender(e.target.value);
@@ -165,7 +165,7 @@ const SignUpForm = () => {
             value={mentorBool}
             className='select-box'
             onChange={(e) => {
-              setMentorBool(e.target.value);
+              setMentorBool(!mentorBool);
               setError('');
             }}
           >
@@ -173,7 +173,7 @@ const SignUpForm = () => {
             <option value={true}>Yes</option>
           </select>
         </div>
-        {mentorBool &&
+        {mentorBool ?
           <>
           <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
           <div className='select'>
@@ -241,8 +241,7 @@ const SignUpForm = () => {
               setAdviceQ(e.target.value);
               setError('');
             }}/>
-          </>
-        }
+          </> : null}
         <label>UPLOAD A PROFILE IMAGE</label>
         <Dropzone
           onDrop={onImageDrop}
