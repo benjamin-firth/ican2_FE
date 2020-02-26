@@ -13,5 +13,5 @@ export const fetchData = (body) => {
         return ({ error: 'error fetching data' });
       }
     return response.json();
-  });
+  })
 }

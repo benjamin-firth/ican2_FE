@@ -1,4 +1,4 @@
-import { loginCurrentUser, logoutCurrentUser, setNewUser, loadMentors, loadMessages } from './index';
+import { loginCurrentUser, logoutCurrentUser, setNewUser, loadMentors, loadMessages, filterMentors } from './index';
 
 describe('actions', () => {
 
@@ -60,6 +60,19 @@ describe('actions', () => {
     };
 
     const result = loadMessages(messages);
+
+    expect(result).toEqual(expectedAction);
+  });
+
+  it('should have a type of FILTER_MENTORS', () => {
+    let mentors = [{id: 2, name: 'Ben'}, {id: 1, name: 'John'}];
+
+    const expectedAction = {
+      type: 'FILTER_MENTORS',
+      mentors
+    };
+
+    const result = filterMentors(mentors);
 
     expect(result).toEqual(expectedAction);
   });
