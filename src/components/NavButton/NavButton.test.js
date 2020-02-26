@@ -17,4 +17,10 @@ describe('NavButton', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should fire logout', () => {
+    wrapper.find('#logoutButton').simulate('click');
+
+    expect(wrapper.find('#logoutButton').prop('value')).toEqual('home');
+  });
+
 });

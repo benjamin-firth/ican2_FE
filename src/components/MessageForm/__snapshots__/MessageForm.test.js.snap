@@ -12,10 +12,12 @@ exports[`MessageForm should match the snapshot 1`] = `
     type="reset"
   >
     <textarea
+      id="stateMessageToSend"
       onChange={[Function]}
       value=""
     />
     <button
+      id="messageButton"
       onClick={[Function]}
     >
       send message

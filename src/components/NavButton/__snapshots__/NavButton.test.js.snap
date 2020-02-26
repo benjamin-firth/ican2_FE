@@ -6,7 +6,9 @@ exports[`NavButton should match the snapshot 1`] = `
 >
   <button
     className="selected"
+    id="logoutButton"
     onClick={[Function]}
+    value="home"
   >
     home
   </button>
