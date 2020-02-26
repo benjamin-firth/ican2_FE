@@ -1,21 +1,34 @@
 @import '../../variables.scss';
 
-// * {
-//   border: 1px solid blue;
-// }
-
 .filter-container {
   position: fixed;
   background-color: $primarycolor;
   width: 100%;
-  text-align: center;
-  margin-top: 1.4vw;
   z-index: 0;
-
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   h5 {
     font-family: $secondaryfont;
     color: $secondarycolor;
     font-size: 2vw;
+  }
+
+  p {
+    color: $secondarycolor;
+    font-family: $secondaryfont;
+    font-weight: bold;
+    font-size: 1.2vw;
+  }
+
+  select {
+    -webkit-appearance: menulist-button;
+    background-color: #FFF;
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 1vw;
+    padding: .3vw;
   }
 }
