@@ -8,6 +8,8 @@ const Inbox = () => {
   const [conversations, setConversations] = useState([]);
   const currentUser = useSelector(state => state.currentUser);
 
+  window.scrollTo(0, 0);
+
   const checkForMessages = () => {
     const body = {"query": "{conversations(userId: \""+ currentUser.id + "\") {senderId recipientId}}"};
 
