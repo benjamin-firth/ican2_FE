@@ -42,7 +42,10 @@ const LoginForm = () => {
         dispatch(loginCurrentUser(data.data.users));
         setIsLoading(false);
       })
-      .catch(error => setError('That user does not exist. Please sign up!'))
+      .catch(error => {
+        setIsLoading(false);
+        setError('That user does not exist. Please sign up!');
+      })
     }
   }
 
