@@ -10,8 +10,7 @@ const MessageForm = ({ otherMessenger }) => {
   const dispatch = useDispatch();
   const [messageToSend, setMessageToSend] = useState('');
 
-  const sendMessage = (e) => {
-    e.preventDefault();
+  const sendMessage = () => {
 
     const body = {
       query: "mutation {\n createMessage(input: {\n senderId: \"" + currentUser.id + "\"\n recipientId: \"" + otherMessenger.id + "\"\n body: \"" + messageToSend + "\"\n}) {\n message {\n body \n userId\n conversation {\n recipientId\n }\n }\n }\n }",
@@ -44,7 +43,7 @@ const MessageForm = ({ otherMessenger }) => {
       <p className='new-message-tag'>new message:</p>
       <form type="reset" className='message-form'>
         <textarea id='stateMessageToSend' value={messageToSend} onChange={e => setMessageToSend(e.target.value)} />
-        <button id='messageButton' onClick={e => sendMessage(e)}>send message</button>
+        <button type='button' id='messageButton' onClick={() => sendMessage()}>send message</button>
       </form>
     </div>
   );

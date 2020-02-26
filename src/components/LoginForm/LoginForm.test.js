@@ -21,7 +21,6 @@ describe('LoginForm', () => {
   it('email input', () => {
     expect(wrapper.find('#stateEmail').prop('value')).toEqual('');
     wrapper.find('#stateEmail').simulate('change', {target: {value: 'test@test.com'}});
-    // wrapper.update()
     expect(wrapper.find('#stateEmail').prop('value')).toEqual('test@test.com');
   });
 

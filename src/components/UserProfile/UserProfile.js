@@ -45,7 +45,7 @@ const UserProfile = ({ user }) => {
               src={user.profile.image}
               alt='profile picture'
               className='profile-photo'/>
-            {user.id === currentUser.id ? null : <Link to={`/messages/${user.id}`}><button onClick={() => getMessages()}>message</button></Link>}
+            {user.id === currentUser.id ? null : <Link to={`/messages/${user.id}`}><button id='getMessageButton' onClick={() => getMessages()}>message</button></Link>}
           </div>
           <section className='user-description-container'>
             <h2>{user.name.toLowerCase()}</h2>

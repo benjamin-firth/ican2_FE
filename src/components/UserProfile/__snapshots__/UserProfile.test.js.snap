@@ -22,6 +22,7 @@ exports[`UserProfile should match the snapshot 1`] = `
           to="/messages/8"
         >
           <button
+            id="getMessageButton"
             onClick={[Function]}
           >
             message
