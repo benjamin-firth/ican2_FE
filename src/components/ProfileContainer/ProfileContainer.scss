@@ -3,7 +3,8 @@
 .mentors-container {
   background-color: $primarycolor;
   padding-top: 7vw;
-  height: 100vw;
+  height: auto;
+  min-height: 100vw;
 }
 
 .mentor-cards-container {

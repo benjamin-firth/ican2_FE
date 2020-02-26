@@ -2,7 +2,8 @@
 
 .message-container {
   padding-top: 12vw;
-  height: 100vw;
+  height: auto;
+  min-height: 100vw;
   background-color: $primarycolor;
   display: flex;
   flex-direction: column;

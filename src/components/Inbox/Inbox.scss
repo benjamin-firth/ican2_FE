@@ -2,7 +2,8 @@
 
 .inbox {
   padding-top: 12vw;
-  height: 100vw;
+  height: auto;
+  min-height: 100vw;
   background-color: $primarycolor;
   h3 {
     align-self: flex-start;
@@ -16,6 +17,7 @@
 .preview-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 400px) {
