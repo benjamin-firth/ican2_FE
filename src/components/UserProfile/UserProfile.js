@@ -54,7 +54,7 @@ const UserProfile = ({ user }) => {
             <p>{user.profile.aboutMe}</p>
           </section>
         </div>
-        {user.mentor ?
+        {user.mentor &&
           <section className='mentor-questions-container'>
             <h4>EXPERIENCE LEVEL</h4>
             <p>{user.mentorProfile.experienceLevel}</p>
@@ -66,8 +66,7 @@ const UserProfile = ({ user }) => {
             <p>{user.mentorProfile.teachingPointsQuestion}</p>
             <h4>WHAT IS ONE PIECE OF ADVICE YOU HAVE FOR OTHERS LOOKING TO JOIN THIS FIELD?</h4>
             <p>{user.mentorProfile.adviceQuestion}</p>
-          </section> :
-          <p>You are not currently listed as a mentor.<br />Want to change that? Click <strong> edit profile </strong> above.</p>
+          </section>
         }
       </section>
     </section>

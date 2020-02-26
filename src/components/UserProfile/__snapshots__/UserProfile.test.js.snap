@@ -43,15 +43,6 @@ exports[`UserProfile should match the snapshot 1`] = `
         <p />
       </section>
     </div>
-    <p>
-      You are not currently listed as a mentor.
-      <br />
-      Want to change that? Click 
-      <strong>
-         edit profile 
-      </strong>
-       above.
-    </p>
   </section>
 </section>
 `;
