@@ -28,7 +28,6 @@ describe('LoginForm', () => {
   it('password input', () => {
     expect(wrapper.find('#statePassword').prop('value')).toEqual('');
     wrapper.find('#statePassword').simulate('change', {target: {value: 'testPassword'}});
-    // wrapper.update()
     expect(wrapper.find('#statePassword').prop('value')).toEqual('testPassword');
   });
 
