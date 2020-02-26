@@ -12,6 +12,7 @@ const ProfileContainer = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const mentors = useSelector(state => state.mentors);
+  const filteredMentors = useSelector(state => state.filteredMentors);
   const currentUser = useSelector(state => state.currentUser);
 
   const getMentors = () => {
@@ -33,7 +34,7 @@ const ProfileContainer = () => {
         <>
         <FilterBox />
         <div className='mentor-cards-container'>
-          {displayMentors(mentors)}
+          {filteredMentors.length ? displayMentors(filteredMentors) : displayMentors(mentors)}
         </div>
         </>
       }
