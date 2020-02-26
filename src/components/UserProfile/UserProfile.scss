@@ -92,3 +92,42 @@
     font-size: 1vw;
   }
 }
+
+@media only screen and (max-width: 400px) {
+
+  .user-profile-container {
+    height: 190vw;
+    padding-top: 30vw;
+  }
+
+  .user-general-info {
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 45vw;
+      height: 45vw;
+      margin-bottom: 5vw;
+    }
+
+    h2, h3, p {
+      margin: 0;
+      text-align: center;
+      margin-bottom: 4vw;
+    }
+
+    p {
+      margin-bottom: 2vw;
+    }
+
+    h2 {
+      font-size: 8vw;
+      color: $secondarycolor;
+    }
+  }
+
+  .user-profile {
+    width: 80%;
+  }
+
+}
