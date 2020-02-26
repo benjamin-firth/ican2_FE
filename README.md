@@ -17,9 +17,9 @@
 - Run `npm test` to view testing suite
 
 ### ABOUT
-This app enables users to find and save color palettes for projects. Users can generate random palettes, lock the colors they like, and then regenerate the colors they don't. Then, users can create projects and assign palettes to projects. Users can also delete projects and palettes.
+This app connects users who are looking for a mentee/mentor relationship. Users can create a profile, search through all mentors (with filters), and message each other.
 
-For this application, we built the backend and frontend from scratch. The frontend was built with React Hooks, Redux, and Sass. The backend was build with Node.js, Express, knex, and postgreSQL. Everything was tested using Jest and Enzyme. Fetch calls are made to our [heroku hosted API](http://palettepickerapp.herokuapp.com/api/v1/projects). This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project has a robust testing suite.
+For this application, we built the backend and frontend from scratch. The frontend was built with React Hooks, Redux, graphQL, and Sass. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project has a robust testing suite.
 
 ### Responsive Design: Mobile
 ![mobile](https://media.giphy.com/media/XfmjI6FIXWLWGkRM3q/giphy.gif)
