@@ -14,13 +14,17 @@ exports[`SignUpForm should match the snapshot 1`] = `
       WHAT IS YOUR FIRST NAME?
     </label>
     <input
+      id="stateName"
       onChange={[Function]}
+      value=""
     />
     <label>
       WHAT IS YOUR EMAIL ADDRESS?
     </label>
     <input
+      id="stateEmail"
       onChange={[Function]}
+      value=""
     />
     <label>
       WHAT IS YOUR CURRENT CITY AND STATE?
@@ -108,7 +112,9 @@ exports[`SignUpForm should match the snapshot 1`] = `
       TELL US A LITTLE ABOUT YOURSELF (This will appear in your profile)
     </label>
     <input
+      id="stateAbout"
       onChange={[Function]}
+      value=""
     />
     <label>
       DO YOU WANT TO BE A MENTOR?
@@ -118,7 +124,9 @@ exports[`SignUpForm should match the snapshot 1`] = `
     >
       <select
         className="select-box"
+        id="stateMentorBool"
         onChange={[Function]}
+        value={false}
       >
         <option
           value={false}
