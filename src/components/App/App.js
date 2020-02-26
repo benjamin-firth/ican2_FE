@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import BeginNavbar from '../BeginNavbar/BeginNavbar';
 import Navbar from '../Navbar/Navbar';
 import About from '../About/About';
@@ -13,8 +13,6 @@ import MessageContainer from '../MessageContainer/MessageContainer';
 import MeetupContainer from '../MeetupContainer/MeetupContainer';
 
 const App = () => {
-  const dispatch = useDispatch();
-  const messages = useSelector(state => state.messages);
   const mentors = useSelector(state => state.mentors);
   const currentUser = useSelector(state => state.currentUser);
 
