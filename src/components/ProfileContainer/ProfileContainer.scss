@@ -18,3 +18,15 @@
   margin-top: 2vw;
   font-family: $secondaryfont;
 }
+
+@media only screen and (max-width: 400px) {
+  .mentors-container {
+    padding-top: 25vw;
+    height: auto;
+    min-height: 195vw;
+  }
+
+  .mentor-cards-container {
+    padding-top: 10vw;
+  }
+}
