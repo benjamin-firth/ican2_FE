@@ -5,7 +5,7 @@ exports[`MobileNavButton should match the snapshot 1`] = `
   to="/"
 >
   <button
-    className="selected nav-button"
+    className="mobile-nav-button"
     id="logoutButton"
     onClick={[Function]}
     value="home"
