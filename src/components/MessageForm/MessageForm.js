@@ -19,8 +19,8 @@ const MessageForm = ({ otherMessenger }) => {
     };
 
     fetchData(body)
-    .then (data => dispatch(addMessage(data.data.createMessage.message)))
-    .catch(error => error)
+      .then (data => dispatch(addMessage(data.data.createMessage.message)))
+      .catch(error => error)
     setMessageToSend('');
   };
 
@@ -43,8 +43,8 @@ const MessageForm = ({ otherMessenger }) => {
     <div>
       <p className='new-message-tag'>new message:</p>
       <form type="reset" className='message-form'>
-        <textarea value={messageToSend} onChange={e => setMessageToSend(e.target.value)} />
-        <button onClick={e => sendMessage(e)}>send message</button>
+        <textarea id='stateMessageToSend' value={messageToSend} onChange={e => setMessageToSend(e.target.value)} />
+        <button id='messageButton' onClick={e => sendMessage(e)}>send message</button>
       </form>
     </div>
   );

@@ -20,5 +20,15 @@ describe('api', () => {
       await fetchData(mockBody);
       expect(window.fetch).toHaveBeenCalled();
     });
+
+    it('should throw an error if response is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        })
+      })
+
+      expect(fetchData(mockBody)).rejects.toEqual(Error('error fetching data'));
+    });
   });
 });
