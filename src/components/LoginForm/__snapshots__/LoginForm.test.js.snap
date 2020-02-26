@@ -14,8 +14,10 @@ exports[`LoginForm should match the snapshot 1`] = `
         EMAIL
       </p>
       <input
+        id="stateEmail"
         onChange={[Function]}
         type="text"
+        value=""
       />
     </div>
     <div
@@ -25,8 +27,10 @@ exports[`LoginForm should match the snapshot 1`] = `
         PASSWORD
       </p>
       <input
+        id="statePassword"
         onChange={[Function]}
         type="password"
+        value=""
       />
     </div>
     <button

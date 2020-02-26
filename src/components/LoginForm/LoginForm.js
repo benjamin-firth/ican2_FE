@@ -53,11 +53,11 @@ const LoginForm = () => {
       <form className='login-form'>
         <div key={1}>
           <p>EMAIL</p>
-          <input type='text' onChange={(e) => enterEmail(e)}/>
+          <input type='text' id='stateEmail' value={email} onChange={(e) => enterEmail(e)}/>
         </div>
         <div key={2}>
           <p>PASSWORD</p>
-          <input type='text' type='password' onChange={(e) => enterPassword(e)}/>
+          <input type='text' id='statePassword' value={password} type='password' onChange={(e) => enterPassword(e)}/>
         </div>
         {error && <p className='error-msg'>{error}</p>}
         <button className='login-submit-button' onClick={(e) => login(e)}>enter</button>
