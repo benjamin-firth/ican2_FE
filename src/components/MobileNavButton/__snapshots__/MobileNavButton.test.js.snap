@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavButton should match the snapshot 1`] = `
+exports[`MobileNavButton should match the snapshot 1`] = `
 <Link
   to="/"
 >
   <button
-    className="selected nav-button"
+    className="mobile-nav-button"
     id="logoutButton"
     onClick={[Function]}
     value="home"

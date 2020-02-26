@@ -22,5 +22,9 @@ exports[`BeginNavbar should match the snapshot 1`] = `
       nav="/login"
     />
   </div>
+  <button
+    className="hamburger"
+    onClick={[Function]}
+  />
 </nav>
 `;

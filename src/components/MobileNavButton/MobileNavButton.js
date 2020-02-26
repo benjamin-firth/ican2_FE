@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { checkSelected } from '../../utils/methods';
-import './NavButton.scss';
+import './MobileNavButton.scss';
 import { logoutCurrentUser } from '../../actions';
 import PropTypes from 'prop-types';
 
-const NavButton = ({ nav, name }) => {
+const MobileNavButton = ({ nav, name }) => {
   const dispatch = useDispatch();
 
   const logOut = () => {
@@ -17,16 +17,16 @@ const NavButton = ({ nav, name }) => {
 
   return (
     <Link to={nav}>
-      <button value={name} id='logoutButton' className={`${checkSelected(window.location.pathname, nav)} nav-button`} onClick={() => logOut()}>
+      <button value={name} id='logoutButton' className='mobile-nav-button' onClick={() => logOut()}>
         {name}
       </button>
     </Link>
   );
 };
 
-NavButton.propTypes = {
+MobileNavButton.propTypes = {
   nav: PropTypes.string,
   name: PropTypes.string
 }
 
-export default NavButton;
+export default MobileNavButton;

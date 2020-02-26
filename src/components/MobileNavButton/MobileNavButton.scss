@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.mobile-nav-button {
+  width: 40vw;
+  padding: 3vw;
+  border: none;
+  background-color: white;
+  color: $secondarycolor;
+  font-size: 5.5vw;
+  font-family: $secondaryfont;
+  margin: 1vw;
+  &:hover {
+    background-color: $primarycolor;
+    color: white;
+    color: $secondarycolor;
+  }
+}

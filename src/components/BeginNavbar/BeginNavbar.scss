@@ -15,3 +15,48 @@
   margin-right: 4vw;
   margin-bottom: -9vw;
 }
+
+.hamburger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  background-color: $primarycolor;
+  color: $primarycolor;
+  background-image: url('../../images/hamburgerButton.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: none;
+  height: 12vw;
+  width: 15vw;
+  &:hover {
+    background-color: $primarycolor;
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+
+  .mobile-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 16vw;
+    background-color: $secondarycolor;
+    padding: 1vw;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .begin-nav {
+    padding-top: 0;
+    justify-content: center;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

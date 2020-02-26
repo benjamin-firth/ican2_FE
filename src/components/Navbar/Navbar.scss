@@ -19,36 +19,15 @@ nav {
     margin-right: 4vw;
     margin-bottom: -2vw;
   }
-
-  // Hamburger icon
-
-  .col {
-    display: block;
-    float:left;
-    margin: 1% 0 1% 1.6%;
-  }
-
-  .col:first-of-type {
-    margin-left: 0;
-  }
-
-  .hamburger {
-    margin-right: 20px;
-  }
-
-  .hamburger .line{
-    width: 50px;
-    height: 5px;
-    background-color: #000000;
-    display: block;
-    margin: 8px auto;
-  }
-
-  .hamburger:hover{
-    cursor: pointer;
-  }
 }
 
 .main-nav {
   position: fixed;
+}
+
+@media only screen and (max-width: 400px) {
+
+  nav {
+    padding-top: 10vw;
+  }
 }
