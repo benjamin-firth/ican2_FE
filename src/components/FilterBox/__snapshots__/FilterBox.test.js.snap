@@ -9,7 +9,9 @@ exports[`FilterBox should match the snapshot 1`] = `
   </p>
   <select
     className="select-box"
+    id="fieldInput"
     onChange={[Function]}
+    value=""
   >
     <option
       value=""
@@ -94,7 +96,9 @@ exports[`FilterBox should match the snapshot 1`] = `
   </select>
   <select
     className="select-box"
+    id="stateInput"
     onChange={[Function]}
+    value=""
   >
     <option
       value=""
@@ -353,9 +357,11 @@ exports[`FilterBox should match the snapshot 1`] = `
     </option>
   </select>
   <input
+    id="nameInput"
     onChange={[Function]}
     placeholder="Search by Mentor Name..."
     type="textbox"
+    value=""
   />
 </form>
 `;

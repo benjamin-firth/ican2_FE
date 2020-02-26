@@ -16,19 +16,23 @@ describe('api', () => {
       });
     });
 
-    it('should call fetch POST with the correct param', async () => {      
-      await fetchData(mockBody);
+    it('should call fetch POST with the correct param', () => {
+      fetchData(mockBody);
       expect(window.fetch).toHaveBeenCalled();
     });
+
+    it('should return an object', () => {
+      expect(fetchData()).resolves.toEqual(mockResponse);
+    })
 
     it('should throw an error if response is not ok', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false
-        })
-      })
+        });
+      });
 
-      expect(fetchData(mockBody)).rejects.toEqual(Error('error fetching data'));
+      expect(fetchData()).rejects.toEqual(Error('Error fetching data'));
     });
   });
 });

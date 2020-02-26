@@ -26,6 +26,8 @@ const FilterBox = () => {
     <form className='filter-container'>
     <p>filter mentors:</p>
       <select
+        id='fieldInput'
+        value={field}
         className='select-box'
         onChange={e => setField(e.target.value)}
       >
@@ -47,6 +49,8 @@ const FilterBox = () => {
         <option value='Other'>Other</option>
       </select>
       <select
+        id='stateInput'
+        value={state}
         className='select-box'
         onChange={e => setState(e.target.value)}
       >
@@ -102,7 +106,13 @@ const FilterBox = () => {
         <option value='Wisconsin'>Wisconsin</option>
         <option value='Wyoming'>Wyoming</option>
       </select>
-      <input type='textbox' placeholder='Search by Mentor Name...' onChange={e => setName(e.target.value)}/>
+      <input
+        type='textbox'
+        id='nameInput'
+        value={name}
+        placeholder='Search by Mentor Name...'
+        onChange={e => setName(e.target.value)}
+      />
     </form>
   );
 }
