@@ -108,6 +108,7 @@ const SignUpForm = () => {
         <div className='city-state-select'>
           <div className='select'>
             <select
+              value={state}
               name="state"
               className="states order-alpha select-box state-select"
               id="stateId"
@@ -121,6 +122,7 @@ const SignUpForm = () => {
           </div>
           <div className='select'>
             <select
+              value={city}
               name="city"
               className="cities order-alpha select-box"
               id="cityId"
@@ -136,6 +138,8 @@ const SignUpForm = () => {
         <label>WHAT ARE YOUR PRONOUNS?</label>
         <div className='select'>
           <select
+            id='stateGender' 
+            value={gender} 
             className='select-box'
             onChange={(e) => {
               setGender(e.target.value);
@@ -174,6 +178,8 @@ const SignUpForm = () => {
           <label>WHAT FIELD ARE YOU CURRENTLY WORKING IN?</label>
           <div className='select'>
           <select
+          id='stateKnowledgeField'
+          value={knowledgeField}
           className='select-box'
           onChange={(e) => {
             setknowledgeField(e.target.value);
@@ -201,6 +207,8 @@ const SignUpForm = () => {
           <label>WHAT IS YOUR LEVEL OF EXPERTISE IN YOUR CURRENT FIELD?</label>
           <div className='select'>
           <select
+          id='stateExpertise'
+          value={expertise}
           className='select-box'
           onChange={(e) => {
             setExpertise(e.target.value);
