@@ -96,13 +96,16 @@
 @media only screen and (max-width: 400px) {
 
   .user-profile-container {
-    height: 190vw;
+    height: auto;
+    min-height: 185vw;
+    padding: 5vw;
     padding-top: 30vw;
   }
 
   .user-general-info {
     flex-direction: column;
     align-items: center;
+    width: 100%;
 
     img {
       width: 45vw;
@@ -127,7 +130,26 @@
   }
 
   .user-profile {
-    width: 80%;
+    width: 100%;
+    padding: 2;
+  }
+
+  .user-description-container,
+  .mentor-questions-container {
+    width: 100%;
+    margin: 0;
+    margin-top: 3vw;
+  }
+
+  .mentor-questions-container {
+
+    h4 {
+      font-size: 5vw;
+    }
+
+    p {
+      font-size: 4vw;
+    }
   }
 
 }
