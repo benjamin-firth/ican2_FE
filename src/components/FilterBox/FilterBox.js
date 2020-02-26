@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterMentors } from '../../actions';
+import { filterPeople } from '../../utils/methods';
 import './FilterBox.scss';
 
 const FilterBox = () => {
@@ -11,28 +12,8 @@ const FilterBox = () => {
   const [name, setName] = useState('');
 
   const findMentors = () => {
-    let firstFilter = mentors;
 
-    if (field) {
-      firstFilter = mentors.filter(mentor => mentor.mentorProfile.fieldOfKnowledge === field);
-    };
-
-    let secondFilter = firstFilter;
-
-    if (state) {
-      secondFilter = firstFilter.filter(mentor => mentor.location.state === state);
-    };
-
-    let thirdFilter = secondFilter;
-
-    console.log('second', secondFilter);
-    console.log('third', thirdFilter);
-
-    if (name) {
-      thirdFilter = secondFilter.filter(mentor => mentor.name.toLowerCase().includes(name.toLowerCase()));
-    };
-
-    dispatch(filterMentors(thirdFilter));
+    dispatch(filterMentors(filterPeople(mentors, field, state, name)));
 
     if (!field && !state && !name) {
       dispatch(filterMentors(mentors));
