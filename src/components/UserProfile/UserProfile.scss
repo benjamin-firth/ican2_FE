@@ -2,7 +2,8 @@
 
 .user-profile-container {
   background-color: $primarycolor;
-  height: 100vw;
+  height: auto;
+  min-height: 100vw;
   padding-top: 12vw;
   font-family: $primaryfont;
 }

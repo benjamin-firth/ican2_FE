@@ -8,7 +8,8 @@
   background-color: $primarycolor;
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: auto;
+  min-height: 100vw;
   align-items: center;
   padding-top: 4vw;
   h3 {

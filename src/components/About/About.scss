@@ -1,7 +1,8 @@
 @import '../../variables.scss';
 
 .about-container {
-  height: 100vw;
+  height: auto;
+  min-height: 100vw;
   background-color: $primarycolor;
   padding-top: 7vw;
   text-align: center;
@@ -17,7 +18,8 @@
 
   .about-container {
     padding-top: 40vw;
-    height: 175vw;
+    height: auto;
+    min-height: 175vw;
 
     h5 {
       font-size: 8vw;

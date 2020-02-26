@@ -1,7 +1,8 @@
 @import '../../variables.scss';
 
 .loader-container {
-  height: 100vw;
+  height: auto;
+  min-height: 100vw;
   background-color: $primarycolor;
   padding-top: 7vw;
   text-align: center;
@@ -15,7 +16,8 @@
 
 @media only screen and (max-width: 400px) {
   .loader-container {
-    height: 195vw;
+    height: auto;
+    min-height: 195vw;
     padding-top: 50vw;
     h5 {
       font-size: 35px;
