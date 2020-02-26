@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadMessages } from '../../actions';
 import { fetchData } from '../../utils/apiCalls';
 import './MessagePreview.scss';
+import PropTypes from 'prop-types';
 
 const MessagePreview = ({ otherMessengerId }) => {
   const [otherMessengerName, setOtherMessengerName] = useState('');
@@ -13,7 +14,7 @@ const MessagePreview = ({ otherMessengerId }) => {
 
   const findMessenger = () => {
     const body = {"query": "{users(id: \""+ otherMessengerId + "\") {name profile{image}}}"};
-    
+
     fetchData(body)
       .then(data => {
         setOtherMessengerName(data.data.users.name);
@@ -53,6 +54,10 @@ const MessagePreview = ({ otherMessengerId }) => {
       }
     </section>
   );
+}
+
+MessagePreview.propTypes = {
+  otherMessengerId: PropTypes.number
 }
 
 export default MessagePreview;

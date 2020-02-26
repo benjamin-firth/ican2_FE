@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './MentorCard.scss';
+import PropTypes from 'prop-types';
 
 const MentorCard = ({ mentor }) => {
 
@@ -19,6 +20,10 @@ const MentorCard = ({ mentor }) => {
         </Link>
       </section>
   );
+};
+
+MentorCard.propTypes = {
+  mentor: PropTypes.object
 }
 
 export default MentorCard;

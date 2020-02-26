@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { checkSelected } from '../../utils/methods';
 import './NavButton.scss';
 import { logoutCurrentUser } from '../../actions';
+import PropTypes from 'prop-types';
 
 const NavButton = ({ nav, name }) => {
   const dispatch = useDispatch();
@@ -22,5 +23,10 @@ const NavButton = ({ nav, name }) => {
     </Link>
   );
 };
+
+NavButton.propTypes = {
+  nav: PropTypes.string,
+  name: PropTypes.string
+}
 
 export default NavButton;

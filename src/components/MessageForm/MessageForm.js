@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from '../../utils/apiCalls';
 import { loadMessages, addMessage } from '../../actions';
 import './MessageForm.scss';
+import PropTypes from 'prop-types';
 
 const MessageForm = ({ otherMessenger }) => {
   const currentUser = useSelector(state => state.currentUser);
@@ -47,6 +48,10 @@ const MessageForm = ({ otherMessenger }) => {
       </form>
     </div>
   );
+}
+
+MessageForm.propTypes = {
+  otherMessenger: PropTypes.object
 }
 
 export default MessageForm;
