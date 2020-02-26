@@ -3,17 +3,10 @@ import NavButton from '../components/NavButton/NavButton';
 import MessagePreview from '../components/MessagePreview/MessagePreview';
 import { fetchData } from './apiCalls';
 
-
 export const renderButtons = buttons => {
   return buttons.map(button => (
     <NavButton nav={button.nav} name={button.name} key={button.name}/>
   ))
-}
-
-export const checkForMessages = (id) => {
-  const body = {"query": "{conversations(userId: \""+ id + "\") {senderId recipientId}}"};
-
-  return fetchData(body);
 }
 
 export const renderPreviews = (conversations, id) => {
@@ -51,3 +44,11 @@ export const showMessage = (message, otherMessenger, currentUser) => {
     )
   }
 }
+
+export const checkSelected = (url, nav) => {
+  if (url === nav) {
+    return 'selected';
+  } else {
+    return '';
+  };
+};

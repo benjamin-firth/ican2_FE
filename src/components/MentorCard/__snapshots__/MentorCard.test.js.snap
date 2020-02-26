@@ -34,3 +34,36 @@ exports[`MentorCard should match the snapshot 1`] = `
   </Link>
 </section>
 `;
+
+exports[`MentorCard should match the snapshot when gender is no specified 1`] = `
+<section
+  className="mentor-card-container"
+>
+  <img
+    alt="mentor profile picture"
+    className="profile-photo"
+    src="mockUrl"
+  />
+  <h2>
+    mockname
+  </h2>
+  <h3>
+    mock field
+  </h3>
+  <p>
+    mockCity
+    , 
+    mockState
+  </p>
+  <p>
+    mock aboutMe
+  </p>
+  <Link
+    to="/mentors/1"
+  >
+    <button>
+      view profile
+    </button>
+  </Link>
+</section>
+`;

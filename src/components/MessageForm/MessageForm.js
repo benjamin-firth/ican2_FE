@@ -19,7 +19,7 @@ const MessageForm = ({ otherMessenger }) => {
 
     fetchData(body)
     .then (data => dispatch(addMessage(data.data.createMessage.message)))
-    .catch(error => console.log(error))
+    .catch(error => error)
   };
 
   const loadMessages = () => {

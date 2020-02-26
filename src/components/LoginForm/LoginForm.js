@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { fetchData } from '../../utils/apiCalls';
+import { getUser } from '../../utils/methods';
 import { loginCurrentUser } from '../../actions';
 import Loader from '../Loader/Loader';
 import './LoginForm.scss';
@@ -34,7 +35,7 @@ const LoginForm = () => {
       setError('Please enter a valid email address.');
       setIsLoading(false);
     } else {
-      getUser()
+      getUser(email)
       .then(data => {
         dispatch(loginCurrentUser(data.data.users));
         setIsLoading(false);
@@ -42,12 +43,6 @@ const LoginForm = () => {
       .catch(error => setError('That user does not exist. Please sign up!'))
     }
   }
-
-  const getUser = () => {
-    const body = {"query": "{users(email: \""+ email + "\") {id name email mentor profile {gender aboutMe image fieldOfInterest} mentorProfile {fieldOfKnowledge experienceLevel workDayQuestion enjoymentQuestion teachingPointsQuestion adviceQuestion} location {city state}}}"};
-
-    return fetchData(body);
-  };
 
   return (
     currentUser.name ? <Redirect to='myprofile' /> :
