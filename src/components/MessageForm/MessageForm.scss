@@ -26,3 +26,36 @@
   color: $secondarycolor;
   margin: 1vw 0 .3vw .2vw;
 }
+
+@media only screen and (max-width: 400px) {
+  .message-form-container {
+    width: 90%;
+    margin: auto;
+  }
+
+  .message-form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    textarea {
+      height: 25vw;
+      width: 100%;
+      border: none;
+      font-size: 1.4vw;
+      padding: 1vw;
+      margin: 2vw 0;
+    }
+
+    button {
+      font-size: 6vw;
+      margin-left: 1vw;
+      width: auto;
+      margin-bottom: 3vw;
+    }
+  }
+
+  .new-message-tag {
+    font-size: 7vw;
+  }
+}

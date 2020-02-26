@@ -39,3 +39,33 @@
     border-color: $secondarycolor;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .mentor-card-container {
+    width: 100%;
+    height: auto;
+
+    img {
+      width: 40vw;
+      height: 40vw;
+    }
+
+    h2 {
+      font-size: 8vw;
+    }
+
+    h3 {
+      font-size: 6vw;
+    }
+
+    h2, h3, p {
+      margin-bottom: 5vw;
+    }
+
+    button {
+      font-size: 7vw;
+      width: auto;
+      padding: 2vw;
+    }
+  }
+}

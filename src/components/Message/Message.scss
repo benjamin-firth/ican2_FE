@@ -22,3 +22,17 @@
 .sender {
   justify-content: flex-end;
 }
+
+@media only screen and (max-width: 400px) {
+  .message {
+    img {
+      width: 15vw;
+      height: 15vw;
+    }
+
+    p {
+      width: 55vw;
+    }
+  }
+
+}

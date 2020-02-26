@@ -19,3 +19,25 @@
     border: 5px solid $secondarycolor;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .message-preview {
+    margin: 2vw;
+    border: 5px solid $secondarycolor;
+    padding: 5vw;
+    width: auto;
+
+    img {
+      border-radius: 50%;
+      width: 25vw;
+      height: 25vw;
+    }
+
+    button {
+      border: 5px solid $secondarycolor;
+      font-size: 4vw;
+      width: auto;
+      padding: 2vw;
+    }
+  }
+}

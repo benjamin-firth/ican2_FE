@@ -25,3 +25,17 @@
   overflow-y: scroll;
   height: 50vh;
 }
+
+@media only screen and (max-width: 400px) {
+
+  .message-container {
+    padding-top: 25vw;
+    height: auto;
+    min-height: 195vw;
+  }
+
+  .messages-box {
+    width: 90%;
+  }
+
+}

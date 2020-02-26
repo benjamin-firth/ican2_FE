@@ -92,3 +92,71 @@
     font-size: 1vw;
   }
 }
+
+@media only screen and (max-width: 400px) {
+
+  .user-profile-container {
+    height: auto;
+    min-height: 185vw;
+    padding: 5vw;
+    padding-top: 30vw;
+  }
+
+  .user-general-info {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    button {
+      font-size: 7vw;
+      padding: 2vw;
+      width: auto;
+      background-color: white;
+    }
+
+    img {
+      width: 45vw;
+      height: 45vw;
+      margin-bottom: 5vw;
+    }
+
+    h2, h3, p {
+      margin: 0;
+      text-align: center;
+      margin-bottom: 4vw;
+    }
+
+    p {
+      margin-bottom: 2vw;
+    }
+
+    h2 {
+      font-size: 8vw;
+      color: $secondarycolor;
+    }
+  }
+
+  .user-profile {
+    width: 100%;
+    padding: 2;
+  }
+
+  .user-description-container,
+  .mentor-questions-container {
+    width: 100%;
+    margin: 0;
+    margin-top: 3vw;
+  }
+
+  .mentor-questions-container {
+
+    h4 {
+      font-size: 5vw;
+    }
+
+    p {
+      font-size: 4vw;
+    }
+  }
+
+}

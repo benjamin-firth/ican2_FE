@@ -50,5 +50,44 @@
     height: 35px;
     width: 36vw;
   }
+}
+
+@media only screen and (max-width: 400px) {
+  .login-page {
+    height: 170vw;
+    padding: 0;
+    padding-top: 35vw;
+    width: 100%;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 3vw;
+    padding-top: 0;
+    background-color: white;
+    width: 80%;
+
+    input,
+    button {
+      font-size: 8vw;
+      width: 95%;
+      margin: auto;
+    }
+
+    p {
+      font-size: 5vw;
+      margin-top: 3vw;
+    }
+
+    button {
+      margin: 0;
+      margin-top: 3vw;
+      background-color: white;
+    }
+  }
 
 }

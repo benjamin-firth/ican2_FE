@@ -12,3 +12,16 @@
     font-size: 2vw;
   }
 }
+
+@media only screen and (max-width: 400px) {
+
+  .about-container {
+    padding-top: 40vw;
+    height: 175vw;
+
+    h5 {
+      font-size: 8vw;
+    }
+  }
+
+}
