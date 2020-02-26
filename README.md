@@ -6,13 +6,8 @@
 
 ![desktop](https://media.giphy.com/media/elyZrUipCWI2wOTK2m/giphy.gif)
 
-### [Click here](https://colorpickerfrontend.herokuapp.com/) to launch the application.
-### [Click here](https://github.com/kaylaewood/palettePickerBackend) to view the backend repo for this project and documentation on the endpoints.
-
-### ABOUT
-This app enables users to find and save color palettes for projects. Users can generate random palettes, lock the colors they like, and then regenerate the colors they don't. Then, users can create projects and assign palettes to projects. Users can also delete projects and palettes.
-
-For this application, we built the backend and frontend from scratch. The frontend was built with React Hooks, Redux, and Sass. The backend was build with Node.js, Express, knex, and postgreSQL. Everything was tested using Jest and Enzyme. Fetch calls are made to our [heroku hosted API](http://palettepickerapp.herokuapp.com/api/v1/projects). This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project has a robust testing suite.
+### [Click here](https://ican2app.herokuapp.com/) to launch the application on heroku.
+### [Click here](https://github.com/cjkelling/ican2_be) to view the backend repo for this project and documentation on the endpoints.
 
 ### DEV SET UP INSTRUCTIONS
 - `git clone` this repo
@@ -21,18 +16,17 @@ For this application, we built the backend and frontend from scratch. The fronte
 - Run `npm start` and open your browser to the indicated url
 - Run `npm test` to view testing suite
 
+### ABOUT
+This app enables users to find and save color palettes for projects. Users can generate random palettes, lock the colors they like, and then regenerate the colors they don't. Then, users can create projects and assign palettes to projects. Users can also delete projects and palettes.
+
+For this application, we built the backend and frontend from scratch. The frontend was built with React Hooks, Redux, and Sass. The backend was build with Node.js, Express, knex, and postgreSQL. Everything was tested using Jest and Enzyme. Fetch calls are made to our [heroku hosted API](http://palettepickerapp.herokuapp.com/api/v1/projects). This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project has a robust testing suite.
+
+### Responsive Design: Mobile
+![mobile](https://media.giphy.com/media/XfmjI6FIXWLWGkRM3q/giphy.gif)
+
 ### FRONTEND TECHNOLOGIES USED
 - React Hooks
 - Redux
-- Fetch API
+- graphQL
 - Sass
 - Jest/Enzyme
-
-### BACKEND TECHNOLOGIES USED
-- Node.js
-- Express
-- Knex
-- PostgreSQL
-- Jest/Enzyme
-
-![mobile](https://media.giphy.com/media/XfmjI6FIXWLWGkRM3q/giphy.gif)
