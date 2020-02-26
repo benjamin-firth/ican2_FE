@@ -18,6 +18,7 @@ const BeginNavbar = () => {
       <div className='nav-button-container'>
         {renderButtons()}
       </div>
+      <button className='hamburger'></button>
     </nav>
   );
 }

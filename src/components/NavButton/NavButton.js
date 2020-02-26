@@ -17,7 +17,7 @@ const NavButton = ({ nav, name }) => {
 
   return (
     <Link to={nav}>
-      <button value={name} id='logoutButton' className={checkSelected(window.location.pathname, nav)} onClick={() => logOut()}>
+      <button value={name} id='logoutButton' className={`${checkSelected(window.location.pathname, nav)} nav-button`} onClick={() => logOut()}>
         {name}
       </button>
     </Link>
