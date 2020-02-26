@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderButtons, renderPreviews, getUser, checkSelected, showMessage, displayMentors } from './methods';
+import { renderButtons, renderPreviews, getUser, checkSelected, showMessage, displayMentors, filterPeople } from './methods';
 import { fetchData } from './apiCalls';
 
 describe('Methods', () => {
@@ -94,6 +94,63 @@ describe('Methods', () => {
     const mockMentors = [{name: 'pants', id: 1}, {name: 'shirt', id: 2}]
 
     expect(displayMentors(mockMentors).length).toEqual(2);
+  });
+
+  it('should filter mentors', () => {
+    const mockMentors = [
+      { name: 'Ben',
+        location: {
+          state: 'Colorado',
+          city: 'Denver'
+        },
+        mentorProfile: {
+          fieldOfKnowledge: 'Botany'
+        }
+      },
+      { name: 'John',
+        location: {
+          state: 'Colorado',
+          city: 'Denver'
+        },
+        mentorProfile: {
+          fieldOfKnowledge: 'Botany'
+        }
+      },
+      { name: 'Ben',
+        location: {
+          state: 'Ohio',
+          city: 'Columbus'
+        },
+        mentorProfile: {
+          fieldOfKnowledge: 'Botany'
+        }
+      },
+      { name: 'Ben',
+        location: {
+          state: 'Colorado',
+          city: 'Denver'
+        },
+        mentorProfile: {
+          fieldOfKnowledge: 'Software Development'
+        }
+      },
+    ];
+
+    const mockField = 'Botany';
+    const mockState = 'Colorado';
+    const mockName = 'Ben';
+
+    const expected = { name: 'Ben',
+      location: {
+        state: 'Colorado',
+        city: 'Denver'
+      },
+      mentorProfile: {
+        fieldOfKnowledge: 'Botany'
+      }
+    };
+
+    expect(filterPeople(mockMentors, mockField, mockState, mockName)).toEqual([expected]);
   });
 
 });
