@@ -10,7 +10,7 @@ export const fetchData = (body) => {
   return fetch('https://ican2-be-rails.herokuapp.com/api/v1/graphql', options)
   .then(response => {
     if (!response.ok) {
-        return ({ error: 'error fetching data' });
+        throw Error('Error fetching data');
       }
     return response.json();
   })

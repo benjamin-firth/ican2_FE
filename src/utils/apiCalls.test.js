@@ -32,7 +32,7 @@ describe('api', () => {
         });
       });
 
-      expect(fetchData()).rejects.toEqual({ error: 'error fetching data' });
+      expect(fetchData()).rejects.toEqual(Error('Error fetching data'));
     });
   });
 });
