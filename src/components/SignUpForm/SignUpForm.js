@@ -94,12 +94,12 @@ const SignUpForm = () => {
       <form className='sign-up-form'>
         {error && <p className='error-msg'>{error}</p>}
         <label>WHAT IS YOUR FIRST NAME?</label>
-        <input onChange={(e) => {
+        <input id='stateName' value={name} onChange={(e) => {
           setName(e.target.value)
           setError('')
         }}/>
         <label>WHAT IS YOUR EMAIL ADDRESS?</label>
-        <input onChange={(e) => {
+        <input id='stateEmail' value={email} onChange={(e) => {
           setEmail(e.target.value);
           setError('');
         }}/>
@@ -150,13 +150,15 @@ const SignUpForm = () => {
           </select>
         </div>
         <label>TELL US A LITTLE ABOUT YOURSELF (This will appear in your profile)</label>
-        <input onChange={(e) => {
+        <input id='stateAbout' value={aboutMe} onChange={(e) => {
           setAboutMe(e.target.value);
           setError('');
         }}/>
         <label>DO YOU WANT TO BE A MENTOR?</label>
         <div className='select'>
           <select
+            id='stateMentorBool'
+            value={mentorBool}
             className='select-box'
             onChange={(e) => {
               setMentorBool(e.target.value);
@@ -212,22 +214,22 @@ const SignUpForm = () => {
           </select>
           </div>
             <label>DESCRIBE A TYPICAL DAY AT WORK.</label>
-            <input onChange={(e) => {
+            <input id='stateWorkDay' value={workDay} onChange={(e) => {
               setworkDay(e.target.value);
               setError('');
             }}/>
             <label>WHAT DO YOU ENJOY MOST ABOUT YOUR WORK?</label>
-            <input onChange={(e) => {
+            <input id='stateEnjoyQ' value={enjoyQ} onChange={(e) => {
               setEnjoyQ(e.target.value);
               setError('');
             }}/>
             <label>WHAT DO YOU FEEL THE MOST EXCITED ABOUT TEACHING OTHERS?</label>
-            <input onChange={(e) => {
+            <input id='adviceQ' value={teachingPoints} onChange={(e) => {
               setTeachingPoints(e.target.value);
               setError('');
             }}/>
             <label>WHAT IS ONE PIECE OF ADVICE YOU HAVE FOR OTHERS LOOKING TO JOIN THIS FIELD?</label>
-            <input onChange={(e) => {
+            <input id='stateAdviceQ' value={adviceQ} onChange={(e) => {
               setAdviceQ(e.target.value);
               setError('');
             }}/>
