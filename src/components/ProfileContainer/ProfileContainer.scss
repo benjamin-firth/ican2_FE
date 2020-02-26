@@ -3,6 +3,7 @@
 .mentors-container {
   background-color: $primarycolor;
   padding-top: 7vw;
+  height: 100vw;
 }
 
 .mentor-cards-container {
@@ -10,4 +11,10 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.no-match-msg {
+  font-size: 1.5vw;
+  margin-top: 2vw;
+  font-family: $secondaryfont;
 }

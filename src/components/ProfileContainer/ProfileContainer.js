@@ -34,7 +34,7 @@ const ProfileContainer = () => {
         <>
         <FilterBox />
         <div className='mentor-cards-container'>
-          {filteredMentors.length ? displayMentors(filteredMentors) : <p>oopsies</p>}
+          {filteredMentors.length ? displayMentors(filteredMentors) : <p className='no-match-msg'>There are no mentors that match your search. Please adjust the filters.</p>}
         </div>
         </>
       }

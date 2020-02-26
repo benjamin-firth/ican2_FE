@@ -40,4 +40,13 @@
     padding: .3vw;
     border: 5px solid $secondarycolor;
   }
+
+  input {
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 1vw;
+    padding: .3vw;
+    margin-left: 1vw;
+    width: 20vw;
+  }
 }
