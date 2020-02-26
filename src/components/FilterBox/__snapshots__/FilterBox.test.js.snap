@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilterBox should match the snapshot 1`] = `
-<section
-  className="filter-container"
->
-  <h5>
-    this is the filter box
-  </h5>
-</section>
-`;
+exports[`FilterBox should match the snapshot 1`] = `undefined`;
