@@ -1,6 +1,7 @@
 import React from 'react';
 import NavButton from '../components/NavButton/NavButton';
 import MessagePreview from '../components/MessagePreview/MessagePreview';
+import MentorCard from '../components/MentorCard/MentorCard';
 import { fetchData } from './apiCalls';
 
 export const renderButtons = buttons => {
@@ -52,3 +53,7 @@ export const checkSelected = (url, nav) => {
     return '';
   };
 };
+
+export const displayMentors = mentors => {
+  return mentors.map(mentor => <MentorCard mentor={mentor} />)
+}

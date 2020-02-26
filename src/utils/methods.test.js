@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderButtons, renderPreviews, getUser, checkSelected, showMessage } from './methods';
+import { renderButtons, renderPreviews, getUser, checkSelected, showMessage, displayMentors } from './methods';
 import { fetchData } from './apiCalls';
 
 describe('Methods', () => {
@@ -8,7 +8,7 @@ describe('Methods', () => {
     const mockButtons = [
       {nav: '/home', name: 'home'},
       {nav: '/profile', name: 'profile'}
-    ]
+    ];
 
     expect(renderButtons(mockButtons).length).toBe(2)
   });
@@ -25,7 +25,7 @@ describe('Methods', () => {
         ok: true,
         json: () => Promise.resolve('pants')
       });
-    })
+    });
 
     await getUser('kw@email.com');
 
@@ -41,42 +41,42 @@ describe('Methods', () => {
       mockMessage = {
         userId: 2,
         body: 'this is a message'
-      }
+      };
 
       mockOtherMessenger = {
         id: 1,
         pic: 'url'
-      }
+      };
 
       mockCurrentUser = {
         profile: {
           image: 'url'
         }
-      }
+      };
 
       expect(showMessage(mockMessage, mockOtherMessenger, mockCurrentUser)).toEqual(<section className="message sender"><p>this is a message</p><img src="url" /></section>);
-    })
+    });
 
     it('should return with other class', () => {
       mockMessage = {
         userId: 1,
         body: 'this is a message'
-      }
+      };
 
       mockOtherMessenger = {
         id: 1,
         pic: 'url'
-      }
+      };
 
       mockCurrentUser = {
         profile: {
           image: 'url'
         }
-      }
+      };
 
       expect(showMessage(mockMessage, mockOtherMessenger, mockCurrentUser)).toEqual(<section className="message other"><img src="url" /><p>this is a message</p></section>);
-    })
-  })
+    });
+  });
 
   describe('checkSelected', () => {
     it('should return with an empty string', async () => {
@@ -88,7 +88,12 @@ describe('Methods', () => {
 
       expect(checkSelected('/profile', '/profile')).toEqual('selected');
     });
+  });
 
-  })
+  it('should displayMentors', () => {
+    const mockMentors = [{name: 'pants', id: 1}, {name: 'shirt', id: 2}]
+
+    expect(displayMentors(mockMentors).length).toEqual(2);
+  });
 
 });
