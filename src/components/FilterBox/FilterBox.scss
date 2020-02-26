@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+// * {
+//   border: 1px solid blue;
+// }
+
+.filter-container {
+  position: fixed;
+  background-color: $primarycolor;
+  width: 100%;
+  text-align: center;
+  margin-top: 1.4vw;
+  z-index: 0;
+
+
+  h5 {
+    font-family: $secondaryfont;
+    color: $secondarycolor;
+    font-size: 2vw;
+  }
+}

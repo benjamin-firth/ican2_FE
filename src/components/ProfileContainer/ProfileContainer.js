@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadMentors } from '../../actions';
 import { fetchData } from '../../utils/apiCalls';
 import { displayMentors } from '../../utils/methods';
-
 import './ProfileContainer.scss';
 import MentorCard from '../MentorCard/MentorCard';
 import Loader from '../Loader/Loader';
+import FilterBox from '../FilterBox/FilterBox';
 
 const ProfileContainer = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,15 @@ const ProfileContainer = () => {
 
   return (
     <section className='mentors-container'>
-      {isLoading ? <Loader message='finding mentors...'/> : displayMentors(mentors)}
+      {isLoading ?
+        <Loader message='finding mentors...'/> :
+        <>
+        <FilterBox />
+        <div className='mentor-cards-container'>
+          {displayMentors(mentors)}
+        </div>
+        </>
+      }
     </section>
   );
 }

@@ -1,10 +1,13 @@
 @import '../../variables.scss';
 
 .mentors-container {
+  background-color: $primarycolor;
+  padding-top: 6vw;
+}
+
+.mentor-cards-container {
+  padding-top: 10vw;
   display: flex;
   justify-content: center;
-  background-color: $primarycolor;
   flex-wrap: wrap;
-  padding: 3vw;
-  padding-top: 12vw;
 }
