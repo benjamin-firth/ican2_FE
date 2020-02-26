@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { fetchData } from '../../utils/apiCalls';
+import { renderPreviews } from '../../utils/methods';
 import './Inbox.scss';
 import MessagePreview from '../MessagePreview/MessagePreview';
 
@@ -17,28 +18,16 @@ const Inbox = () => {
     .then(data => {
       setConversations(data.data.conversations)
     })
-    .catch(error => console.log(error))
+    .catch(error => error)
   }
 
   useEffect(() => checkForMessages(), [])
-
-  const renderPreviews = () => {
-    return conversations.map(conversation => {
-      let otherMessengerId;
-      if (conversation.senderId === currentUser.id) {
-        otherMessengerId = conversation.recipientId;
-      } else {
-        otherMessengerId = conversation.senderId;
-      }
-      return <MessagePreview otherMessengerId={otherMessengerId}/>
-    })
-  }
 
   return (
     <section className='inbox'>
       <h3>you have chats open with:</h3>
       <div className='preview-container'>
-        {renderPreviews()}
+        {renderPreviews(conversations, currentUser.id)}
       </div>
     </section>
   );

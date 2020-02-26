@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadMentors } from '../../actions';
 import { fetchData } from '../../utils/apiCalls';
+import { displayMentors } from '../../utils/methods';
+
 import './ProfileContainer.scss';
 import MentorCard from '../MentorCard/MentorCard';
 import Loader from '../Loader/Loader';
@@ -22,15 +24,11 @@ const ProfileContainer = () => {
       })
   };
 
-  const displayMentors = () => {
-    return mentors.map(mentor => <MentorCard mentor={mentor} />)
-  }
-
   useEffect(() => getMentors(), [])
 
   return (
     <section className='mentors-container'>
-      {isLoading ? <Loader message='finding mentors...'/> : displayMentors()}
+      {isLoading ? <Loader message='finding mentors...'/> : displayMentors(mentors)}
     </section>
   );
 }

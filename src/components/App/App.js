@@ -34,7 +34,7 @@ const App = () => {
       </Route>
       <Route path='/myprofile'>
         <Navbar />
-        <UserProfile user={useSelector(state => state.currentUser)} />
+        <UserProfile user={currentUser} />
       </Route>
       <Route exact path='/mentors'>
         <Navbar />
