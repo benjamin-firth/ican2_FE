@@ -40,7 +40,7 @@ const MessageForm = ({ otherMessenger }) => {
   useEffect(() => loadMessages(), []);
 
   return (
-    <div>
+    <div className='message-form-container'>
       <p className='new-message-tag'>new message:</p>
       <form type="reset" className='message-form'>
         <textarea id='stateMessageToSend' value={messageToSend} onChange={e => setMessageToSend(e.target.value)} />
