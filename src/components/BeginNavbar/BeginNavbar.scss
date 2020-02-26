@@ -34,20 +34,29 @@
   }
 }
 
+
 @media only screen and (max-width: 400px) {
+
+  .mobile-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 16vw;
+    background-color: $secondarycolor;
+    padding: 1vw;
+  }
+
   .nav-button {
     display: none;
   }
 
   .begin-nav {
+    padding-top: 0;
     justify-content: center;
   }
 
   .hamburger {
     display: block;
-  }
-
-  .display {
-
   }
 }
