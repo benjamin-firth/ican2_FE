@@ -34,7 +34,7 @@ const ProfileContainer = () => {
         <>
         <FilterBox />
         <div className='mentor-cards-container'>
-          {filteredMentors.length ? displayMentors(filteredMentors) : displayMentors(mentors)}
+          {filteredMentors.length ? displayMentors(filteredMentors) : <p>oopsies</p>}
         </div>
         </>
       }
