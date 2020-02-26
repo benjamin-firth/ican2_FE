@@ -15,6 +15,8 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const currentUser = useSelector(state => state.currentUser);
 
+  window.scrollTo(0, 0);
+
   const enterEmail = (e) => {
     setError('');
     setEmail(e.target.value);

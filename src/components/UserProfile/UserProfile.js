@@ -10,6 +10,8 @@ const UserProfile = ({ user }) => {
   const currentUser = useSelector(state => state.currentUser);
   const dispatch = useDispatch();
 
+  window.scrollTo(0, 0);
+
   const getMessages = () => {
     dispatch(loadMessages({}));
 
