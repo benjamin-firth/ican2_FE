@@ -1,0 +1,52 @@
+@import '../../variables.scss';
+
+.filter-container {
+  position: fixed;
+  background-color: $primarycolor;
+  width: 100%;
+  z-index: 0;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h5 {
+    font-family: $secondaryfont;
+    color: $secondarycolor;
+    font-size: 2vw;
+  }
+
+  p {
+    color: $secondarycolor;
+    font-family: $secondaryfont;
+    font-weight: bold;
+    font-size: 1.2vw;
+  }
+
+  select {
+    -webkit-appearance: menulist-button;
+    background-color: #FFF;
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 1vw;
+    padding: .3vw;
+    margin-left: 1vw;
+  }
+
+  button {
+    font-size: 1vw;
+    margin: 0;
+    margin-left: 1vw;
+    padding: .3vw;
+    border: 5px solid $secondarycolor;
+  }
+
+  input {
+    border: 5px solid #C7D0D7;
+    font-family: $primaryfont;
+    font-size: 1vw;
+    padding: .3vw;
+    margin-left: 1vw;
+    width: 20vw;
+  }
+}

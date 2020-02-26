@@ -3,15 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadMentors } from '../../actions';
 import { fetchData } from '../../utils/apiCalls';
 import { displayMentors } from '../../utils/methods';
-
 import './ProfileContainer.scss';
 import MentorCard from '../MentorCard/MentorCard';
 import Loader from '../Loader/Loader';
+import FilterBox from '../FilterBox/FilterBox';
 
 const ProfileContainer = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const mentors = useSelector(state => state.mentors);
+  const filteredMentors = useSelector(state => state.filteredMentors);
   const currentUser = useSelector(state => state.currentUser);
 
   const getMentors = () => {
@@ -28,7 +29,15 @@ const ProfileContainer = () => {
 
   return (
     <section className='mentors-container'>
-      {isLoading ? <Loader message='finding mentors...'/> : displayMentors(mentors)}
+      {isLoading ?
+        <Loader message='finding mentors...'/> :
+        <>
+        <FilterBox />
+        <div className='mentor-cards-container'>
+          {filteredMentors.length ? displayMentors(filteredMentors) : <p className='no-match-msg'>There are no mentors that match your search. Please adjust the filters.</p>}
+        </div>
+        </>
+      }
     </section>
   );
 }

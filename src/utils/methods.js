@@ -57,3 +57,24 @@ export const checkSelected = (url, nav) => {
 export const displayMentors = mentors => {
   return mentors.map(mentor => <MentorCard mentor={mentor} />)
 }
+export const filterPeople = (mentors, field, state, name) => {
+  let firstFilter = mentors;
+
+  if (field) {
+    firstFilter = mentors.filter(mentor => mentor.mentorProfile.fieldOfKnowledge === field);
+  };
+
+  let secondFilter = firstFilter;
+
+  if (state) {
+    secondFilter = firstFilter.filter(mentor => mentor.location.state === state);
+  };
+
+  let thirdFilter = secondFilter;
+
+  if (name) {
+    thirdFilter = secondFilter.filter(mentor => mentor.name.toLowerCase().includes(name.toLowerCase()));
+  };
+
+  return thirdFilter;
+}
