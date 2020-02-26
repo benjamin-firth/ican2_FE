@@ -5,12 +5,10 @@ import './FilterBox.scss';
 
 const FilterBox = () => {
   const dispatch = useDispatch();
-  const [fieldFilter, setFieldFilter] = useState('');
   const mentors = useSelector(state => state.mentors);
 
-  const findMentors = e => {
-    e.preventDefault();
-    let filteredMentors = mentors.filter(mentor => mentor.mentorProfile.fieldOfKnowledge === fieldFilter);
+  const findMentors = (filter) => {
+    let filteredMentors = mentors.filter(mentor => mentor.mentorProfile.fieldOfKnowledge === filter);
     dispatch(filterMentors(filteredMentors));
   }
 
@@ -19,7 +17,9 @@ const FilterBox = () => {
     <p>Filter mentors:</p>
       <select
         className='select-box'
-        onChange={(e) => setFieldFilter(e.target.value)}
+        onChange={(e) => {
+          findMentors(e.target.value)
+        }}
       >
         <option value=''>Any Career Field</option>
         <option value='Agriculture'>Agriculture</option>
@@ -38,7 +38,6 @@ const FilterBox = () => {
         <option value='Software Development'>Software Development</option>
         <option value='Other'>Other</option>
       </select>
-      <button onClick={e => findMentors(e)}>apply filter(s)</button>
     </form>
   );
 }
