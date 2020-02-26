@@ -9,9 +9,11 @@ exports[`MessageForm should match the snapshot 1`] = `
   </p>
   <form
     className="message-form"
+    type="reset"
   >
     <textarea
       onChange={[Function]}
+      value=""
     />
     <button
       onClick={[Function]}
