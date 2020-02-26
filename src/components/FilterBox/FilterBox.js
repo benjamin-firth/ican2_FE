@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterMentors } from '../../actions';
 import './FilterBox.scss';
 
 const FilterBox = () => {
+  const dispatch = useDispatch();
   const [fieldFilter, setFieldFilter] = useState('');
-  window.scrollTo(0, 0);
+  const mentors = useSelector(state => state.mentors);
+
+  const findMentors = e => {
+    e.preventDefault();
+    let filteredMentors = mentors.filter(mentor => mentor.mentorProfile.fieldOfKnowledge === fieldFilter);
+    dispatch(filterMentors(filteredMentors));
+  }
 
   return (
     <form className='filter-container'>
-    <p>Filter mentors by:</p>
+    <p>Filter mentors:</p>
       <select
         className='select-box'
         onChange={(e) => setFieldFilter(e.target.value)}
       >
-        <option value=''>Career Field</option>
+        <option value=''>Any Career Field</option>
         <option value='Agriculture'>Agriculture</option>
         <option value='Biology'>Biology</option>
         <option value='Botany'>Botany</option>
@@ -29,6 +38,7 @@ const FilterBox = () => {
         <option value='Software Development'>Software Development</option>
         <option value='Other'>Other</option>
       </select>
+      <button onClick={e => findMentors(e)}>apply filter(s)</button>
     </form>
   );
 }

@@ -26,3 +26,8 @@ export const addMessage = message => ({
   type: 'ADD_MESSAGE',
   message
 })
+
+export const filterMentors = mentors => ({
+  type: 'FILTER_MENTORS',
+  mentors
+})
