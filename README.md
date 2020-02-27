@@ -8,6 +8,7 @@
 
 ### [Click here](https://ican2app.herokuapp.com/) to launch the application on heroku.
 ### [Click here](https://github.com/cjkelling/ican2_be) to view the backend repo for this project and documentation on the endpoints.
+### [Click here](https://github.com/mcat56/ican2_BE/projects/1) to view the project board.
 
 ### DEV SET UP INSTRUCTIONS
 - `git clone` this repo
