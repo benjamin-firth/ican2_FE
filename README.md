@@ -4,7 +4,7 @@
 ## Frontend Team: [Benjamin Firth](https://github.com/benjamin-firth) & [Kayla Wood](https://github.com/kaylaewood)
 ## Backend Team: [Mary Lang](https://github.com/mcat56) & [Christopher Kelling](https://github.com/cjkelling)
 
-![desktop](https://media.giphy.com/media/elyZrUipCWI2wOTK2m/giphy.gif)
+![desktop](https://media.giphy.com/media/J5FmlmeNJwJK8c6Nf3/giphy.gif)
 
 ### [Click here](https://ican2app.herokuapp.com/) to launch the application on heroku.
 ### [Click here](https://github.com/cjkelling/ican2_be) to view the backend repo for this project and documentation on the endpoints.
