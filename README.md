@@ -25,7 +25,7 @@ For this application, we built the backend and frontend from scratch. The fronte
 Want to learn more about our process building this app? Check out [this presentation](https://docs.google.com/presentation/d/1cegHO93nOKLMWxYc_QlARk-4o_17SQ_H0wekRoxmklA/edit#slide=id.p)!
 
 ### Responsive Design: Mobile
-![mobile](https://media.giphy.com/media/XfmjI6FIXWLWGkRM3q/giphy.gif)
+![mobile](https://media.giphy.com/media/H2zcJd58a89mrSWnEl/giphy.gif)
 
 ### FRONTEND TECHNOLOGIES USED
 - React Hooks
