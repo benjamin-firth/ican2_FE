@@ -22,6 +22,8 @@ This app connects users who are looking for a mentee/mentor relationship. Users 
 
 For this application, we built the backend and frontend from scratch. The frontend was built with React Hooks, Redux, graphQL, and Sass. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project has a robust testing suite.
 
+Want to learn more about our process building this app? Check out [this presentation](https://docs.google.com/presentation/d/1cegHO93nOKLMWxYc_QlARk-4o_17SQ_H0wekRoxmklA/edit#slide=id.p)!
+
 ### Responsive Design: Mobile
 ![mobile](https://media.giphy.com/media/XfmjI6FIXWLWGkRM3q/giphy.gif)
 
