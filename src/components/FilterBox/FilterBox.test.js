@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FilterBox from './FilterBox';
+import FilterBox, { findMentors } from './FilterBox';
 
 jest.mock("react-redux", () => ({
   useSelector: () => 'mockState',
@@ -37,5 +37,18 @@ describe('FilterBox', () => {
     wrapper.find('#nameInput').simulate('change', {target: {value: 'test name'}})
 
     expect(wrapper.find('#nameInput').prop('value')).toEqual('test name')
+  });
+
+  describe('findMentors', () => {
+    const mockDispatch = jest.fn();
+    jest.mock('react-redux', () => {
+      useDispatch = () => mockDispatch
+    });
+
+    it('should dispatch the filterMentors action', () => {
+      findMentors(mockDispatch);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
   });
 });
