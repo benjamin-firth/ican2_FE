@@ -4,6 +4,14 @@ import { filterMentors } from '../../actions';
 import { filterPeople } from '../../utils/methods';
 import './FilterBox.scss';
 
+export const findMentors = (dispatch, mentors, field, state, name) => {
+  dispatch(filterMentors(filterPeople(mentors, field, state, name)));
+
+  if (!field && !state && !name) {
+    dispatch(filterMentors(mentors));
+  }
+};
+
 const FilterBox = () => {
   const dispatch = useDispatch();
   const mentors = useSelector(state => state.mentors);
@@ -11,16 +19,7 @@ const FilterBox = () => {
   const [state, setState] = useState('');
   const [name, setName] = useState('');
 
-  const findMentors = () => {
-
-    dispatch(filterMentors(filterPeople(mentors, field, state, name)));
-
-    if (!field && !state && !name) {
-      dispatch(filterMentors(mentors));
-    }
-  }
-
-  useEffect(() => findMentors(), [field, state, name]);
+  useEffect(() => findMentors(dispatch, mentors, field, state, name), [field, state, name]);
 
   return (
     <form className='filter-container'>
